@@ -10,4 +10,14 @@ The domain of our application is in the world of online video games, particularl
 
 Our application stores information about players (e.g., ranking, wins, losses) playing in a tournament, storing information on the character they play, the stages played on, and the game modes they use. This information is useful to view players' career statistics and tournament information for players and fans to follow the Super Smash Bros esports scene more closely. Furthermore, this information can help tournament organizers with streams and event inforamtion, as well as help players keep track of their progress. 
 
+## Timeline
+| Task          | Deadline      |  Team Member  |
+| ------------- | ------------- | ------------- |
+| Content Cell  | Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  | Content Cell  |
+| Content Cell  | Content Cell | Content Cell  |
 

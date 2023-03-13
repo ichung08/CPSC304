@@ -6,6 +6,8 @@
 - Kitty Liu
 - Vanessa Lee
 
+## Milestone 3
+
 ## Summary
 The domain of our application is in the world of online video games, particularly Nintendo’s popular video game: Super Smash Bros. The application is for Super Smash Bros players, tournament organizers, and fans to find information about matches, tournament information, and  player statistics. 
 
@@ -22,3 +24,4 @@ Our application stores information about players (e.g., ranking, wins, losses) p
 | Content Cell  | Content Cell  | Content Cell  |
 | Content Cell  | Content Cell | Content Cell  |
 
+## Description of Challenges/Things Left To Do

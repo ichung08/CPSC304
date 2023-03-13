@@ -7,6 +7,12 @@
 - Vanessa Lee
 
 ## Milestone 3
+Below includes the following deliverables for Milestone 3:
+- Summary
+- Timeline
+- Description of Challenges / Things Left to Do
+
+Please view Milestone 1 and 2 deliverables in the PDF files above
 
 ## Summary
 The domain of our application is in the world of online video games, particularly Nintendo’s popular video game: Super Smash Bros. The application is for Super Smash Bros players, tournament organizers, and fans to find information about matches, tournament information, and  player statistics. 
@@ -24,4 +30,5 @@ Our application stores information about players (e.g., ranking, wins, losses) p
 | Content Cell  | Content Cell  | Content Cell  |
 | Content Cell  | Content Cell | Content Cell  |
 
-## Description of Challenges/Things Left To Do
+## Description of Challenges / Things Left To Do
+

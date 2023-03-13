@@ -1,5 +1,4 @@
-# CPSC 304 Project
-## project_b5n2b_f9d9y_y8j3b
+# CPSC 304 Project - Team 39 (project_b5n2b_f9d9y_y8j3b)
 
 ## Group Members
 - Isaac Chung

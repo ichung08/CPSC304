@@ -71,7 +71,38 @@ General
 | Meet to practice demo together| Sunday, Apr 9 | All |
 
 
-## Description of Challenges / Things Left To Do
+## Description of Pages / Challenges / Things Left To Do
 
-- Home Page: 
+# Pages:
 
+* Home page
+
+* Character
+shows a list of the available characters in the game
+
+* Player
+shows a list of all the players in the database
+includes player and player statistics in database
+
+* Matches
+shows a list of the matches that have happened within a tournament
+can create a match (insert)
+
+* Tournament
+shows a list of previous and upcoming tournaments with their respective attributes
+
+* Spirits and maps
+shows a list of spirits available to be used in games
+shows a list of maps that players can play on in games
+
+# Challenges:
+
+* Time management
+* Adhering to rubric 
+* Finding time to work together as a team
+* Team communication
+* Tech stack setup
+
+# Tasks left to do:
+
+View table above

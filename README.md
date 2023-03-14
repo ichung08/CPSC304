@@ -29,28 +29,27 @@ Our application stores information about players (e.g., ranking, wins, losses) p
 | Page: Matches | Friday, Mar 31  | Kitty  |
 | Page: Tournament  | Friday, Mar 31  | Isaac |
 | Page: Spirits & Maps | Friday, Mar 31 | Isaac  |
+| Backend | Content Cell | Isaac |
+| Create SQL Scripts | Friday, Mar 31 | Kitty  |
 
-| Backend | Content Cell | Content Cell  |
-| Create SQL Scripts | Content Cell | Content Cell  |
+| SQL Script - Create tables and data | Friday, Mar 31  | Vanessa  |
 
-| SQL Script - Create tables and data | Content Cell  | Content Cell  |
+| Queries - INSERT  | Friday, Mar 31  | Vanessa  |
+| Queries - DELETE | Friday, Mar 31 | Kitty  |
+| Queries - UPDATE | Friday, Mar 31 | Kitty  |
+| Queries - Selection | Friday, Mar 31 | Isaac  |
+| Queries - Projection | Friday, Mar 31 | Isaac  |
+| Queries - Join | Friday, Mar 31 | Isaac  |
+| Queries - Aggregation with Group By| Friday, Mar 31 | Vanessa  |
+| Queries - Aggregation with Having | Friday, Mar 31 | Vanessa  |
+| Queries - Nested Aggregation with Group By | Friday, Mar 31 | Kitty  |
+| Queries - Division | Friday, Mar 31 | Isaac  |
+| Screenshots of query result (using GUI) | Friday, Mar 31 | Isaac  |
 
-| Queries - INSERT  | Content Cell  | Content Cell  |
-| Queries - DELETE | Content Cell | Content Cell  |
-| Queries - UPDATE | Content Cell | Content Cell  |
-| Queries - Selection | Content Cell | Content Cell  |
-| Queries - Projection | Content Cell | Content Cell  |
-| Queries - Join | Content Cell | Content Cell  |
-| Queries - Aggregation with Group By| Content Cell | Content Cell  |
-| Queries - Aggregation with Having | Content Cell | Content Cell  |
-| Queries - Nested Aggregation with Group By | Content Cell | Content Cell  |
-| Queries - Division | Content Cell | Content Cell  |
-| Screenshots of query result (using GUI) | Content Cell | Content Cell  |
-
-| Project Description - General  | Content Cell  | Content Cell  |
-| Project Description - Changes to Schema | Content Cell  | Content Cell  |
-| Project Description - Screenshots of data  | Content Cell  | Content Cell  |
-| README.txt | Content Cell | Content Cell  |
+| Project Description - General  | Friday, Mar 31  | Kitty  |
+| Project Description - Changes to Schema | Friday, Mar 31 | Vanessa  |
+| Project Description - Screenshots of data  | Friday, Mar 31 | Kitty  |
+| README.txt | Content Cell | Friday, Mar 31  |
 
 | Meet before Project Implementation | Sunday, April 2 | All  |
 

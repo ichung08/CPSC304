@@ -46,7 +46,7 @@ Our application stores information about players (e.g., ranking, wins, losses) p
 | Project Description - General  | Friday, Mar 31  | Kitty  |
 | Project Description - Changes to Schema | Friday, Mar 31 | Vanessa  |
 | Project Description - Screenshots of data  | Friday, Mar 31 | Kitty  |
-| README.txt | Content Cell | Friday, Mar 31  |
+| README.txt | Friday, Mar 31 | Kitty  |
 | Meet before Project Implementation | Sunday, April 2 | All  |
 
 Milestone 4 - Project Implementation Deadline: Wednesday, April 5, 2023 - 10 PM

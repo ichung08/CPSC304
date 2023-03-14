@@ -21,32 +21,32 @@ Our application stores information about players (e.g., ranking, wins, losses) p
 ## Timeline
 | Task          | Deadline      |  Team Member  |
 | ------------- | ------------- | ------------- |
-| Fix Milestone 2 based on TA's feedback | Sunday, Mar 19  | All |
-| Frontend Interface | | All: View below |
-| Home Page | Friday, Mar 31 | Vanessa |
-| Page: Character | Friday, Mar 31  | Vanessa  |
-| Page: Player| Friday, Mar 31 | Kitty |
-| Page: Matches | Friday, Mar 31  | Kitty  |
-| Page: Tournament  | Friday, Mar 31  | Isaac |
-| Page: Spirits & Maps | Friday, Mar 31 | Isaac  |
-| Backend | Content Cell | Isaac |
-| Create SQL Scripts | Friday, Mar 31 | Kitty  |
-| SQL Script - Create tables and data | Friday, Mar 31  | Vanessa  |
-| Queries - INSERT  | Friday, Mar 31  | Vanessa  |
-| Queries - DELETE | Friday, Mar 31 | Kitty  |
-| Queries - UPDATE | Friday, Mar 31 | Kitty  |
-| Queries - Selection | Friday, Mar 31 | Isaac  |
-| Queries - Projection | Friday, Mar 31 | Isaac  |
-| Queries - Join | Friday, Mar 31 | Isaac  |
-| Queries - Aggregation with Group By| Friday, Mar 31 | Vanessa  |
-| Queries - Aggregation with Having | Friday, Mar 31 | Vanessa  |
-| Queries - Nested Aggregation with Group By | Friday, Mar 31 | Kitty  |
-| Queries - Division | Friday, Mar 31 | Isaac  |
+| README.txt | Monday, Mar 13 | Kitty  |
+| Fix Milestone 2 based on TA's feedback | Tuesday, Mar 14  | All |
+| Project Description - General  | Wednesday, Mar 15 | Kitty  |
+| Project Description - Changes to Schema | Wednesday, Mar 15 | Vanessa  |
+| Project Description - Screenshots of data  | Wednesday, Mar 15 | Kitty  |
+| Create SQL Scripts | Saturday, Mar 18 | Kitty  |
+| SQL Script - Create tables and data | Saturday, Mar 18  | Vanessa |
+| Home Page | Sunday, Mar 19 | Vanessa |
+| Page: Character | Sunday, Mar 19  | Vanessa  |
+| Page: Player| Sunday, Mar 19 | Kitty |
+| Page: Matches | Sunday, Mar 19 | Kitty  |
+| Page: Tournament  | Sunday, Mar 19  | Isaac |
+| Page: Spirits & Maps | Sunday, Mar 19 | Isaac  |
+| Queries - INSERT  | Tuesday, Mar 21  | Vanessa  |
+| Queries - DELETE | Tuesday, Mar 21 | Kitty  |
+| Queries - UPDATE | Tuesday, Mar 21 | Kitty  |
+| Queries - Selection | Wednesday, Mar 22 | Isaac  |
+| Queries - Projection | Wednesday, Mar 22 | Isaac  |
+| Queries - Join | Wednesday, Mar 22 | Isaac  |
+| Queries - Aggregation with Group By | Friday, Mar 24 | Vanessa  |
+| Queries - Aggregation with Having | Friday, Mar 24 | Vanessa  |
+| Queries - Nested Aggregation with Group By | Friday, Mar 24 | Kitty  |
+| Queries - Division | Friday, Mar 24 | Isaac  |
+| Frontend Interface | Wednesday, Mar 29 | All: View below |
+| Backend | Friday, Mar 31 | Isaac |
 | Screenshots of query result (using GUI) | Friday, Mar 31 | Isaac  |
-| Project Description - General  | Friday, Mar 31  | Kitty  |
-| Project Description - Changes to Schema | Friday, Mar 31 | Vanessa  |
-| Project Description - Screenshots of data  | Friday, Mar 31 | Kitty  |
-| README.txt | Friday, Mar 31 | Kitty  |
 | Meet before Project Implementation | Sunday, April 2 | All  |
 
 Milestone 4 - Project Implementation Deadline: Wednesday, April 5, 2023 - 10 PM

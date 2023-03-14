@@ -73,7 +73,7 @@ General
 
 ## Description of Pages / Challenges / Things Left To Do
 
-# Pages:
+### Pages:
 
 * Home page
 
@@ -95,7 +95,7 @@ shows a list of previous and upcoming tournaments with their respective attribut
 shows a list of spirits available to be used in games
 shows a list of maps that players can play on in games
 
-# Challenges:
+### Challenges:
 
 * Time management
 * Adhering to rubric 
@@ -103,6 +103,6 @@ shows a list of maps that players can play on in games
 * Team communication
 * Tech stack setup
 
-# Tasks left to do:
+### Tasks left to do:
 
 View table above

@@ -1,0 +1,15 @@
+DELETE FROM Player;
+DELETE FROM Plays_On_Console;
+DELETE FROM PlaysIn;
+DELETE FROM Tournament;
+DELETE FROM Smash_Character;
+DELETE FROM Ability;
+DELETE FROM Stage;
+DELETE FROM Team_Tournament;
+DELETE FROM Ability;
+DELETE FROM Stage_In_GameMode;
+DELETE FROM Game;
+DELETE FROM Single_Player;
+DELETE FROM Multiplayer;
+DELETE FROM Contains_Spirits;
+DELETE FROM Ruleset;

@@ -64,18 +64,18 @@ CREATE TABLE Ability ( /*done*/
     FOREIGN KEY (character_name) REFERENCES Smash_Character (character_name) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-CREATE TABLE Stage (
+CREATE TABLE Stage ( /*done*/
     stage_name CHAR(20), 
     form CHAR(20), 
     PRIMARY KEY (stage_name)
 );
 
-CREATE TABLE Stage_In_Game (
-    stage_name CHAR(20) NOT NULL, 
-    game_id CHAR(20) NOT NULL,
-    PRIMARY KEY (stage_name, game_id), 
+CREATE TABLE Stage_In_Match ( /*edited*/
+    stage_name CHAR(20), 
+    match_id CHAR(20) NOT NULL,
+    PRIMARY KEY (stage_name), 
     FOREIGN KEY (stage_name) REFERENCES Stage (stage_name)ON DELETE CASCADE ON UPDATE CASCADE, 
-    FOREIGN KEY (game_id) REFERENCES Game (game_id)ON DELETE CASCADE ON UPDATE CASCADE
+    FOREIGN KEY (match_id) REFERENCES Match (match_id)ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 
@@ -83,31 +83,31 @@ CREATE TABLE Contains_Spirits (
     spirits_name CHAR(20), 
     spirits_ability CHAR(20), 
     spirits_type CHAR(20), 
-    game_id CHAR(20),
-    PRIMARY KEY (spirits_name, game_id),
-    FOREIGN KEY (game_id) REFERENCES Game (game_id) ON DELETE CASCADE ON UPDATE CASCADE
+    match_id CHAR(20),
+    PRIMARY KEY (spirits_name, match_id),
+    FOREIGN KEY (match_id) REFERENCES Match (match_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE Single_Player (
-	game_id INTEGER,
+	match_id INTEGER,
     competitor_type CHAR(20), 
-    PRIMARY KEY(game_id)
-    FOREIGN KEY (game_id) REFERENCES Game (game_id)
+    PRIMARY KEY(match_id)
+    FOREIGN KEY (match_id) REFERENCES Match (match_id)
 );
 
 CREATE TABLE Multiplayer (
-    game_id INTEGER, 
+    match_id INTEGER, 
     number_of_players INTEGER, 
-    PRIMARY KEY(game_id)
-    FOREIGN KEY (game_id) REFERENCES Game (game_id)
+    PRIMARY KEY(match_id)
+    FOREIGN KEY (match_id) REFERENCES Match (match_id)
 );
 
 CREATE TABLE Ruleset ( 
     type CHAR(20), 
     win_criteria CHAR(20), 
-    game_id CHAR(20), 
+    match_id CHAR(20), 
     PRIMARY KEY(type), 
-    FOREIGN KEY(game_id) REFERENCES Game (game_id) ON DELETE CASCADE ON UPDATE CASCADE
+    FOREIGN KEY(match_id) REFERENCES Match (match_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 

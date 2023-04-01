@@ -1,12 +1,12 @@
 INSERT INTO Player
-VALUES ("Overtaker", 1, 509, 5)
-("Anywehe", 2, 634, 12)
-("Sally", 234, 23, 6)
-("Adam", 6, 498, 6)
-("Zahgrd", 3266, 5, 86)
-("Victory", 10, 345, 9)
-("Christian", 8, 236, 5)
-("Hauntzer", 88, 145, 46)
+VALUES ("Overtaker", 1, 509, 5),
+("Anywehe", 2, 634, 12),
+("Sally", 234, 23, 6),
+("Adam", 6, 498, 6),
+("Zahgrd", 3266, 5, 86),
+("Victory", 10, 345, 9),
+("Christian", 8, 236, 5),
+("Hauntzer", 88, 145, 46);
 
 INSERT INTO Plays_On_Console
 VALUES ("Xbox","Microsoft Studios", 2010)

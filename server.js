@@ -1,27 +1,25 @@
 const express = require('express');
+const cors = require("cors");
 const app = express();
+
+var corsOptions = {
+  origin: "http://localhost:8081"
+};
+
+app.use(cors(corsOptions));
+
+// parse requests of content-type - application/json
+app.use(express.json());
+
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-app.listen(3000, () => {
-  console.log('Server started on port 3000');
-});
-
-const mysql = require('mysql');
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '304',
-  database: 'smash'
-});
-
-connection.connect();
-
-app.get('/api/message', (req, res) => {
-  connection.query('SELECT message FROM messages', (err, results) => {
-    if (err) throw err;
-    res.json({ message: results[0].message });
-  });
+// set port, listen for requests
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}.`);
 });

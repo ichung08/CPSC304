@@ -4,6 +4,7 @@
   "description": "## Group Members - Isaac Chung - Kitty Liu - Vanessa Lee",
   "main": "index.js",
   "scripts": {
+    "server": "nodemon -r ./server.js",
     "react-start": "cd client && npm start"
   },
   "repository": {
@@ -13,8 +14,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
     "express": "^4.18.2",
-    "mysql": "^2.18.1",
-    "nodemon": "^2.0.21"
+    "mysql2": "^3.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }

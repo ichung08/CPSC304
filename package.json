@@ -1,0 +1,20 @@
+{
+  "name": "project_b5n2b_f9d9y_y8j3b",
+  "version": "1.0.0",
+  "description": "## Group Members - Isaac Chung - Kitty Liu - Vanessa Lee",
+  "main": "index.js",
+  "scripts": {
+    "react-start": "cd client && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.students.cs.ubc.ca:CPSC304-2022W-T2/project_b5n2b_f9d9y_y8j3b.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.21"
+  }
+}

@@ -1,31 +1,39 @@
-CREATE TABLE Player (
+CREATE TABLE Player ( /* done */
 	username CHAR(20),
 	ranking INTEGER, 
     wins INTEGER, 
     losses INTEGER, 
-    character_name CHAR(20) NOT NULL,
-    console_name CHAR(20) NOT NULL,
     PRIMARY KEY (username),
-    FOREIGN KEY (character_name) REFERENCES Smash_Character (character_name) ON DELETE NO ACTION ON UPDATE NO ACTION,
-    FOREIGN KEY (console_name) REFERENCES Plays_On_Console(console_name) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-CREATE TABLE Plays_On_Console (
-	console_name CHAR(20),
-	manufacturer CHAR(20), 
-	production_year INTEGER,
-	PRIMARY KEY (console_name)
+CREATE TABLE Smash_Character ( /*simplified, done*/
+    character_name CHAR(20), 
+    costume CHAR(20),
+    PRIMARY KEY (character_name), 
+); 
+
+/* Renamed Game to Match, as game felt ambiguous */
+CREATE TABLE Match (  /*need to fix ruleset*/
+    match_id INTEGER,
+    match_mode CHAR(20), 
+    PRIMARY KEY(match_id),
+
+    type CHAR(20) UNIQUE NOT NULL,
+    FOREIGN KEY (type) REFERENCES Ruleset (type) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
-CREATE TABLE Plays_In (
-	username CHAR(20) NOT NULL,
-	tournament_id CHAR(20) NOT NULL,
-	PRIMARY KEY (username, tournament_id),
-	FOREIGN KEY (username) REFERENCES Player (username) ON DELETE CASCADE ON UPDATE CASCADE,
-	FOREIGN KEY (tournament_id) REFERENCES Tournament (tournament_id) ON DELETE CASCADE ON UPDATE CASCADE
+/* Match_Player = player who plays in a match */
+CREATE TABLE Match_Player ( /*done*/
+	match_id INTEGER,
+    username CHAR(20),
+    character_name CHAR(20) NOT NULL, 
+	PRIMARY KEY (match_id, username),
+	FOREIGN KEY (match_id) REFERENCES Match(match_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (username) REFERENCES Player(username) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (character_name) REFERENCES Smash_Character(character_name)
 );
 
-CREATE TABLE Tournament (
+CREATE TABLE Tournament ( /* done */
 	tournament_id CHAR(20), 
     tournament_name CHAR(20), 
     organizer CHAR(20), 
@@ -34,25 +42,26 @@ CREATE TABLE Tournament (
     prize_pool INTEGER,
     PRIMARY KEY (tournament_id)
 );
-        
-CREATE TABLE Smash_Character (
-    character_name CHAR(20), 
-    costume CHAR(20),
-    ultimate_attack CHAR(20) UNIQUE NOT NULL,
-    stage_name CHAR(20),
-    PRIMARY KEY (character_name), 
-    FOREIGN KEY (ultimate_attack) REFERENCES Ability (ultimate_attack) ON DELETE NO ACTION ON UPDATE NO ACTION,
-    FOREIGN KEY (stage_name) REFERENCES Stage (stage_name) ON DELETE CASCADE ON UPDATE CASCADE
-); 
 
-CREATE TABLE Ability (
+/* Match_Tournament signifies a match (game) in the tournament*/
+CREATE TABLE Match_Tournament (
+    match_id INTEGER,
+    tournament_id INTEGER NOT NULL,
+    PRIMARY KEY (match_id),
+    FOREIGN KEY (match_id) REFERENCES Match(match_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (tournament_id) REFERENCES Tournament(tournament_id) ON DELETE CASCADE ON UPDATE CASCADE
+)
+        
+
+CREATE TABLE Ability ( /*done*/
     ultimate_attack CHAR(20), 
+    character_name CHAR(20),
     up_attack CHAR(20), 
     neutral_attack CHAR(20), 
     down_attack CHAR(20), 
-    character_name CHAR(20) UNIQUE NOT NULL,
-    PRIMARY KEY (ultimate_attack), 
-    FOREIGN KEY (character_name) REFERENCES Smash_Character (character_name) ON DELETE NO ACTION ON UPDATE NO ACTION
+    UNIQUE (character_name), 
+    PRIMARY KEY (ultimate_attack, character_name), 
+    FOREIGN KEY (character_name) REFERENCES Smash_Character (character_name) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE Stage (
@@ -69,13 +78,6 @@ CREATE TABLE Stage_In_Game (
     FOREIGN KEY (game_id) REFERENCES Game (game_id)ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-CREATE TABLE Game ( 
-    game_id INTEGER,
-    game_mode CHAR(20), 
-    type CHAR(20) UNIQUE NOT NULL,
-    PRIMARY KEY(game_id),
-    FOREIGN KEY (type) REFERENCES Ruleset (type) ON DELETE NO ACTION ON UPDATE NO ACTION
-);
 
 CREATE TABLE Contains_Spirits (
     spirits_name CHAR(20), 
@@ -107,3 +109,8 @@ CREATE TABLE Ruleset (
     PRIMARY KEY(type), 
     FOREIGN KEY(game_id) REFERENCES Game (game_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+
+
+
+

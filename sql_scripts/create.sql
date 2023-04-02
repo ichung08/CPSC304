@@ -12,22 +12,26 @@ CREATE TABLE Smash_Character ( /*simplified, done*/
     PRIMARY KEY (character_name)
 ); 
 
-/* Renamed Game to Match, as game felt ambiguous */
-CREATE TABLE Match (  /*need to fix ruleset*/
-    match_id INTEGER,
-    match_mode CHAR(20), 
-    PRIMARY KEY(match_id),
-    type CHAR(20) UNIQUE NOT NULL,
-    FOREIGN KEY (type) REFERENCES Ruleset (type) ON DELETE NO ACTION ON UPDATE NO ACTION
+
+CREATE TABLE Game (  
+    game_id INTEGER,
+    game_mode CHAR(20), 
+    stage_name CHAR(20) UNIQUE NOT NULL,
+    ruleset_type CHAR(20) UNIQUE NOT NULL,
+    spirits_name CHAR(20) UNIQUE NOT NULL,
+    PRIMARY KEY(game_id),
+    FOREIGN KEY (stage_name) REFERENCES Stage(stage_name) ON DELETE NO ACTION ON UPDATE NO ACTION
+    FOREIGN KEY (ruleset_type) REFERENCES Ruleset (ruleset_type) ON DELETE NO ACTION ON UPDATE NO ACTION
+    FOREIGN KEY (spirits_name) REFERENCES Spirits(spirits_name) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
-/* Match_Player = player who plays in a match */
-CREATE TABLE Match_Player ( /*done*/
-	match_id INTEGER,
+/* Game_Player = player who plays in a game */
+CREATE TABLE Game_Player ( /*done*/
+	game_id INTEGER,
     username CHAR(20),
     character_name CHAR(20) NOT NULL, 
-	PRIMARY KEY (match_id, username),
-	FOREIGN KEY (match_id) REFERENCES Match(match_id) ON DELETE CASCADE ON UPDATE CASCADE,
+	PRIMARY KEY (game_id, username),
+	FOREIGN KEY (game_id) REFERENCES Game(game_id) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (username) REFERENCES Player(username) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (character_name) REFERENCES Smash_Character(character_name)
 );
@@ -42,12 +46,12 @@ CREATE TABLE Tournament ( /* done */
     PRIMARY KEY (tournament_id)
 );
 
-/* Match_Tournament signifies a match (game) in the tournament*/
-CREATE TABLE Match_Tournament (
-    match_id INTEGER,
+/* Game_Tournament signifies a game in the tournament*/
+CREATE TABLE Game_Tournament (
+    game_id INTEGER,
     tournament_id INTEGER NOT NULL,
-    PRIMARY KEY (match_id),
-    FOREIGN KEY (match_id) REFERENCES Match(match_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    PRIMARY KEY (game_id),
+    FOREIGN KEY (game_id) REFERENCES Game(game_id) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (tournament_id) REFERENCES Tournament(tournament_id) ON DELETE CASCADE ON UPDATE CASCADE
 )
         
@@ -69,45 +73,68 @@ CREATE TABLE Stage ( /*done*/
     PRIMARY KEY (stage_name)
 );
 
-CREATE TABLE Stage_In_Match ( /*edited*/
-    stage_name CHAR(20), 
-    match_id CHAR(20) NOT NULL,
-    PRIMARY KEY (stage_name), 
+
+/* CREATE TABLE Stage_In_Game (
+    game_id CHAR(20), 
+    stage_name CHAR(20) NOT NULL,
+    PRIMARY KEY (game_id), 
     FOREIGN KEY (stage_name) REFERENCES Stage (stage_name)ON DELETE CASCADE ON UPDATE CASCADE, 
-    FOREIGN KEY (match_id) REFERENCES Match (match_id)ON DELETE CASCADE ON UPDATE CASCADE
+    FOREIGN KEY (game_id) REFERENCES Game (game_id)ON DELETE CASCADE ON UPDATE CASCADE
+); 
+*/
+
+CREATE TABLE Ruleset ( 
+    ruleset_type CHAR(20), 
+    win_criteria CHAR(20), 
+    PRIMARY KEY(ruleset_type), 
 );
 
-
-CREATE TABLE Contains_Spirits (
+/*CREATE TABLE Contains_Spirits (
     spirits_name CHAR(20), 
     spirits_ability CHAR(20), 
     spirits_type CHAR(20), 
-    match_id CHAR(20),
-    PRIMARY KEY (spirits_name, match_id),
-    FOREIGN KEY (match_id) REFERENCES Match (match_id) ON DELETE CASCADE ON UPDATE CASCADE
+    game_id CHAR(20),
+    PRIMARY KEY (spirits_name, game_id),
+    FOREIGN KEY (game_id) REFERENCES Game (game_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
+*/
 
-CREATE TABLE Single_Player (
-	match_id INTEGER,
+CREATE TABLE Spirits (
+    spirits_name CHAR(20), 
+    spirits_ability CHAR(20), 
+    spirits_type CHAR(20),
+    PRIMARY KEY (spirits_name)
+)
+
+CREATE TABLE Single_Player_Game (
+	game_id INTEGER,
     competitor_type CHAR(20), 
-    PRIMARY KEY(match_id),
-    FOREIGN KEY (match_id) REFERENCES Match (match_id)
+    game_mode CHAR(20), 
+    stage_name CHAR(20) UNIQUE NOT NULL,
+    ruleset_type CHAR(20) UNIQUE NOT NULL,
+    spirits_name CHAR(20) UNIQUE NOT NULL,
+    PRIMARY KEY(game_id),
+    FOREIGN KEY (stage_name) REFERENCES Stage(stage_name) ON DELETE NO ACTION ON UPDATE NO ACTION
+    FOREIGN KEY (ruleset_type) REFERENCES Ruleset (ruleset_type) ON DELETE NO ACTION ON UPDATE NO ACTION
+    FOREIGN KEY (spirits_name) REFERENCES Spirits(spirits_name) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
-CREATE TABLE Multiplayer (
-    match_id INTEGER, 
-    number_of_players INTEGER, 
-    PRIMARY KEY(match_id),
-    FOREIGN KEY (match_id) REFERENCES Match (match_id)
+
+CREATE TABLE Multiplayer_Game (
+    game_id INTEGER,
+    number_of_players INTEGER,  
+    game_mode CHAR(20), 
+    stage_name CHAR(20) UNIQUE NOT NULL,
+    ruleset_type CHAR(20) UNIQUE NOT NULL,
+    spirits_name CHAR(20) UNIQUE NOT NULL,
+    PRIMARY KEY(game_id),
+    FOREIGN KEY (stage_name) REFERENCES Stage(stage_name) ON DELETE NO ACTION ON UPDATE NO ACTION
+    FOREIGN KEY (ruleset_type) REFERENCES Ruleset (ruleset_type) ON DELETE NO ACTION ON UPDATE NO ACTION
+    FOREIGN KEY (spirits_name) REFERENCES Spirits(spirits_name) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
-CREATE TABLE Ruleset ( 
-    type CHAR(20), 
-    win_criteria CHAR(20), 
-    match_id CHAR(20), 
-    PRIMARY KEY(type), 
-    FOREIGN KEY(match_id) REFERENCES Match (match_id) ON DELETE CASCADE ON UPDATE CASCADE
-);
+
+
 
 
 

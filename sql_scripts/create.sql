@@ -3,13 +3,13 @@ CREATE TABLE Player ( /* done */
 	ranking INTEGER, 
     wins INTEGER, 
     losses INTEGER, 
-    PRIMARY KEY (username),
+    PRIMARY KEY (username)
 );
 
 CREATE TABLE Smash_Character ( /*simplified, done*/
     character_name CHAR(20), 
     costume CHAR(20),
-    PRIMARY KEY (character_name), 
+    PRIMARY KEY (character_name)
 ); 
 
 /* Renamed Game to Match, as game felt ambiguous */
@@ -17,7 +17,6 @@ CREATE TABLE Match (  /*need to fix ruleset*/
     match_id INTEGER,
     match_mode CHAR(20), 
     PRIMARY KEY(match_id),
-
     type CHAR(20) UNIQUE NOT NULL,
     FOREIGN KEY (type) REFERENCES Ruleset (type) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
@@ -91,14 +90,14 @@ CREATE TABLE Contains_Spirits (
 CREATE TABLE Single_Player (
 	match_id INTEGER,
     competitor_type CHAR(20), 
-    PRIMARY KEY(match_id)
+    PRIMARY KEY(match_id),
     FOREIGN KEY (match_id) REFERENCES Match (match_id)
 );
 
 CREATE TABLE Multiplayer (
     match_id INTEGER, 
     number_of_players INTEGER, 
-    PRIMARY KEY(match_id)
+    PRIMARY KEY(match_id),
     FOREIGN KEY (match_id) REFERENCES Match (match_id)
 );
 

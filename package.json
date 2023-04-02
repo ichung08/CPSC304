@@ -4,9 +4,9 @@
   "description": "## Group Members - Isaac Chung - Kitty Liu - Vanessa Lee",
   "main": "index.js",
   "scripts": {
-    "server-start": "nodemon -r ./server.js",
-    "client-start": "cd frontend && npm start",
-    "start": "concurrently \"npm run server-start\" \"npm run client-start\""
+    "server": "nodemon -r ./server.js",
+    "client": "cd frontend && npm start",
+    "start": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",

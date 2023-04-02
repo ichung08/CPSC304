@@ -3,13 +3,13 @@ CREATE TABLE Player ( /* done */
 	ranking INTEGER, 
     wins INTEGER, 
     losses INTEGER, 
-    PRIMARY KEY (username),
+    PRIMARY KEY (username)
 );
 
 CREATE TABLE Smash_Character ( /*simplified, done*/
     character_name CHAR(20), 
     costume CHAR(20),
-    PRIMARY KEY (character_name), 
+    PRIMARY KEY (character_name)
 ); 
 
 

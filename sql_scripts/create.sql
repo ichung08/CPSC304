@@ -12,6 +12,12 @@ CREATE TABLE Smash_Character ( /*simplified, done*/
     PRIMARY KEY (character_name)
 ); 
 
+CREATE TABLE Spirits (
+    spirits_name CHAR(20), 
+    spirits_ability CHAR(20), 
+    spirits_type CHAR(20),
+    PRIMARY KEY (spirits_name)
+);
 
 CREATE TABLE Game (  
     game_id INTEGER,
@@ -20,8 +26,8 @@ CREATE TABLE Game (
     ruleset_type CHAR(20) UNIQUE NOT NULL,
     spirits_name CHAR(20) UNIQUE NOT NULL,
     PRIMARY KEY(game_id),
-    FOREIGN KEY (stage_name) REFERENCES Stage(stage_name) ON DELETE NO ACTION ON UPDATE NO ACTION
-    FOREIGN KEY (ruleset_type) REFERENCES Ruleset (ruleset_type) ON DELETE NO ACTION ON UPDATE NO ACTION
+    FOREIGN KEY (stage_name) REFERENCES Stage(stage_name) ON DELETE NO ACTION ON UPDATE NO ACTION,
+    FOREIGN KEY (ruleset_type) REFERENCES Ruleset (ruleset_type) ON DELETE NO ACTION ON UPDATE NO ACTION,
     FOREIGN KEY (spirits_name) REFERENCES Spirits(spirits_name) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
@@ -37,7 +43,7 @@ CREATE TABLE Game_Player ( /*done*/
 );
 
 CREATE TABLE Tournament ( /* done */
-	tournament_id CHAR(20), 
+	tournament_id INTEGER, 
     tournament_name CHAR(20), 
     organizer CHAR(20), 
     start_date DATE, 
@@ -53,12 +59,12 @@ CREATE TABLE Game_Tournament (
     PRIMARY KEY (game_id),
     FOREIGN KEY (game_id) REFERENCES Game(game_id) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (tournament_id) REFERENCES Tournament(tournament_id) ON DELETE CASCADE ON UPDATE CASCADE
-)
+);
         
 
-CREATE TABLE Ability ( /*done*/
-    ultimate_attack CHAR(20), 
+CREATE TABLE Ability ( 
     character_name CHAR(20),
+    ultimate_attack CHAR(20), 
     up_attack CHAR(20), 
     neutral_attack CHAR(20), 
     down_attack CHAR(20), 
@@ -86,7 +92,7 @@ CREATE TABLE Stage ( /*done*/
 CREATE TABLE Ruleset ( 
     ruleset_type CHAR(20), 
     win_criteria CHAR(20), 
-    PRIMARY KEY(ruleset_type), 
+    PRIMARY KEY(ruleset_type)
 );
 
 /*CREATE TABLE Contains_Spirits (
@@ -99,13 +105,6 @@ CREATE TABLE Ruleset (
 );
 */
 
-CREATE TABLE Spirits (
-    spirits_name CHAR(20), 
-    spirits_ability CHAR(20), 
-    spirits_type CHAR(20),
-    PRIMARY KEY (spirits_name)
-)
-
 CREATE TABLE Single_Player_Game (
 	game_id INTEGER,
     competitor_type CHAR(20), 
@@ -114,8 +113,8 @@ CREATE TABLE Single_Player_Game (
     ruleset_type CHAR(20) UNIQUE NOT NULL,
     spirits_name CHAR(20) UNIQUE NOT NULL,
     PRIMARY KEY(game_id),
-    FOREIGN KEY (stage_name) REFERENCES Stage(stage_name) ON DELETE NO ACTION ON UPDATE NO ACTION
-    FOREIGN KEY (ruleset_type) REFERENCES Ruleset (ruleset_type) ON DELETE NO ACTION ON UPDATE NO ACTION
+    FOREIGN KEY (stage_name) REFERENCES Stage(stage_name) ON DELETE NO ACTION ON UPDATE NO ACTION,
+    FOREIGN KEY (ruleset_type) REFERENCES Ruleset (ruleset_type) ON DELETE NO ACTION ON UPDATE NO ACTION,
     FOREIGN KEY (spirits_name) REFERENCES Spirits(spirits_name) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
@@ -128,8 +127,8 @@ CREATE TABLE Multiplayer_Game (
     ruleset_type CHAR(20) UNIQUE NOT NULL,
     spirits_name CHAR(20) UNIQUE NOT NULL,
     PRIMARY KEY(game_id),
-    FOREIGN KEY (stage_name) REFERENCES Stage(stage_name) ON DELETE NO ACTION ON UPDATE NO ACTION
-    FOREIGN KEY (ruleset_type) REFERENCES Ruleset (ruleset_type) ON DELETE NO ACTION ON UPDATE NO ACTION
+    FOREIGN KEY (stage_name) REFERENCES Stage(stage_name) ON DELETE NO ACTION ON UPDATE NO ACTION,
+    FOREIGN KEY (ruleset_type) REFERENCES Ruleset (ruleset_type) ON DELETE NO ACTION ON UPDATE NO ACTION,
     FOREIGN KEY (spirits_name) REFERENCES Spirits(spirits_name) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 

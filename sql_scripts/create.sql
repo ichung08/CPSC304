@@ -1,4 +1,4 @@
-CREATE TABLE Player ( /* done */
+CREATE TABLE Player ( 
 	username CHAR(20),
 	ranking INTEGER, 
     wins INTEGER, 
@@ -6,7 +6,7 @@ CREATE TABLE Player ( /* done */
     PRIMARY KEY (username)
 );
 
-CREATE TABLE Smash_Character ( /*simplified, done*/
+CREATE TABLE Smash_Character ( 
     character_name CHAR(20), 
     costume CHAR(20),
     PRIMARY KEY (character_name)
@@ -32,7 +32,7 @@ CREATE TABLE Game (
 );
 
 /* Game_Player = player who plays in a game */
-CREATE TABLE Game_Player ( /*done*/
+CREATE TABLE Game_Player ( 
 	game_id INTEGER,
     username CHAR(20),
     character_name CHAR(20) NOT NULL, 
@@ -42,7 +42,7 @@ CREATE TABLE Game_Player ( /*done*/
     FOREIGN KEY (character_name) REFERENCES Smash_Character(character_name)
 );
 
-CREATE TABLE Tournament ( /* done */
+CREATE TABLE Tournament ( 
 	tournament_id INTEGER, 
     tournament_name CHAR(20), 
     organizer CHAR(20), 
@@ -73,7 +73,7 @@ CREATE TABLE Ability (
     FOREIGN KEY (character_name) REFERENCES Smash_Character (character_name) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-CREATE TABLE Stage ( /*done*/
+CREATE TABLE Stage ( 
     stage_name CHAR(20), 
     form CHAR(20), 
     PRIMARY KEY (stage_name)

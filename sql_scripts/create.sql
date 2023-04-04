@@ -1,3 +1,4 @@
+
 CREATE TABLE Player ( 
 	username CHAR(20),
 	ranking INTEGER, 
@@ -91,7 +92,7 @@ CREATE TABLE Stage (
 
 CREATE TABLE Ruleset ( 
     ruleset_type CHAR(20), 
-    win_criteria CHAR(20), 
+    win_criteria CHAR(50), 
     PRIMARY KEY(ruleset_type)
 );
 
@@ -132,6 +133,21 @@ CREATE TABLE Multiplayer_Game (
     FOREIGN KEY (spirits_name) REFERENCES Spirits(spirits_name) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
+DELETE FROM Player;
+DELETE FROM Smash_Character;
+DELETE FROM Spirits;
+DELETE FROM Game;
+DELETE FROM Game_Player;
+DELETE FROM Tournament;
+DELETE FROM Game_Tournament;
+DELETE FROM Ability;
+DELETE FROM Stage;
+DELETE FROM Ruleset;
+DELETE FROM Single_Player_Game;
+DELETE FROM Multiplayer_Game;
+
+
+
 /* 1) username, ranking, wins, losses */
 INSERT INTO Player
 VALUES ("Overtaker", 1, 509, 5),
@@ -158,9 +174,9 @@ VALUES ("Bowser", "orange"),
 INSERT INTO Spirits
 VALUES ("Mario", "Fight", "Fighter"),
 ("Mini Mario Hammer", "Longer Hammer", "Primary"),
-("Huey", "Higher Water/Freezing Resist", "Support"),
+("Huey", "Freezing Resist", "Support"),
 ("Vivian", "Lower Weight", "Primary"),
-("Rock Mario", "Higher Physical Attack", "Support"),
+("Rock Mario", "Physical Attack", "Support"),
 ("Cat Princess Peach", "Lower Weight", "Primary"),
 ("Captain Toad", "Item Gravitation", "Primary");
 
@@ -193,7 +209,7 @@ VALUES (1, "THE SMASHERS", "Taryn Wou", "2021-01-04", "2021-01-05", "2000"),
 (17, "Ultra Tournament", "Isaac Chung", "2022-08-09", "2022-08-11", "30000"),
 (5, "Sentinals", "Kitty Liu","2022-08-09", "2022-08-11", "30000"),
 (200, "100 Thieves", "Angelina Hsu","2022-08-09", "2022-08-11", "30000"),
-(8, "Vancouver Smash Tournament", "Ellen Yang", "2022-08-09", "2022-08-11", "30000"),
+(8, "Vancouver Smash", "Ellen Yang", "2022-08-09", "2022-08-11", "30000"),
 (99, "Canadian Nationals", "Andrea Yeo", "2022-08-09", "2022-8-11", "30000"),
 (21, "BC Provincials", "Annie Wang", "2022-06-16", "2022-06-18", "30000");
 
@@ -233,18 +249,19 @@ VALUES ("Battlefield", "Battlefield"),
 
 /* 10) ruleset_type, win_criteria*/
 INSERT INTO Ruleset 
-VALUES ("Stock", "aaa"),
-("Time limit", "bbb"),
-("Stamina", "ccc"),
-("Stock", "ddd"),
-("Stock", "eee"),
-("Stamina", "fff"),
-("Time limit", "ggg");
+VALUES ("Stock", "3 stock"),
+("Time limit", "6 minutes"),
+("Stamina", "Highest health meter"),
+("Training", "Practice"),
+("Squad Strike", "Last team eliminated"),
+("Tournament", "Bracketed style"),
+("All-Star Mode", "Set opponents"),
+("Target Blast", "Damage dealt points");
 
 /* 11) game_id, competitor_type, game_mode, stage_name, ruleset_type, spirits_name*/
 
 INSERT INTO Single_Player_Game
-VALUES (23, "CPU",  "Classic", "Battlefield", "Time limit", "Mario"),
+VALUES (1, "CPU",  "Classic", "Battlefield", "Time limit", "Mario"),
 (5, "CPU", "Adventure", "Mario Galaxy", "Stamina", "Vivian"),
 (23, "Player", "All-Star", "Supper Happy Tree", "Stock", "Captain Toad"),
 (96, "Player", "Event", "Windy Hill Zone", "Stock", "Cat Princess Peach"),
@@ -262,8 +279,6 @@ VALUES (2, 3,  "Classic", "Battlefield", "Time limit", "Mario"),
 (13, 7, "Stadium", "Spring Stadium", "Stamina", "Huey"),
 (123, 8, "Training", "Battlefield", "Time limit", "Captain Toad"),
 (17, 4, "Classic", "Big Blue", "Stock", "Mini Mario & Hammers");
-
-
 
 
 

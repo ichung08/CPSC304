@@ -14,7 +14,7 @@ CREATE TABLE Smash_Character (
 
 CREATE TABLE Spirits (
     spirits_name CHAR(20), 
-    spirits_ability CHAR(20), 
+    spirits_ability CHAR(50), 
     spirits_type CHAR(20),
     PRIMARY KEY (spirits_name)
 );
@@ -22,9 +22,9 @@ CREATE TABLE Spirits (
 CREATE TABLE Game (  
     game_id INTEGER,
     game_mode CHAR(20), 
-    stage_name CHAR(20) UNIQUE NOT NULL,
-    ruleset_type CHAR(20) UNIQUE NOT NULL,
-    spirits_name CHAR(20) UNIQUE NOT NULL,
+    stage_name CHAR(20) NOT NULL,
+    ruleset_type CHAR(20) NOT NULL,
+    spirits_name CHAR(20) NOT NULL,
     PRIMARY KEY(game_id),
     FOREIGN KEY (stage_name) REFERENCES Stage(stage_name) ON DELETE NO ACTION ON UPDATE NO ACTION,
     FOREIGN KEY (ruleset_type) REFERENCES Ruleset (ruleset_type) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -44,10 +44,10 @@ CREATE TABLE Game_Player (
 
 CREATE TABLE Tournament ( 
 	tournament_id INTEGER, 
-    tournament_name CHAR(20), 
+    tournament_name CHAR(80), 
     organizer CHAR(20), 
-    start_date DATE, 
-    end_date DATE, 
+    startdate DATE, 
+    enddate DATE, 
     prize_pool INTEGER,
     PRIMARY KEY (tournament_id)
 );
@@ -109,9 +109,9 @@ CREATE TABLE Single_Player_Game (
 	game_id INTEGER,
     competitor_type CHAR(20), 
     game_mode CHAR(20), 
-    stage_name CHAR(20) UNIQUE NOT NULL,
-    ruleset_type CHAR(20) UNIQUE NOT NULL,
-    spirits_name CHAR(20) UNIQUE NOT NULL,
+    stage_name CHAR(20) NOT NULL,
+    ruleset_type CHAR(20) NOT NULL,
+    spirits_name CHAR(20) NOT NULL,
     PRIMARY KEY(game_id),
     FOREIGN KEY (stage_name) REFERENCES Stage(stage_name) ON DELETE NO ACTION ON UPDATE NO ACTION,
     FOREIGN KEY (ruleset_type) REFERENCES Ruleset (ruleset_type) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -123,9 +123,9 @@ CREATE TABLE Multiplayer_Game (
     game_id INTEGER,
     number_of_players INTEGER,  
     game_mode CHAR(20), 
-    stage_name CHAR(20) UNIQUE NOT NULL,
-    ruleset_type CHAR(20) UNIQUE NOT NULL,
-    spirits_name CHAR(20) UNIQUE NOT NULL,
+    stage_name CHAR(20) NOT NULL,
+    ruleset_type CHAR(20) NOT NULL,
+    spirits_name CHAR(20) NOT NULL,
     PRIMARY KEY(game_id),
     FOREIGN KEY (stage_name) REFERENCES Stage(stage_name) ON DELETE NO ACTION ON UPDATE NO ACTION,
     FOREIGN KEY (ruleset_type) REFERENCES Ruleset (ruleset_type) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -157,7 +157,7 @@ VALUES ("Bowser", "orange"),
 /* 3) spirits_name CHAR(20), spirits_ability CHAR(20), spirits_type CHAR(20) */
 INSERT INTO Spirits
 VALUES ("Mario", "Fight", "Fighter"),
-("Mini Mario & Hammers", "Longer Hammer Duration", "Primary"),
+("Mini Mario Hammer", "Longer Hammer", "Primary"),
 ("Huey", "Higher Water/Freezing Resist", "Support"),
 ("Vivian", "Lower Weight", "Primary"),
 ("Rock Mario", "Higher Physical Attack", "Support"),
@@ -191,7 +191,7 @@ INSERT INTO Tournament
 VALUES (1, "THE SMASHERS", "Taryn Wou", "2021-01-04", "2021-01-05", "2000"),
 (15, "MEOWZERS", "Vanessa Lee", "2022-08-09", "2022-08-11", "30000"),
 (17, "Ultra Tournament", "Isaac Chung", "2022-08-09", "2022-08-11", "30000"),
-(5, "Sentinals", "Kitty Liu","“2022-08-09", "2022-08-11", "30000"),
+(5, "Sentinals", "Kitty Liu","2022-08-09", "2022-08-11", "30000"),
 (200, "100 Thieves", "Angelina Hsu","2022-08-09", "2022-08-11", "30000"),
 (8, "Vancouver Smash Tournament", "Ellen Yang", "2022-08-09", "2022-08-11", "30000"),
 (99, "Canadian Nationals", "Andrea Yeo", "2022-08-09", "2022-8-11", "30000"),

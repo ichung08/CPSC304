@@ -248,7 +248,7 @@ VALUES (1, "Overtaker", "Mario"),
 (12, "Christian", "Mario"),
 (13, "Hauntzer", "Donkey Kong"),
 (14, "GameOn92", "Daisy"),
-(14, "NinjaGamer", "Mario"),
+(14, "Overtaker", "Mario"),
 (14, "TheGamingGeek", "Pikachu"),
 (14, "PixelWarrior", "Boo"),
 (14, "VirtualAssassin", "Mario"),
@@ -261,7 +261,7 @@ VALUES (1, "Overtaker", "Mario"),
 (18, "Shroud", "Kirby"),
 (18, "Faker", "Daisy"),
 (19, "PewDiePie", "Boo"),
-(20, "Summit1g", "Kirby"),
+(20, "Overtaker", "Kirby"),
 (20, "TheGamingGeek", "Boo");
 
 

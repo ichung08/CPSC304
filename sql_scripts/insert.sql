@@ -1,3 +1,4 @@
+/* 1) username, ranking, wins, losses */
 INSERT INTO Player
 VALUES ("Overtaker", 1, 509, 5),
 ("Anywehe", 2, 634, 12),
@@ -8,39 +9,7 @@ VALUES ("Overtaker", 1, 509, 5),
 ("Christian", 8, 236, 5),
 ("Hauntzer", 88, 145, 46);
 
-INSERT INTO Plays_On_Console
-VALUES ("Xbox","Microsoft Studios", 2010),
-("Nintendo 3DS", "Nintendo", 2022),
-("Nintendo Switch", "Nintendo", 2009),
-("PS5", "Sony", 2011),
-("PS4", "Sony", 2015),
-("Wii", "Nintendo", 2008),
-("GameCube", "Nintendo", 2006),
-("PS3", "Sony", 2006);
-
-
-INSERT INTO PlaysIn
-VALUES ("Overtaker", "aaa"),
-("Anywehe", "bbb"),
-("Sally", "bbb"),
-("Adam", "ccc"),
-("Zahgrd", "aaa"),
-("Victory", "ddd"),
-("Christian", "eee"),
-("Hauntzer", "fff");
-
-
-INSERT INTO Tournament
-VALUES ("aaa", "THE SMASHERS", "Taryn Wou", "2021-01-04", "2021-01-05", "2000"),
-("bbb", "MEOWZERS", "Vanessa Lee", "2022-08-09", "2022-08-11", "30000"),
-("ccc", "Ultra Tournament", "Isaac Chung", "2022-08-09", "2022-08-11", "30000"),
-("ddd", "Sentinals", "Kitty Liu","“2022-08-09", "2022-08-11", "30000"),
-("eee", "100 Thieves", "Angelina Hsu","2022-08-09", "2022-08-11", "30000"),
-("fff", "Vancouver Smash Tournament", "Ellen Yang", "2022-08-09", "2022-08-11", "30000"),
-("ggg", "Canadian Nationals", "Andrea Yeo", "2022-08-09", "2022-8-11", "30000"),
-("hhh", "BC Provincials", "Annie Wang", "2022-06-16", "2022-06-18", "30000");
-
-
+/* 2) character_name, costume*/
 INSERT INTO Smash_Character
 VALUES ("Bowser", "orange"),
 ("Mario", "red"),
@@ -51,17 +20,73 @@ VALUES ("Bowser", "orange"),
 ("Pikachu", "green"),
 ("Kirby", "pink");
 
+/* 3) spirits_name CHAR(20), spirits_ability CHAR(20), spirits_type CHAR(20) */
+INSERT INTO Spirits
+VALUES ("Mario", "Fight", "Fighter"),
+("Mini Mario & Hammers", "Longer Hammer Duration", "Primary"),
+("Huey", "Higher Water/Freezing Resist", "Support"),
+("Vivian", "Lower Weight", "Primary"),
+("Rock Mario", "Higher Physical Attack", "Support"),
+("Cat Princess Peach", "Lower Weight", "Primary"),
+("Captain Toad", "Item Gravitation", "Primary");
 
+/* 4) game_id, game_mode, stage_name, ruleset_type, spirits_name, */
+INSERT INTO Game
+VALUES (40, "Classic", "Battlefield", "Time limit", "Mario"),
+(5, "Adventure", "Mario Galaxy", "Stamina", "Vivian"),
+(263, "All-Star", "Supper Happy Tree", "Stock", "Captain Toad"),
+(2634, "Event", "Windy Hill Zone", "Stock", "Cat Princess Peach"),
+(234, "Stadium", "Spring Stadium", "Stamina", "Huey"),
+(2345, "Training", "Battlefield", "Time limit", "Captain Toad"),
+(12873, "Classic", "Big Blue", "Stock", "Mini Mario & Hammers");
+
+
+/* 5) game_id INTEGER, username CHAR(20), character_name */
+INSERT INTO Game_Player
+VALUES (40, "Anywehe", "Mario"),
+(5, "Overtaker", "Princess Peach"),
+(263, "Christian", "Toad"),
+(2634, "Sally", "Daisy"),
+(234, "Adam", "Wario"),
+(2345, "Victory", "Luigi"),
+(12873, "Zahgrd", "Yoshi");
+
+
+/* 6) tournament_id, tournament_name, organizer, start_date, end_date, prize_pool */
+INSERT INTO Tournament
+VALUES (1, "THE SMASHERS", "Taryn Wou", "2021-01-04", "2021-01-05", "2000"),
+(15, "MEOWZERS", "Vanessa Lee", "2022-08-09", "2022-08-11", "30000"),
+(17, "Ultra Tournament", "Isaac Chung", "2022-08-09", "2022-08-11", "30000"),
+(5, "Sentinals", "Kitty Liu","“2022-08-09", "2022-08-11", "30000"),
+(200, "100 Thieves", "Angelina Hsu","2022-08-09", "2022-08-11", "30000"),
+(8, "Vancouver Smash Tournament", "Ellen Yang", "2022-08-09", "2022-08-11", "30000"),
+(99, "Canadian Nationals", "Andrea Yeo", "2022-08-09", "2022-8-11", "30000"),
+(21, "BC Provincials", "Annie Wang", "2022-06-16", "2022-06-18", "30000");
+
+
+/* 7) game_id, tournament_id */
+INSERT INTO Game_Tournament
+VALUES (1, 17),
+(15, 200),
+(17, 99),
+(5, 21),
+(263, 200),
+(2345, 99),
+(99, 17),
+(6, 15);
+        
+/* 8) character_name CHAR(20), ultimate_attack CHAR(20), cup_attack CHAR(20), neutral_attack CHAR(20), down_attack CHAR(20) */
 INSERT INTO Ability
-VALUES ("Super Jump Punch", "F.L.U.D.D", "Fireball"),
-("Peach Parasol", "Vegetable", "Toad"),
-("EggThrow", "Yoshi Bomb", "Egg Lay"),
-("Corkscrew", "Wario Waft", "Chomp"),
-("Daisy Parasol", "Vegetable", "Toad"),
-("Quick Attack", "Thunder", "Thunder Jolt"),
-("Final Cutter", "Stone", "Inhale");
+VALUES ("Mario", "Super Jump Punch", "F.L.U.D.D", "Fireball", "Hero"),
+("Princess Peach", "Peach Parasol", "Vegetable", "Toad", "Spin"),
+("Yoshi", "EggThrow", "Yoshi Bomb", "Egg Lay", "Crouch"),
+("Wario", "Corkscrew", "Wario Waft", "Chomp", "Spin"),
+("Daisy", "Daisy Parasol", "Vegetable", "Toad", "Slash"),
+("Luigi", "Quick Attack", "Thunder", "Thunder Jolt", "Jump"),
+("Bowser", "Final Cutter", "Stone", "Inhale", "Flame");
 
 
+/* 9) stage_name, form*/
 INSERT INTO Stage
 VALUES ("Battlefield", "Battlefield"),
 ("Super Happy Tree", "Omega"),
@@ -72,60 +97,44 @@ VALUES ("Battlefield", "Battlefield"),
 ("Big Blue", "Battlefield");
 
 
-INSERT INTO Stage_In_GameMode
-VALUES ("Battlefield", "Smash"),
-("Super Happy Tree", "Squad Strike"),
-("Spring Stadium", "Smash"),
-("Windy Hill Zone", "Tournament"),
-("Mario Galaxy", "Smash"),
-("Mushroom Kingdom I", "Squad Strike"),
-("Big Blue", "Squad Strike");
-
-
-INSERT INTO Game
-VALUES (40, "Battlefield", "Digby", "Neutral", "Primary"),
-(5, "Omega", "Seliph", "Attack", "Primary"),
-(263, "Battlefield", "Mr. Sandman", "Attack", "Primary"),
-(2634, "Normal", "Winky", "Attack", "Support"),
-(234, "Normal", "Rocky", "Instadrop", "Support"),
-(2345, "Normal", "Party Phil", "Shield", "Support"),
-(12873, "Battlefield", "Wind Fish", "Attack", "Support");
-
-
-INSERT INTO Single_Player
-VALUES (4, "Smash", "CPU"),
-(193, "Smash", "Player"),
-(98, "Smash","CPU"),
-(1521, "Smash", "CPU"),
-(7, "Squad Strike", "CPU"),
-(31, "Squad Strike", "Player"),
-(110, "Squad Strike", "CPU"),
-(90, "Tournament", "CPU");
-
-
-INSERT INTO Multiplayer
-VALUES (390, "Tournament", 4),
-(17, "Squad Strike", 6),
-(123, "Smash", 5),
-(982, "Tournament", 8),
-(153, "Smash", 5),
-(1230, "Squad Strike", 2),
-(263, "Tournament", 7);
-
-INSERT INTO Contains_Spirits
-VALUES ("Mario", "Fight", "Fighter", "aaa"),
-("Mini Mario & Hammers", "Longer Hammer Duration", "Primary", "bbb"),
-("Huey", "Higher Water/Freezing Resist", "Support", "ccc"),
-("Vivian", "Lower Weight", "Primary", "ddd"),
-("Rock Mario", "Higher Physical Attack", "Support", "eee"),
-("Cat Princess Peach", "Lower Weight", "Primary", "fff"),
-("Captain Toad", "Item Gravitation", "Primary", "ggg");
-
+/* 10) ruleset_type, win_criteria*/
 INSERT INTO Ruleset 
-VALUES ("Stock", "2", "aaa"),
-("Time limit", "3", "bbb"),
-("Stamina", "1", "ccc"),
-("Stock", "2", "ddd"),
-("Stock", "2", "eee"),
-("Stamina", "2", "fff"),
-("Time limit", "2", "ggg");
+VALUES ("Stock", "aaa"),
+("Time limit", "bbb"),
+("Stamina", "ccc"),
+("Stock", "ddd"),
+("Stock", "eee"),
+("Stamina", "fff"),
+("Time limit", "ggg");
+
+/* 11) game_id, competitor_type, game_mode, stage_name, ruleset_type, spirits_name*/
+
+INSERT INTO Single_Player_Game
+VALUES (23, "CPU",  "Classic", "Battlefield", "Time limit", "Mario"),
+(5, "CPU", "Adventure", "Mario Galaxy", "Stamina", "Vivian"),
+(23, "Player", "All-Star", "Supper Happy Tree", "Stock", "Captain Toad"),
+(96, "Player", "Event", "Windy Hill Zone", "Stock", "Cat Princess Peach"),
+(903, "CPU", "Stadium", "Spring Stadium", "Stamina", "Huey"),
+(2345, "Player", "Training", "Battlefield", "Time limit", "Captain Toad"),
+(12873, "CPU", "Classic", "Big Blue", "Stock", "Mini Mario & Hammers");
+
+
+/* 12) game_id, number_of_players, game_mode, stage_name, ruleset_type, spirits_name*/
+INSERT INTO Multi_Player_Game
+VALUES (2, 3,  "Classic", "Battlefield", "Time limit", "Mario"),
+(90, 5, "Adventure", "Mario Galaxy", "Stamina", "Vivian"),
+(24, 6, "All-Star", "Supper Happy Tree", "Stock", "Captain Toad"),
+(99, 2, "Event", "Windy Hill Zone", "Stock", "Cat Princess Peach"),
+(13, 7, "Stadium", "Spring Stadium", "Stamina", "Huey"),
+(123, 8, "Training", "Battlefield", "Time limit", "Captain Toad"),
+(17, 4, "Classic", "Big Blue", "Stock", "Mini Mario & Hammers");
+
+
+
+
+
+
+
+
+
+

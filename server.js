@@ -4,10 +4,6 @@ var path = require('path');
 const app = express();
 const sql = require("./db.js");
 
-// var corsOptions = {
-//   origin: "http://localhost:8081"
-// };
-
 const playerRouter = require("./routes/playerRouter.js");
 
 // view engine setup
@@ -18,6 +14,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// endpoints
 app.get('/', (req, res) => {
   res.json({ message: "ok" });
 });

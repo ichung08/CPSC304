@@ -1,7 +1,7 @@
 
 CREATE TABLE Player ( 
 	username CHAR(20),
-	ranking INTEGER, 
+	country CHAR(20), 
     wins INTEGER, 
     losses INTEGER, 
     PRIMARY KEY (username)
@@ -87,29 +87,6 @@ CREATE TABLE Ability (
     FOREIGN KEY (character_name) REFERENCES Smash_Character (character_name) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-
-
-
-/* CREATE TABLE Stage_In_Game (
-    game_id CHAR(20), 
-    stage_name CHAR(20) NOT NULL,
-    PRIMARY KEY (game_id), 
-    FOREIGN KEY (stage_name) REFERENCES Stage (stage_name)ON DELETE CASCADE ON UPDATE CASCADE, 
-    FOREIGN KEY (game_id) REFERENCES Game (game_id)ON DELETE CASCADE ON UPDATE CASCADE
-); 
-*/
-
-
-/*CREATE TABLE Contains_Spirits (
-    spirits_name CHAR(20), 
-    spirits_ability CHAR(20), 
-    spirits_type CHAR(20), 
-    game_id CHAR(20),
-    PRIMARY KEY (spirits_name, game_id),
-    FOREIGN KEY (game_id) REFERENCES Game (game_id) ON DELETE CASCADE ON UPDATE CASCADE
-);
-*/
-
 CREATE TABLE Single_Player_Game (
 	game_id INTEGER,
     competitor_type CHAR(20), 
@@ -139,16 +116,16 @@ CREATE TABLE Multiplayer_Game (
     FOREIGN KEY (spirits_name) REFERENCES Spirits(spirits_name) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
-/* 1) username, ranking, wins, losses */
+/* 1) username, country, wins, losses */
 INSERT INTO Player
-VALUES ("Overtaker", 1, 509, 5),
-("Anywehe", 2, 634, 12),
-("Sally", 234, 23, 6),
-("Adam", 6, 498, 6),
-("Zahgrd", 3266, 5, 86),
-("Victory", 10, 345, 9),
-("Christian", 8, 236, 5),
-("Hauntzer", 88, 145, 46);
+VALUES ("Overtaker", "Canada", 509, 5),
+("Anywehe", "South Korea", 634, 12),
+("Sally", "India", 23, 6),
+("Adam", "China", 498, 6),
+("Zahgrd", "Australia", 5, 86),
+("Victory", "Australia", 345, 9),
+("Christian", "Philippines", 236, 5),
+("Hauntzer", "Philippines", 145, 46);
 
 /* 2) stage_name, form*/
 INSERT INTO Stage

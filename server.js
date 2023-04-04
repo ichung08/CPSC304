@@ -4,9 +4,9 @@ var path = require('path');
 const app = express();
 const sql = require("./db.js");
 
-var corsOptions = {
-  origin: "http://localhost:8081"
-};
+// var corsOptions = {
+//   origin: "http://localhost:8081"
+// };
 
 const playerRouter = require("./routes/playerRouter.js");
 
@@ -14,7 +14,7 @@ const playerRouter = require("./routes/playerRouter.js");
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
 app.use("/players", playerRouter);
 
 // set port, listen for requests
-const PORT = process.env.PORT || 8080;
+const PORT = 3001;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });

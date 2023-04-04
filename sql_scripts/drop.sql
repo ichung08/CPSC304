@@ -1,0 +1,12 @@
+DROP TABLE Player;
+DROP TABLE Stage;
+DROP TABLE Smash_Character;
+DROP TABLE Ruleset;
+DROP TABLE Spirits;
+DROP TABLE Game;
+DROP TABLE Game_Player;
+DROP TABLE Tournament;
+DROP TABLE Game_Tournament;
+DROP TABLE Ability;
+DROP TABLE Single_Player_Game;
+DROP TABLE Multiplayer_Game;

@@ -5,6 +5,8 @@ import Home from './pages/Home'
 import Logo from './pages/LogoDisplay'
 import SmashCharacters from './pages/SmashCharacters';
 import Tournaments from './pages/Tournament';
+import GameTournament from './pages/GameTournament';
+
 
 function App() {
 
@@ -14,6 +16,7 @@ function App() {
       <Home />
       <SmashCharacters />
       <Tournaments />
+      <GameTournament />
 
     </>
   );

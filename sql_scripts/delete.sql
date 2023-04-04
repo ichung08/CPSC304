@@ -1,12 +1,12 @@
 DELETE FROM Player;
+DELETE FROM Stage;
 DELETE FROM Smash_Character;
+DELETE FROM Ruleset;
 DELETE FROM Spirits;
 DELETE FROM Game;
 DELETE FROM Game_Player;
 DELETE FROM Tournament;
 DELETE FROM Game_Tournament;
 DELETE FROM Ability;
-DELETE FROM Stage;
-DELETE FROM Ruleset;
 DELETE FROM Single_Player_Game;
 DELETE FROM Multiplayer_Game;

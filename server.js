@@ -1,22 +1,28 @@
 const express = require('express');
 const cors = require("cors");
+var path = require('path');
 const app = express();
+const sql = require("./db.js");
 
 var corsOptions = {
   origin: "http://localhost:8081"
 };
 
+const playerRouter = require("./routes/playerRouter.js");
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
+
 app.use(cors(corsOptions));
-
-// parse requests of content-type - application/json
 app.use(express.json());
-
-// parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
   res.json({ message: "ok" });
 });
+
+app.use("/players", playerRouter);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

@@ -118,14 +118,29 @@ CREATE TABLE Multiplayer_Game (
 
 /* 1) username, country, wins, losses */
 INSERT INTO Player
-VALUES ("Overtaker", "Canada", 509, 5),
-("Anywehe", "South Korea", 634, 12),
+VALUES ("Overtaker", "Canada", 59, 5),
+("Anywehe", "South Korea", 64, 12),
 ("Sally", "India", 23, 6),
-("Adam", "China", 498, 6),
+("Adam", "China", 49, 6),
 ("Zahgrd", "Australia", 5, 86),
-("Victory", "Australia", 345, 9),
-("Christian", "Philippines", 236, 5),
-("Hauntzer", "Philippines", 145, 46);
+("Victory", "Australia", 35, 9),
+("Christian", "Philippines", 23, 5),
+("Hauntzer", "Philippines", 45, 46),
+("GameOn92", "USA", 15, 8),
+("NinjaGamer", "Canada", 20, 5),
+("TheGamingGeek", "USA", 18, 6),
+("PixelWarrior", "UK", 14, 10),
+("VirtualAssassin", "Canada", 22, 3),
+("RetroGamerX", "Australia", 12, 12),
+("EliteGamingPro", "UK", 16, 9),
+("ThunderBolt", "USA", 21, 4),
+("CyberKnight", "Canada", 19, 7),
+("EpicGamer88", "Australia", 17, 11),
+("Ninja", "USA", 15, 5),
+("Shroud", "Canada", 12, 8),
+("Faker", "South Korea", 20, 2),
+("PewDiePie", "Sweden", 8, 12),
+("Summit1g", "USA", 18, 3);
 
 /* 2) stage_name, form*/
 INSERT INTO Stage
@@ -135,7 +150,10 @@ VALUES ("Battlefield", "Battle"),
 ("Windy Hill Zone", "Battle"),
 ("Mario Galaxy", "Normal"),
 ("Mushroom Kingdom I", "Normal"),
-("Big Blue", "Battle");
+("Big Blue", "Battle"),
+("Final Destination", "Omega"),
+("Yoshi Island", "Melee"),
+("Lylat Cruise", "64");
 
 /* 3) character_name, costume*/
 INSERT INTO Smash_Character
@@ -146,14 +164,16 @@ VALUES ("Bowser", "orange"),
 ("Wario", "purple"),
 ("Daisy", "yellow"),
 ("Pikachu", "green"),
-("Kirby", "pink");
+("Kirby", "pink"),
+("Boo", "Red"),
+("Donkey Kong", "Blue");
 
 /* 4) ruleset_type, win_criteria*/
 INSERT INTO Ruleset 
 VALUES ("Stock", "3 stock"),
 ("Time limit", "6 minutes"),
 ("Stamina", "Highest health meter"),
-("Training", "Practice"),
+("Coin", "Practice"),
 ("Squad Strike", "Last team eliminated"),
 ("Tournament", "Bracketed style"),
 ("All-Star Mode", "Set opponents"),
@@ -162,91 +182,146 @@ VALUES ("Stock", "3 stock"),
 /* 5) spirits_name CHAR(20), spirits_ability CHAR(20), spirits_type CHAR(20) */
 INSERT INTO Spirits
 VALUES ("Mario", "Fight", "Fighter"),
-("Mini Mario Hammer", "Longer Hammer", "Primary"),
 ("Huey", "Freezing Resist", "Support"),
 ("Vivian", "Lower Weight", "Primary"),
-("Rock Mario", "Physical Attack", "Support"),
 ("Cat Princess Peach", "Lower Weight", "Primary"),
-("Captain Toad", "Item Gravitation", "Primary");
+("Captain Toad", "Item Gravitation", "Primary"),
+("Dry Bowser", "Flame proof", "Advanced"),
+("Diddy", "Power Increase", "Novice"),
+("Waluigi", "Foot Attack", "Ace"),
+("Cappy", "Midair jump", "Ace"),
+("Fawful", "Resist status", "Advanced");
 
 /* 6) game_id, console, game_mode, stage_name, ruleset_type, spirits_name, */
 INSERT INTO Game
-VALUES (40, "Xbox", "Classic", "Battlefield", "Time limit", "Mario"),
-(5, "PS3", "Adventure", "Mario Galaxy", "Stamina", "Vivian"),
-(263, "Nintendo Switch", "All-Star", "Super Happy Tree", "Stock", "Captain Toad"),
-(2634, "Nintendo Switch", "Event", "Windy Hill Zone", "Stock", "Cat Princess Peach"),
-(234, "GameCube", "Stadium", "Spring Stadium", "Stamina", "Huey"),
-(2345, "Wii", "Training", "Mushroom Kingdom I", "Time limit", "Captain Toad"),
-(12873, "Nintendo 64", "Classic", "Big Blue", "Stock", "Mini Mario Hammer");
-
+VALUES (1, "Nintendo Switch", "Classic", "Battlefield", "Stock", "Mario"),
+(2, "Nintendo Switch", "Training", "Big Blue", "Time limit", "Waluigi"),
+(3, "Playstation 4", "Classic", "Yoshi Island", "Squad Strike", "Huey"),
+(4, "Nintendo Switch", "All-Star", "Yoshi Island", "Time limit", "Vivian"),
+(5, "Xbox One", "Stadium", "Final Destination", "Stock", "Captain Toad"),
+(6, "Playstation 4", "Training", "Mushroom Kingdom I", "Coin", "Cappy"),
+(7, "Nintendo Switch", "Event", "Lylat Cruise", "Time limit", "Fawful"),
+(8, "Xbox One", "Event", "Mushroom Kingdom I", "Stock", "Diddy"),
+(9, "Playstation 4", "Mario Galaxy", "Battlefield", "Coin", "Cat Princess Peach"),
+(10, "Nintendo Switch", "Mario Galaxy", "Final Destination", "Time limit", "Fawful"),
+(11, "Xbox One", "Stadium", "Lylat Cruise", "Stock", "Diddy"),
+(12, "Playstation 4", "All-Star", "Windy Hill Zone", "Coin", "Diddy"),
+(13, "Nintendo Switch", "Training", "Spring Stadium", "Target Blast", "Vivian"),
+(14, "Xbox One", "Mario Galaxy", "Windy Hill Zone", "Stock", "Mario"),
+(15, "Playstation 4", "Classic", "Final Destination", "Coin", "Fawful"),
+(16, "Xbox One", "Training", "Yoshi Island", "Target Blast", "Huey"),
+(17, "Playstation 4", "Event", "Final Destination", "Coin", "Huey"),
+(18, "Xbox One", "Classic", "Lylat Cruise", "Stock", "Huey"),
+(19, "Playstation 4", "Stadium", "Final Destination", "Coin", "Vivian"),
+(20, "Playstation 4", "All-Star", "Battlefield", "Coin", "Dry Bowser");
 
 /* 7) game_id INTEGER, username CHAR(20), character_name */
 INSERT INTO Game_Player
-VALUES (40, "Anywehe", "Mario"),
-(5, "Overtaker", "Princess Peach"),
-(263, "Christian", "Yoshi"),
-(2634, "Sally", "Daisy"),
-(234, "Adam", "Wario"),
-(2345, "Victory", "Pikachu"),
-(12873, "Zahgrd", "Yoshi");
+VALUES (1, "Overtaker", "Mario"),
+(1, "Anywehe", "Yoshi"),
+(1, "Sally", "Pikachu"),
+(2, "Adam", "Pikachu"),
+(2, "Zahgrd", "Kirby"),
+(3, "Victory", "Wario"),
+(3, "Christian", "Mario"),
+(3, "Hauntzer", "Donkey Kong"),
+(3, "GameOn92", "Daisy"),
+(3, "NinjaGamer", "Mario"),
+(4, "TheGamingGeek", "Pikachu"),
+(5, "PixelWarrior", "Boo"),
+(6, "VirtualAssassin", "Bowser"),
+(7, "RetroGamerX", "Yoshi"),
+(7, "EliteGamingPro", "Wario"),
+(8, "ThunderBolt", "Princess Peach"),
+(9, "CyberKnight", "Kirby"),
+(10, "EpicGamer88", "Kirby"),
+(10, "Ninja", "Mario"),
+(11, "Shroud", "Daisy"),
+(11, "Faker", "Princess Peach"),
+(12, "PewDiePie", "Boo"),
+(13, "Summit1g", "Bowser");
 
 
 /* 8) tournament_id, tournament_name, organizer, start_date, end_date, prize_pool */
-INSERT INTO Tournament
-VALUES (1, "THE SMASHERS", "Taryn Wou", "2021-01-04", "2021-01-05", "2000"),
-(15, "MEOWZERS", "Vanessa Lee", "2022-08-09", "2022-08-11", "30000"),
-(17, "Ultra Tournament", "Isaac Chung", "2022-08-09", "2022-08-11", "30000"),
-(5, "Sentinals", "Kitty Liu","2022-08-09", "2022-08-11", "30000"),
-(200, "100 Thieves", "Angelina Hsu","2022-08-09", "2022-08-11", "30000"),
-(8, "Vancouver Smash", "Ellen Yang", "2022-08-09", "2022-08-11", "30000"),
-(99, "Canadian Nationals", "Andrea Yeo", "2022-08-09", "2022-8-11", "30000"),
-(21, "BC Provincials", "Annie Wang", "2022-06-16", "2022-06-18", "30000");
+INSERT INTO Tournament VALUES
+(100, 'ESL One Hamburg 2013', 'ESL Gaming', '2013-11-16', '2013-11-17', 155000),
+(200, 'Smash Worlds 2019', 'Riot Games', '2019-10-02', '2019-11-10', 2500000),
+(300, 'ESL One LA 2020', 'ESL Gaming', '2020-03-28', '2020-04-19', 400000),
+(400, 'Asia Championships 2021', 'Perfect World', '2021-04-01', '2021-04-04', 500000),
+(500, 'PUBG Global Invitational 2021', 'PUBG Corporation', '2021-02-05', '2021-03-28', 7000000),
+(600, 'Smash Championships 2021', 'Activision Blizzard', '2021-08-19', '2021-08-22', 2500000),
+(700, 'Rainbow Six Siege Invitational 2022', 'Ubisoft', '2022-02-09', '2022-02-20', 3000000),
+(800, 'Smash World Cup 2022', 'Epic Games', '2022-07-22', '2022-07-24', 50000000),
+(900, 'The International 2022', 'Valve Corporation', '2022-08-18', '2022-08-28', 30000000),
+(1000, 'ESL Amsterdam', 'Valve Corporation', '2023-01-19', '2023-01-29', 2000000);
 
 
 /* 9) game_id, tournament_id */
 INSERT INTO Game_Tournament
-VALUES (40, 1),
-(5, 15),
-(263, 17),
-(2634, 5),
-(234, 200),
-(2345, 99),
-(12873, 17);
+VALUES (1, 100),
+(2, 100),
+(3, 200),
+(4, 300),
+(5, 300),
+(6, 300),
+(7, 300),
+(8, 400),
+(9, 500),
+(10, 500),
+(11, 500),
+(12, 600),
+(13, 600),
+(14, 700),
+(15, 800),
+(16, 800),
+(17, 900),
+(18, 900),
+(19, 900),
+(20, 1000);
 
         
 /* 10) character_name CHAR(20), ultimate_attack CHAR(20), cup_attack CHAR(20), neutral_attack CHAR(20), down_attack CHAR(20) */
 INSERT INTO Ability
-VALUES ("Mario", "Super Jump Punch", "FLUDD", "Fireball", "Hero"),
+VALUES ("Bowser", "Final Cutter", "Stone", "Inhale", "Flame"),
+("Mario", "Super Jump Punch", "FLUDD", "Fireball", "Hero"),
 ("Princess Peach", "Peach Parasol", "Vegetable", "Toad", "Spin"),
 ("Yoshi", "EggThrow", "Yoshi Bomb", "Egg Lay", "Crouch"),
 ("Wario", "Corkscrew", "Wario Waft", "Chomp", "Spin"),
 ("Daisy", "Daisy Parasol", "Vegetable", "Toad", "Slash"),
+("Pikachu", "Throw", "Fire Spit", "Jump", "Thunderbolt"),
 ("Kirby", "Quick Attack", "Thunder", "Jolt", "Jump"),
-("Bowser", "Final Cutter", "Stone", "Inhale", "Flame"),
-("Pikachu", "Throw", "Fire Spit", "Jump", "Thunderbolt");
+("Boo", "Quick Shift", "Ghost Mode", "Sting", "Teleport"),
+("Donkey Kong", "Extra Strength", "Power Jump", "Sumo", "Crouch");
 
 
 /* 11) game_id, competitor_type, console, game_mode, stage_name, ruleset_type, spirits_name*/
 
 INSERT INTO Single_Player_Game
-VALUES (1, "CPU", "Nintendo Wii",  "Classic", "Battlefield", "Time limit", "Mario"),
-(5, "CPU", "Nintendo 64", "Adventure", "Mario Galaxy", "Stamina", "Vivian"),
-(23, "Player", "PS3", "All-Star", "Super Happy Tree", "Stock", "Captain Toad"),
-(96, "Player", "Xbox", "Event", "Windy Hill Zone", "Tournament", "Cat Princess Peach"),
-(903, "CPU", "GameCube", "Stadium", "Spring Stadium", "Target Blast", "Huey"),
-(2345, "Player", "Nintendo Wii", "Training", "Mushroom Kingdom I", "All-Star Mode", "Captain Toad"),
-(12873, "CPU", "Nintendo Switch", "Classic", "Big Blue", "Training", "Mini Mario Hammer");
+VALUES (1, "CPU", "Nintendo Wii",  "Classic", "Battlefield", "Stock", "Mario"),
+(3, "CPU", "Playstation 4", "Classic", "Yoshi Island", "Squad Strike", "Huey"),
+(5, "Player", "Xbox One", "Stadium", "Final Destination", "Stock", "Captain Toad"),
+(7, "Player", "Nintendo Switch", "Event", "Lylat Cruise", "Time limit", "Fawful"),
+(9, "CPU", "Playstation 4", "Mario Galaxy", "Battlefield", "Coin", "Cat Princess Peach"),
+(11, "Player", "Xbox One", "Stadium", "Lylat Cruise", "Stock", "Diddy"),
+(13, "CPU", "Nintendo Switch", "Training", "Spring Stadium", "Target Blast", "Vivian"),
+(15, "Player", "Playstation 4", "Event", "Final Destination", "Coin", "Fawful"),
+(17, "CPU", "Playstation 4", "Event", "Final Destination", "Coin", "Huey"),
+(19, "Player", "Playstation 4", "Stadium", "Final Destination", "Coin", "Vivian");
+
 
 
 /* 12) game_id, number_of_players, console, game_mode, stage_name, ruleset_type, spirits_name*/
 INSERT INTO Multiplayer_Game
-VALUES (2, 3, "Nintendo Switch", "Classic", "Battlefield", "Time limit", "Mario"),
-(90, 5, "Xbox", "Adventure", "Mario Galaxy", "Stamina", "Vivian"),
-(24, 6, "Nintendo Wii", "All-Star", "Super Happy Tree", "Tournament", "Captain Toad"),
-(99, 2, "Nintendo 64",  "Event", "Windy Hill Zone", "Stock", "Cat Princess Peach"),
-(13, 7, "GameCube", "Stadium", "Spring Stadium", "Squad Strike", "Huey"),
-(123, 8, "PS3", "Training", "Mushroom Kingdom I", "Target Blast", "Captain Toad"),
-(17, 4, "Nintendo Switch", "Classic", "Big Blue", "Training", "Mini Mario Hammer");
+VALUES (2, 3, "Nintendo Switch", "Training", "Big Blue", "Time limit", "Waluigi"),
+(4, 5, "Nintendo Switch", "All-Star", "Yoshi Island", "Time limit", "Vivian"),
+(6, 8, "Playstation 4", "Training", "Mushroom Kingdom I", "Coin", "Cappy"),
+(8, 7, "Xbox One", "Event", "Mushroom Kingdom I", "Stock", "Diddy"),
+(10, 3, "Nintendo Switch", "Mario Galaxy", "Final Destination", "Time limit", "Fawful"),
+(12, 3, "Playstation 4", "All-Star", "Windy Hill Zone", "Coin", "Diddy"),
+(14, 6, "Xbox One", "Mario Galaxy", "Windy Hill Zone", "Stock", "Mario"),
+(16, 6, "Xbox One", "Training", "Yoshi Island", "Target Blast", "Huey"),
+(18, 5, "Xbox One", "Classic", "Lylat Cruise", "Stock", "Huey"),
+(20, 2, "Playstation 4", "All-Star", "Battlefield", "Coin", "Dry Bowser");
 
 
 

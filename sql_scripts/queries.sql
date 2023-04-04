@@ -15,11 +15,6 @@ The chosen query and table(s) should make sense given the context of the applica
 The user should be able to specify whichever value(s) to update (i.e., any number of values in one or more columns). 
 The group can choose which table to run this query on. The chosen query and table(s) should make sense given the context of the application. */
 
-/* Updates the ranking of "Overtaker" to 2 and the number of wins to 550.*/
-UPDATE Player
-SET ranking = 2, wins = 550
-WHERE username = 'Overtaker';
-
 /* Increments wins of all players who have won more than 500 matches by 1. */
 UPDATE Player
 SET wins = wins + 1
@@ -44,7 +39,6 @@ One or more tables in the relation must contain at least four attributes.*/
 /* Returns all results containing only the username and country attributes for all players in the Player table.*/
 SELECT username, country
 FROM Player;
-
 
 /* 6) Query: Join
 Create one query in this category, which joins at least 2 tables and performs a meaningful query, 
@@ -80,6 +74,7 @@ GROUP BY country;
 Create one meaningful query that requires the use of a HAVING clause, 
 and provide an interface (e.g., HTML button/dropdown, etc.) for the user to execute this query.
 The query and chosen table(s) should make sense given the context of the application. */
+
 
 
 /* 9) Query: Nested Aggregation with GROUP BY

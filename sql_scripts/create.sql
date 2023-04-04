@@ -22,11 +22,13 @@ CREATE TABLE Spirits (
 
 CREATE TABLE Game (  
     game_id INTEGER,
+    console CHAR(20),
     game_mode CHAR(20), 
     stage_name CHAR(20) NOT NULL,
     ruleset_type CHAR(20) NOT NULL,
     spirits_name CHAR(20) NOT NULL,
     PRIMARY KEY(game_id),
+    UNIQUE (stage_name, ruleset_type, spirits_name),
     FOREIGN KEY (stage_name) REFERENCES Stage(stage_name) ON DELETE NO ACTION ON UPDATE NO ACTION,
     FOREIGN KEY (ruleset_type) REFERENCES Ruleset (ruleset_type) ON DELETE NO ACTION ON UPDATE NO ACTION,
     FOREIGN KEY (spirits_name) REFERENCES Spirits(spirits_name) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -40,8 +42,8 @@ CREATE TABLE Game_Player (
 	PRIMARY KEY (game_id, username),
 	FOREIGN KEY (game_id) REFERENCES Game(game_id) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (username) REFERENCES Player(username) ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (character_name) REFERENCES Smash_Character(character_name)
-);
+    FOREIGN KEY (character_name) REFERENCES Smash_Character(character_name) 
+); 
 
 CREATE TABLE Tournament ( 
 	tournament_id INTEGER, 
@@ -69,8 +71,8 @@ CREATE TABLE Ability (
     up_attack CHAR(20), 
     neutral_attack CHAR(20), 
     down_attack CHAR(20), 
-    UNIQUE (character_name), 
-    PRIMARY KEY (ultimate_attack, character_name), 
+    PRIMARY KEY (character_name, ultimate_attack), 
+    UNIQUE (character_name),
     FOREIGN KEY (character_name) REFERENCES Smash_Character (character_name) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
@@ -109,6 +111,7 @@ CREATE TABLE Ruleset (
 CREATE TABLE Single_Player_Game (
 	game_id INTEGER,
     competitor_type CHAR(20), 
+    console CHAR(20),
     game_mode CHAR(20), 
     stage_name CHAR(20) NOT NULL,
     ruleset_type CHAR(20) NOT NULL,
@@ -123,6 +126,7 @@ CREATE TABLE Single_Player_Game (
 CREATE TABLE Multiplayer_Game (
     game_id INTEGER,
     number_of_players INTEGER,  
+    console CHAR(20),
     game_mode CHAR(20), 
     stage_name CHAR(20) NOT NULL,
     ruleset_type CHAR(20) NOT NULL,
@@ -180,15 +184,15 @@ VALUES ("Mario", "Fight", "Fighter"),
 ("Cat Princess Peach", "Lower Weight", "Primary"),
 ("Captain Toad", "Item Gravitation", "Primary");
 
-/* 4) game_id, game_mode, stage_name, ruleset_type, spirits_name, */
+/* 4) game_id, console, game_mode, stage_name, ruleset_type, spirits_name, */
 INSERT INTO Game
-VALUES (40, "Classic", "Battlefield", "Time limit", "Mario"),
-(5, "Adventure", "Mario Galaxy", "Stamina", "Vivian"),
-(263, "All-Star", "Supper Happy Tree", "Stock", "Captain Toad"),
-(2634, "Event", "Windy Hill Zone", "Stock", "Cat Princess Peach"),
-(234, "Stadium", "Spring Stadium", "Stamina", "Huey"),
-(2345, "Training", "Battlefield", "Time limit", "Captain Toad"),
-(12873, "Classic", "Big Blue", "Stock", "Mini Mario & Hammers");
+VALUES (40, "Xbox", "Classic", "Battlefield", "Time limit", "Mario"),
+(5, "PS3", "Adventure", "Mario Galaxy", "Stamina", "Vivian"),
+(263, "Nintendo Switch", "All-Star", "Super Happy Tree", "Stock", "Captain Toad"),
+(2634, "Nintendo Switch", "Event", "Windy Hill Zone", "Stock", "Cat Princess Peach"),
+(234, "GameCube", "Stadium", "Spring Stadium", "Stamina", "Huey"),
+(2345, "Wii", "Training", "Mushroom Kingdom I", "Time limit", "Captain Toad"),
+(12873, "Nintendo 64", "Classic", "Big Blue", "Stock", "Mini Mario & Hammers");
 
 
 /* 5) game_id INTEGER, username CHAR(20), character_name */
@@ -258,27 +262,27 @@ VALUES ("Stock", "3 stock"),
 ("All-Star Mode", "Set opponents"),
 ("Target Blast", "Damage dealt points");
 
-/* 11) game_id, competitor_type, game_mode, stage_name, ruleset_type, spirits_name*/
+/* 11) game_id, competitor_type, console, game_mode, stage_name, ruleset_type, spirits_name*/
 
 INSERT INTO Single_Player_Game
-VALUES (1, "CPU",  "Classic", "Battlefield", "Time limit", "Mario"),
-(5, "CPU", "Adventure", "Mario Galaxy", "Stamina", "Vivian"),
-(23, "Player", "All-Star", "Supper Happy Tree", "Stock", "Captain Toad"),
-(96, "Player", "Event", "Windy Hill Zone", "Stock", "Cat Princess Peach"),
-(903, "CPU", "Stadium", "Spring Stadium", "Stamina", "Huey"),
-(2345, "Player", "Training", "Battlefield", "Time limit", "Captain Toad"),
-(12873, "CPU", "Classic", "Big Blue", "Stock", "Mini Mario & Hammers");
+VALUES (1, "CPU", "Nintendo Wii",  "Classic", "Battlefield", "Time limit", "Mario"),
+(5, "CPU", "Nintendo 64", "Adventure", "Mario Galaxy", "Stamina", "Vivian"),
+(23, "Player", "PS3", "All-Star", "Super Happy Tree", "Stock", "Captain Toad"),
+(96, "Player", "Xbox", "Event", "Windy Hill Zone", "Tournament", "Cat Princess Peach"),
+(903, "CPU", "GameCube", "Stadium", "Spring Stadium", "Target Blast", "Huey"),
+(2345, "Player", "Nintendo Wii", "Training", "Mushroom Kingdom I", "All-Star Mode", "Captain Toad"),
+(12873, "CPU", "Nintendo Switch", "Classic", "Big Blue", "Training", "Mini Mario & Hammers");
 
 
-/* 12) game_id, number_of_players, game_mode, stage_name, ruleset_type, spirits_name*/
+/* 12) game_id, number_of_players, console, game_mode, stage_name, ruleset_type, spirits_name*/
 INSERT INTO Multiplayer_Game
-VALUES (2, 3,  "Classic", "Battlefield", "Time limit", "Mario"),
-(90, 5, "Adventure", "Mario Galaxy", "Stamina", "Vivian"),
-(24, 6, "All-Star", "Supper Happy Tree", "Stock", "Captain Toad"),
-(99, 2, "Event", "Windy Hill Zone", "Stock", "Cat Princess Peach"),
-(13, 7, "Stadium", "Spring Stadium", "Stamina", "Huey"),
-(123, 8, "Training", "Battlefield", "Time limit", "Captain Toad"),
-(17, 4, "Classic", "Big Blue", "Stock", "Mini Mario & Hammers");
+VALUES (2, 3, "Nintendo Switch", "Classic", "Battlefield", "Time limit", "Mario"),
+(90, 5, "Xbox", "Adventure", "Mario Galaxy", "Stamina", "Vivian"),
+(24, 6, "Nintendo Wii", "All-Star", "Super Happy Tree", "Tournament", "Captain Toad"),
+(99, 2, "Nintendo 64",  "Event", "Windy Hill Zone", "Stock", "Cat Princess Peach"),
+(13, 7, "GameCube", "Stadium", "Spring Stadium", "Squad Strike", "Huey"),
+(123, 8, "PS3", "Training", "Mushroom Kingdom I", "Target Blast", "Captain Toad"),
+(17, 4, "Nintendo Switch", "Classic", "Big Blue", "Training", "Mini Mario & Hammers");
 
 
 

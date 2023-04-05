@@ -5,6 +5,7 @@ const Table = styled.table`
   border-collapse: collapse;
   width: 100%;
   margin-bottom: 2rem;
+  margin-top: 2rem;
 `;
 
 const Th = styled.th`

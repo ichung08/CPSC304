@@ -60,6 +60,20 @@ router.get('/smash_character', async function(req, res, next) {
     }
 })
 
+/* Get all Game_Player */
+router.get('/game_player', async function(req, res, next) {
+    const sqlQuery = `SELECT * FROM Game_Player ORDER BY game_id`
+    try {
+        sql.query(sqlQuery, (error, results) => {
+            res.json({ data: results, query: sqlQuery });
+        });
+        
+    } catch (error){
+        console.error(`Error`, error.message)
+        next(error)
+    }
+})
+
 /* 4) Query: Selection - DONE
 The user is able to specify the filtering conditions for a given table. 
 That is, the user is able to determine what shows up in the WHERE clause.
@@ -209,7 +223,7 @@ router.delete('/tournament/:id', async function(req, res, next) {
     })
 });
 
-/* 6) Query: Join
+/* 6) Query: Join - DONE
 Create one query in this category, which joins at least 2 tables and performs a meaningful query, 
 and provide an interface for the user to execute this query. 
 The user must provide at least one value to qualify in the WHERE clause 
@@ -238,7 +252,7 @@ router.get('/games-played/:username', async function(req, res, next) {
     });
 });
 
-/* 7) Query: Aggregation with GROUP BY
+/* 7) Query: Aggregation with GROUP BY - DONE
 Create one query that requires the use of aggregation 
 (min, max, average, or count are all fine), 
 and provide an interface (e.g., HTML button/dropdown, etc.) for the user to execute this query. 

@@ -1,8 +1,8 @@
 import './App.css';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-import Home from './pages/Home'
-import Logo from './pages/LogoDisplay'
+import Home from './pages/Home';
+import Logo from './pages/LogoDisplay';
 
 import Player from './pages/Player';
 import Tournament from './pages/Tournament';
@@ -11,9 +11,14 @@ import Ability from './pages/Abilities';
 import styled from 'styled-components';
 
 import kirbyImage from './assets/kirby.png';
-import marioImage from './assets/mario.png'
-import donkeykongImage from './assets/donkeykong.png'
-import yoshiImage from './assets/yoshi.png'
+import marioImage from './assets/mario.png';
+import donkeykongImage from './assets/donkeykong.png';
+import yoshiImage from './assets/yoshi.png';
+import daisyImage from './assets/daisy.png';
+import bowserImage from './assets/bowser.png';
+import samusImage from './assets/samus.png';
+
+
 import GamePlayer from './pages/GamePlayer';
 import GamesPlayed from './pages/GamesPlayed';
 import Wins from './pages/Wins';
@@ -30,7 +35,7 @@ const Spacer2 = styled.div`
 
 const Title = styled.h2`
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -39,10 +44,12 @@ const Title = styled.h2`
     height: 1.5rem;
     width: 1.5rem;
   }
+  text-shadow: 3px 3px #ccc;
 `;
 
+
 const Section = styled.section`
-  margin: 0 7rem;
+  margin: 0 5rem;
 `;
 
 const LogoWrapper = styled.div`
@@ -52,6 +59,7 @@ const LogoWrapper = styled.div`
 `;
 
 function App() {
+
   return (
     <>
       <LogoWrapper>
@@ -62,7 +70,6 @@ function App() {
         <img src={kirbyImage} alt="Kirby icon" />
         Players
       </Title>
-      <Spacer2 />
       <Section>
         <Player />
       </Section>
@@ -89,32 +96,31 @@ function App() {
         <img src={yoshiImage} alt="Yoshi icon" />
         Abilities
       </Title>
-      <Spacer2 />
       <Section>
         <Ability />
       </Section>
       <Spacer />
       <Title>
-        <img src={yoshiImage} alt="Yoshi icon" />
+        <img src={daisyImage} alt="Daisy icon" />
         Game Player
       </Title>
       <Spacer2 />
       <Section>
         <GamePlayer />
       </Section>
+      <Spacer />
       <Title>
-        <img src={yoshiImage} alt="Yoshi icon" />
+        <img src={bowserImage} alt="Bowser icon" />
         Games Played
       </Title>
-      <Spacer2 />
       <Section>
         <GamesPlayed />
       </Section>
+      <Spacer />
       <Title>
-        <img src={yoshiImage} alt="Yoshi icon" />
+        <img src={samusImage} alt="Samus icon" />
         Wins by Attribute
       </Title>
-      <Spacer2 />
       <Section>
         <Wins />
       </Section>

@@ -1,5 +1,55 @@
 import React, { useState, useEffect, useCallback }  from 'react';
 import PlayerTable from '../components/PlayerTable';
+import styled from 'styled-components';
+
+
+const StyledH1 = styled.h1`
+  text-align: center;
+  font-size: 1em;
+  margin: 0.5em 0;
+  font-weight: bold;
+`;
+
+const StyledForm = styled.form`
+  text-align: center;
+  font-size: 1.3em;
+  margin: 0.5em 0;
+  font-weight: bold;
+`;
+
+const StyledLabel = styled.label`
+  margin-left: 1em;
+  font-weight: bold;
+`;
+
+
+const StyledInput = styled.input`
+  margin: 1em;
+  width: 10em;
+  height: 2em;
+`;
+
+const StyledButton = styled.button`
+  font-size: 1em;
+  margin: 0.5em;
+  background-color: #FFD6E8;
+  padding: 0.3rem;
+  &:hover {
+    box-shadow: 5px 5px 5px #000000;
+  }
+  &:active {
+    background-color: #dea6d5;
+  }
+`;
+
+
+const StyledCheckbox = styled.input`
+  margin-right: 15px;
+  position: relative;
+  top: 2px;
+  transform: scale(2);
+`;
+
 
 const Player = () => {
     const [formData, setFormData] = useState({
@@ -107,72 +157,71 @@ const Player = () => {
         }
     }
 
+
     return (
-        <>
-            <form>
-                <label>
-                    Username:
-                    <input type="text" name="username" value={formData.username} onChange={handleChangeSelect} />
-                </label>
-                <br />
-                <label>
-                    Country:
-                    <input type="text" name="country" value={formData.country} onChange={handleChangeSelect} />
-                </label>
-                <br />
-                <label>
-                    Ranking Level:
-                    <input type="text" name="ranking_level" value={formData.ranking_level} onChange={handleChangeSelect} />
-                </label>
-                <br />
-                <label>
-                    Age:
-                    <input type="number" name="age" value={formData.age} onChange={handleChangeSelect} />
-                </label>
-                <br />
-                <label>
-                    Wins:
-                    <input type="number" name="wins" value={formData.wins} onChange={handleChangeSelect} />
-                </label>
-                <br />
-                <label>
-                    Losses:
-                    <input type="number" name="losses" value={formData.losses} onChange={handleChangeSelect} />
-                </label>
-                <br />
-                <button type="submit" onClick={handleSubmitSelect}>Search</button>
-                <button type="submit" onClick={handleSubmitEdit}>Update</button>
-            </form>
-            <form onSubmit={handleSubmitProject}>
-                <label>
-                    <input type="checkbox" value="username" checked={attributes.includes('username')} onChange={handleCheckboxChange} />
-                    Username
-                </label>
-                <label>
-                    <input type="checkbox" value="country" checked={attributes.includes('country')} onChange={handleCheckboxChange} />
-                    Country
-                </label>
-                <label>
-                    <input type="checkbox" value="ranking_level" checked={attributes.includes('ranking_level')} onChange={handleCheckboxChange} />
-                    Ranking Level
-                </label>
-                <label>
-                    <input type="checkbox" value="age" checked={attributes.includes('age')} onChange={handleCheckboxChange} />
-                    Age
-                </label>
-                <label>
-                    <input type="checkbox" value="wins" checked={attributes.includes('wins')} onChange={handleCheckboxChange} />
-                    Wins
-                </label>
-                <label>
-                    <input type="checkbox" value="losses" checked={attributes.includes('losses')} onChange={handleCheckboxChange} />
-                    Losses
-                </label>
-                <button type="submit">Submit</button>
-            </form>
-            <PlayerTable players={players} />
-        </>
+      <>
+        <StyledH1>Player Selection</StyledH1>
+        <StyledForm>
+          <StyledLabel>
+            Username:
+            <StyledInput type="text" name="username" value={formData.username} onChange={handleChange} />
+          </StyledLabel>
+          <StyledLabel>
+            Country:
+            <StyledInput type="text" name="country" value={formData.country} onChange={handleChange} />
+          </StyledLabel>
+          <StyledLabel>
+            Ranking Level:
+            <StyledInput type="text" name="ranking_level" value={formData.ranking_level} onChange={handleChange} />
+          </StyledLabel>
+          <br />
+          <StyledLabel>
+            Age:
+            <StyledInput type="number" name="age" value={formData.age} onChange={handleChange} />
+          </StyledLabel>
+          <StyledLabel>
+            Wins:
+            <StyledInput type="number" name="wins" value={formData.wins} onChange={handleChange} />
+          </StyledLabel>
+          <StyledLabel>
+            Losses:
+            <StyledInput type="number" name="losses" value={formData.losses} onChange={handleChange} />
+          </StyledLabel>
+          <StyledButton type="submit" onClick={handleSubmitSelect}>Search</StyledButton>
+          <StyledButton type="submit" onClick={handleSubmitEdit}>Update</StyledButton>
+        </StyledForm>
+        <StyledForm onSubmit={handleSubmitProject}>
+          <StyledLabel>
+            <StyledCheckbox type="checkbox" value="username" checked={attributes.includes('username')} onChange={handleCheckboxChange} />
+            Username
+          </StyledLabel>
+          <StyledLabel>
+            <StyledCheckbox type="checkbox" value="country" checked={attributes.includes('country')} onChange={handleCheckboxChange} />
+            Country
+          </StyledLabel>
+          <StyledLabel>
+            <StyledCheckbox type="checkbox" value="ranking_level" checked={attributes.includes('ranking_level')} onChange={handleCheckboxChange} />
+            Ranking Level
+          </StyledLabel>
+          <StyledLabel>
+            <StyledCheckbox type="checkbox" value="age" checked={attributes.includes('age')} onChange={handleCheckboxChange} />
+            Age
+          </StyledLabel>
+          <StyledLabel>
+            <StyledCheckbox type="checkbox" value="wins" checked={attributes.includes('wins')} onChange={handleCheckboxChange} />
+            Wins
+          </StyledLabel>
+          <StyledLabel>
+            <StyledCheckbox type="checkbox" value="losses" checked={attributes.includes('losses')} onChange={handleCheckboxChange} />
+            Losses
+          </StyledLabel>
+          <StyledButton type="submit">Submit</StyledButton>
+        </StyledForm>
+        <PlayerTable players={players} style={{ margin: '1em 0' }} />
+      </>
     );
+      
+      
 }
 
 export default Player;

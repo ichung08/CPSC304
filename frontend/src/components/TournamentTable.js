@@ -4,27 +4,39 @@ import styled from 'styled-components';
 const Table = styled.table`
   border-collapse: collapse;
   width: 100%;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 `;
 
 const Th = styled.th`
-  background-color: #C8E3E5;
+  background-color: #C4A484;
   font-weight: bold;
   font-size: 1.5rem;
+  padding: 0.7rem;
+  &:hover {
+    text-shadow: 3px 3px #ccc;
+  }
 `;
+
 
 const Tr = styled.tr`
   &:nth-child(even) {
     background-color: #FDF9ED;
   }
+  &:nth-child(odd) {
+    background-color: #ffffff;
+  }
   font-weight: 300;
   font-size: 0.9rem;
+  &:hover {
+    background-color: #c7b6a5;
+  }
 `;
 
 const Td = styled.td`
   text-align: left;
   padding: 0.5rem;
   border: 1px solid #ccc;
+  font-size: 1.2rem;
 `;
 
 const Button = styled.button`
@@ -38,7 +50,12 @@ const Button = styled.button`
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
+
+  &:hover {
+    box-shadow: 2px 2px 4px #000000;
+  }
 `;
+
 
 const TournamentTable = ({ tournament, handleDelete }) => {
   return (

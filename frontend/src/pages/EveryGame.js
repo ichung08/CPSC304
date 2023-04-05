@@ -10,11 +10,16 @@ const StyledLabel = styled.label`
   margin-bottom: 0.5em;
 `;
 
+const StyledH1 = styled.h1`
+  font-size: 1em;
+  text-align: center;
+  margin-top: 1em;
+`;
+
 const SelectContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 0.5em
 `;
 
 const Select = styled.select`
@@ -33,12 +38,6 @@ const StyledInput = styled.input`
   height: 2em;
 `;
 
-const StyledH1 = styled.h1`
-  text-align: center;
-  font-size: 1em;
-  margin: 0.5em 0;
-  font-weight: bold;
-`;
 
 const EveryGame = ( ) => {
   const [everyGame, setEveryGame] = useState([]);

@@ -14,7 +14,7 @@ const Table = styled.table`
 `;
 
 const Th = styled.th`
-  background-color: #ffd68a;
+  background-color: #fff0ba;
   font-weight: bold;
   font-size: 1.5rem;
   padding: 0.7rem;
@@ -32,7 +32,7 @@ const Tr = styled.tr`
   font-weight: 300;
   font-size: 0.9rem;
   &:hover {
-    background-color: #deba78;
+    background-color: #e0d3a4;
   }
 `;
 

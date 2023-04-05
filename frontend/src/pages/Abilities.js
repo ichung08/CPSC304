@@ -18,7 +18,8 @@ const Ability = () => {
                 }
                 const data = await response.json();
                 console.log('Data:', data);
-                setAbilities(data);
+                console.log('Query:', data.query)
+                setAbilities(data.data);
             } catch (error) {
                 console.error('Error:', error);
             }

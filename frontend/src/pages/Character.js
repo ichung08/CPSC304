@@ -20,7 +20,8 @@ const SmashCharacter = () => {
   
           const data = await response.json();
           console.log('Data:', data);
-          setSmash_Character(data);
+          console.log('Query:', data.query)
+          setSmash_Character(data.data);
         } catch (error) {
           console.error('Error:', error);
         }

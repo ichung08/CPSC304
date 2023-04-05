@@ -5,7 +5,7 @@ var createError = require('http-errors');
 const app = express();
 const sql = require("./db.js");
 
-const playerRouter = require("./routes/playerRouter.js");
+const apiRouter = require("./routes/apiRouter.js");
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
   res.json({ message: "ok" });
 });
 
-app.use("/players", playerRouter);
+app.use("/api", apiRouter);
 
 // set port, listen for requests
 const PORT = 3001;

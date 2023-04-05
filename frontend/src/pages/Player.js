@@ -18,7 +18,8 @@ const Player = () => {
             }
             const data = await response.json();
             console.log('Data:', data);
-            setPlayers(data);
+            console.log('Query:', data.query)
+            setPlayers(data.data);
         } catch (error) {
             console.error('Error:', error);
         }

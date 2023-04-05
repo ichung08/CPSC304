@@ -10,7 +10,7 @@ const Home = () => {
         height: '20vh',
         flexDirection: 'column', // add this line to set the direction to column
       }}>
-      <h1>CPSC 304 Group 39</h1>
+      <h1 style={{ textShadow: '2px 2px 4px #ccc' }}>CPSC 304 Group 39</h1>
       <p>Vanessa Lee, Isaac Chung, Kitty Liu</p>
     </div>
   );

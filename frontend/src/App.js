@@ -34,7 +34,9 @@ const Title = styled.h2`
     height: 1.5rem;
     width: 1.5rem;
   }
+  text-shadow: 3px 3px #ccc;
 `;
+
 
 const Section = styled.section`
   margin: 0 5rem;

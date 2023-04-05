@@ -58,13 +58,12 @@ That is, the user is able to determine what shows up in the WHERE clause.
 The group can choose which table to run this query on. 
 The query and chosen table(s) should make sense given the context of the application.*/
 
-/* Returns player usernames, wins, and losses who are from Canada 
-Use case: Seeing the competition from Canada and their stats*/
+/* Find all players with 1 win */
 SELECT *
 FROM Player
-WHERE country = "Canada";
+WHERE wins = 1;
 
-/* 5) Query: Projection
+/* 5) Query: Projection - DONE
 The user is able to choose any number of attributes to view from any relation in the database. 
 Non-selected attributes must not appear in the result. 
 One or more tables in the relation must contain at least four attributes.*/
@@ -75,7 +74,7 @@ SELECT username, country
 FROM Player
 
 
-/* 6) Query: Join
+/* 6) Query: Join - DONE
 Create one query in this category, which joins at least 2 tables and performs a meaningful query, 
 and provide an interface for the user to execute this query. 
 The user must provide at least one value to qualify in the WHERE clause 
@@ -83,7 +82,7 @@ The user must provide at least one value to qualify in the WHERE clause
 The group can choose which tables will be affected by the query. 
 The query and chosen table(s) should make sense given the context of the application.*/
 
-/* Return the number of games played by the player with username 'Overtaker'. 
+/*Return the number of games played by a Player. 
 The result will have two columns:
 1) Player's username
 2) Number of games they played.
@@ -91,7 +90,8 @@ Use Case: A glimpse of a player's playing experience/history */
 SELECT Player.username, COUNT(Game_Player.game_id) AS num_games_played
 FROM Player
 JOIN Game_Player ON Player.username = Game_Player.username
-WHERE Player.username = 'Overtaker';
+WHERE Player.username = ?
+GROUP BY Player.username
 
 
 /* 7) Query: Aggregation with GROUP BY

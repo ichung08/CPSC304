@@ -303,7 +303,7 @@ which helps determine if a player has played in all the games or not.
 Use case: tournament organizers can give out the most participation award
 */
 
-router.get('/player/participation', async function(req, res, next) {
+router.get('/played-every-game', async function(req, res, next) {
     sql.query(`SELECT username
         FROM Player 
         WHERE NOT EXISTS (

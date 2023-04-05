@@ -154,7 +154,7 @@ CASE ranking_level
     WHEN 'diamond' THEN 6
 END ASC;
 
-/* 10) Query: Division
+/* 10) Query: Division - DONE
 Create one query of this category and provide an interface 
 (i.e., HTML button, etc.) for the user to execute this query 
 (e.g., find all the customers who bought all the items).

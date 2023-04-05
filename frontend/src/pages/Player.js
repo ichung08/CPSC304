@@ -53,16 +53,16 @@ const StyledCheckbox = styled.input`
 
 
 const Player = () => {
-    const [formData, setFormData] = useState({
-        username: '',
-        country: '',
-        ranking_level: '',
-        age: '',
-        wins: '',
-        losses: '',
-    });
     const [attributes, setAttributes] = useState([]);
     const [players, setPlayers] = useState([]);
+    const [username, setUsername] = useState("");
+    const [country, setCountry] = useState("");
+    const [rankingLevel, setRankingLevel] = useState("");
+    const [age, setAge] = useState("");
+    const [wins, setWins] = useState("");
+    const [losses, setLosses] = useState("");
+    const [refresh, setRefresh] = useState(false)
+
     const [showToast, setShowToast] = useState(false);
     const [toastType, setToastType] = useState("");
     const [toastMessage, setToastMessage] = useState("");
@@ -89,18 +89,23 @@ const Player = () => {
         };
         
         fetchData();
-    }, []);
+    }, [refresh]);
 
     // Selection
-    const handleChangeSelect = (event) => {
-        const { name, value } = event.target;
-        setFormData({ ...formData, [name]: value });
-    };
 
     const handleSubmitSelect = async (event) => {
         event.preventDefault();
+
+        const requestBody = {
+          username: username,
+          country: country,
+          ranking_level: rankingLevel,
+          age: age,
+          wins: wins,
+          losses: losses
+        }
     
-        const queryParams = new URLSearchParams(formData).toString();
+        const queryParams = new URLSearchParams(requestBody).toString();
         const response = await fetch(`http://localhost:3001/api/player-selection?${queryParams}`);
         const data = await response.json();
     
@@ -136,34 +141,39 @@ const Player = () => {
     };
 
     // Update
-    const handleChange = (event) => {
-        setFormData({
-          ...formData,
-          [event.target.name]: event.target.value
-        });
-      }
-    
     const handleSubmitEdit = async (event) => {
+      event.preventDefault();
+
+      const requestBody = {
+        username: username,
+        country: country,
+        ranking_level: rankingLevel,
+        age: age,
+        wins: wins,
+        losses: losses
+      }
         try {
-            const response = await fetch(`http://localhost:3001/api/player/${formData.username}`, {
+            const response = await fetch(`http://localhost:3001/api/player/${username}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData)
+                body: JSON.stringify(requestBody)
             });
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
             const data = await response.json();
-            setPlayers(data.data);
+            setRefresh(true)
             console.log("Query:", data.query)
             setShowToast(true);
             setToastType("success");
             setToastMessage("Update successful!");
+            setTimeout(() => setShowToast(false), 3000);
         } catch (error) {
             console.error('Error:', error);
             setShowToast(true);
             setToastType("failure");
             setToastMessage("Update failed!");
+            setTimeout(() => setShowToast(false), 3000);
         }
     }
 
@@ -181,28 +191,28 @@ const Player = () => {
         <StyledForm>
           <StyledLabel>
             Username:
-            <StyledInput type="text" name="username" value={formData.username} onChange={handleChange} />
+            <StyledInput type="text" name="username" value={username} onChange={(event) => setUsername(event.target.value)} />
           </StyledLabel>
           <StyledLabel>
             Country:
-            <StyledInput type="text" name="country" value={formData.country} onChange={handleChange} />
+            <StyledInput type="text" name="country" value={country} onChange={(event) => setCountry(event.target.value)} />
           </StyledLabel>
           <StyledLabel>
             Ranking Level:
-            <StyledInput type="text" name="ranking_level" value={formData.ranking_level} onChange={handleChange} />
+            <StyledInput type="text" name="ranking_level" value={rankingLevel} onChange={(event) => setRankingLevel(event.target.value)} />
           </StyledLabel>
           <br />
           <StyledLabel>
             Age:
-            <StyledInput type="number" name="age" value={formData.age} onChange={handleChange} />
+            <StyledInput type="number" name="age" value={age} onChange={(event) => setAge(event.target.value)} />
           </StyledLabel>
           <StyledLabel>
             Wins:
-            <StyledInput type="number" name="wins" value={formData.wins} onChange={handleChange} />
+            <StyledInput type="number" name="wins" value={wins} onChange={(event) => setWins(event.target.value)} />
           </StyledLabel>
           <StyledLabel>
             Losses:
-            <StyledInput type="number" name="losses" value={formData.losses} onChange={handleChange} />
+            <StyledInput type="number" name="losses" value={losses} onChange={(event) => setLosses(event.target.value)} />
           </StyledLabel>
           <StyledButton type="submit" onClick={handleSubmitSelect}>Search</StyledButton>
           <StyledButton type="submit" onClick={handleSubmitEdit}>Update</StyledButton>
@@ -234,7 +244,7 @@ const Player = () => {
           </StyledLabel>
           <StyledButton type="submit">Submit</StyledButton>
         </StyledForm>
-        <PlayerTable players={players} style={{ margin: '1em 0' }} />
+        {players && <PlayerTable players={players} style={{ margin: '1em 0' }} />}
       </>
     );
       

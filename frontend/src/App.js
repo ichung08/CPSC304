@@ -17,6 +17,8 @@ import yoshiImage from './assets/yoshi.png';
 import daisyImage from './assets/daisy.png';
 import bowserImage from './assets/bowser.png';
 import samusImage from './assets/samus.png';
+import zeldaImage from './assets/zelda.png';
+import dededeImage from './assets/dedede.png';
 
 
 import GamePlayer from './pages/GamePlayer';
@@ -124,19 +126,19 @@ function App() {
       <Section>
         <Wins />
       </Section>
+      <Spacer />
       <Title>
-        <img src={yoshiImage} alt="Yoshi icon" />
+        <img src={zeldaImage} alt="Zelda icon" />
         Teams by Attribute
       </Title>
-      <Spacer2 />
       <Section>
         <Teams />
       </Section>
+      <Spacer />
       <Title>
-        <img src={yoshiImage} alt="Yoshi icon" />
+        <img src={dededeImage} alt="Dedede icon" />
         Average Age by Attribute
       </Title>
-      <Spacer2 />
       <Section>
         <AvgAge />
       </Section>

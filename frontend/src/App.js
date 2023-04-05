@@ -6,13 +6,17 @@ import Logo from './pages/LogoDisplay'
 
 import Player from './pages/Player';
 import Tournament from './pages/Tournament';
+import SmashCharacter from './pages/Character';
+import Ability from './pages/Abilities';
 import styled from 'styled-components';
 
-import kirbyImage from './font/kirby.png';
-import marioImage from './font/mario.png'
+import kirbyImage from './assets/kirby.png';
+import marioImage from './assets/mario.png'
+import donkeykongImage from './assets/donkeykong.png'
+import yoshiImage from './assets/yoshi.png'
 
 const Spacer = styled.div`
-  height: 100px; /* adjust the height as needed */
+  height: 70px; /* adjust the height as needed */
 `;
 
 const Spacer2 = styled.div`
@@ -32,24 +36,58 @@ const Title = styled.h2`
   }
 `;
 
+const Section = styled.section`
+  margin: 0 7rem;
+`;
+
+const LogoWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+`;
+
 function App() {
   return (
     <>
-      <Logo />
+      <LogoWrapper>
+        <Logo />
+      </LogoWrapper>
       <Home />
       <Title>
         <img src={kirbyImage} alt="Kirby icon" />
         Players
       </Title>
       <Spacer2 />
-      <Player />
+      <Section>
+        <Player />
+      </Section>
       <Spacer />
       <Title>
         <img src={marioImage} alt="Mario icon" />
         Tournaments
       </Title>
       <Spacer2 />
-      <Tournament />
+      <Section>
+        <Tournament />
+      </Section>
+      <Spacer />
+      <Title>
+        <img src={donkeykongImage} alt="Donkey Kong icon" />
+        Characters
+      </Title>
+      <Spacer2 />
+      <Section>
+        <SmashCharacter />
+      </Section>
+      <Spacer />
+      <Title>
+        <img src={yoshiImage} alt="Yoshi icon" />
+        Abilities
+      </Title>
+      <Spacer2 />
+      <Section>
+        <Ability />
+      </Section>
       <Spacer />
     </>
   );

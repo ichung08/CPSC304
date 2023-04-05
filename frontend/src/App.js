@@ -6,10 +6,12 @@ import Logo from './pages/LogoDisplay'
 
 import Player from './pages/Player';
 import Tournament from './pages/Tournament';
+import SmashCharacter from './pages/Character';
 import styled from 'styled-components';
 
 import kirbyImage from './assets/kirby.png';
 import marioImage from './assets/mario.png'
+import donkeykongImage from './assets/donkeykong.png'
 
 const Spacer = styled.div`
   height: 100px; /* adjust the height as needed */
@@ -65,6 +67,15 @@ function App() {
       <Spacer2 />
       <Section>
         <Tournament />
+      </Section>
+      <Spacer />
+      <Title>
+        <img src={donkeykongImage} alt="Donkey Kong icon" />
+        Characters
+      </Title>
+      <Spacer2 />
+      <Section>
+        <SmashCharacter />
       </Section>
       <Spacer />
     </>

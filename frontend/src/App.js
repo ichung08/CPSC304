@@ -106,6 +106,7 @@ function App() {
       <Section>
         <GamePlayer />
       </Section>
+      <Spacer />
       <Title>
         <img src={bowserImage} alt="Bowser icon" />
         Games Played
@@ -113,6 +114,7 @@ function App() {
       <Section>
         <GamesPlayed />
       </Section>
+      <Spacer />
       <Title>
         <img src={samusImage} alt="Samus icon" />
         Wins by Attribute

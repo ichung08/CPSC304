@@ -8,8 +8,8 @@ import Player from './pages/Player';
 import Tournament from './pages/Tournament';
 import styled from 'styled-components';
 
-import kirbyImage from './font/kirby.png';
-import marioImage from './font/mario.png'
+import kirbyImage from './assets/kirby.png';
+import marioImage from './assets/mario.png'
 
 const Spacer = styled.div`
   height: 100px; /* adjust the height as needed */
@@ -32,24 +32,40 @@ const Title = styled.h2`
   }
 `;
 
+const Section = styled.section`
+  margin: 0 4rem;
+`;
+
+const LogoWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+`;
+
 function App() {
   return (
     <>
-      <Logo />
+      <LogoWrapper>
+        <Logo />
+      </LogoWrapper>
       <Home />
       <Title>
         <img src={kirbyImage} alt="Kirby icon" />
         Players
       </Title>
       <Spacer2 />
-      <Player />
+      <Section>
+        <Player />
+      </Section>
       <Spacer />
       <Title>
         <img src={marioImage} alt="Mario icon" />
         Tournaments
       </Title>
       <Spacer2 />
-      <Tournament />
+      <Section>
+        <Tournament />
+      </Section>
       <Spacer />
     </>
   );

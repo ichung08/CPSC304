@@ -182,7 +182,17 @@ VALUES ("Bowser", "orange"),
 ("Kirby", "pink"),
 ("Boo", "Red"),
 ("Donkey Kong", "Blue"),
-("Zelda", "Green");
+("Jigglypuff", "pink"),
+("Falco", "blue"),
+("Ice Climbers", "red"),
+("Mewtwo", "purple"),
+("Zelda", "Green"),
+("Link", "green"),
+("Samus", "orange"),
+("Fox", "orange"),
+("Captain Falcon", "blue"),
+("Ness", "blue"),
+("Luigi", "green");
 
 /* 4) ruleset_type, win_criteria*/
 INSERT INTO Ruleset 
@@ -229,13 +239,18 @@ VALUES (1, "Nintendo Switch", "Classic", "Battlefield", "Stock", "Mario"),
 (17, "Playstation 4", "Event", "Final Destination", "Coin", "Huey"),
 (18, "Xbox One", "Classic", "Lylat Cruise", "Stock", "Huey"),
 (19, "Playstation 4", "Stadium", "Final Destination", "Coin", "Vivian"),
-(20, "Playstation 4", "All-Star", "Battlefield", "Coin", "Dry Bowser");
+(20, "Playstation 4", "All-Star", "Battlefield", "Coin", "Dry Bowser"),
+(21, 'Nintendo Switch', 'Classic', 'Final Destination', 'Target Blast', 'Fawful'),
+(22, 'Wii U', 'Stadium', 'Spring Stadium', 'Time limit', 'Diddy'),
+(23, 'Wii U', 'All-Star', 'Yoshi Island', 'Coin', 'Captain Toad'),
+(24, 'Xbox One', 'Training', 'Mushroom Kingdom I', 'Target Blast', 'Mario'),
+(25, 'Playstation 4', 'Event', 'Spring Stadium', 'Stock', 'Waluigi');
 
 /* 7) game_id INTEGER, username CHAR(20), character_name */
 INSERT INTO Game_Player
 VALUES (1, "Overtaker", "Mario"),
 (2, "Hauntzer", "Yoshi"),
-(2, "Sally", "Pikachu"),
+(2, "Overtaker", "Pikachu"),
 (2, "Adam", "Pikachu"),
 (3, "Zahgrd", "Kirby"),
 (4, "Victory", "Wario"),
@@ -270,8 +285,8 @@ VALUES (1, "Overtaker", "Mario"),
 (14, "PixelWarrior", "Boo"),
 (14, "VirtualAssassin", "Mario"),
 (14, "RetroGamerX", "Pikachu"),
-(15, "Adam", "Yoshi"),
-(16, "Adam", "Princess Peach"),
+(15, "Sally", "Yoshi"),
+(16, "Sally", "Princess Peach"),
 (16, "CyberKnight", "Wario"),
 (17, "EpicGamer88", "Mario"),
 (18, "Ninja", "Princess Peach"),
@@ -279,45 +294,67 @@ VALUES (1, "Overtaker", "Mario"),
 (18, "Faker", "Daisy"),
 (19, "PewDiePie", "Boo"),
 (20, "Overtaker", "Kirby"),
-(20, "TheGamingGeek", "Boo");
+(20, "TheGamingGeek", "Boo"),
+(21, "RetroGamerX", "Ice Climbers"),
+(22, "Anywehe", "Kirby"),
+(22, "Overtaker", "Falco"),
+(22, "Ninja", "JigglyPuff"),
+(22, "Adam", "Ness"),
+(23, "Ninja", "Daisy"),
+(24, "Ninja", "Bowser"),
+(24, "Overtaker", "Mario"),
+(24, "Anywehe", "Yoshi"),
+(24, "Faker", "Link"),
+(24, "PewDiePie", "Luigi"),
+(25, "Ninja", "Samus");
 
 
 /* 8) tournament_id, tournament_name, organizer, start_date, end_date, prize_pool */
 INSERT INTO Tournament VALUES
-(100, 'ESL One Hamburg 2013', 'ESL Gaming', '2013-11-16', '2013-11-17', 155000),
-(200, 'Smash Worlds 2019', 'Riot Games', '2019-10-02', '2019-11-10', 2500000),
-(300, 'ESL One LA 2020', 'ESL Gaming', '2020-03-28', '2020-04-19', 400000),
-(400, 'Asia Championships 2021', 'Perfect World', '2021-04-01', '2021-04-04', 500000),
-(500, 'PUBG Global Invitational 2021', 'PUBG Corporation', '2021-02-05', '2021-03-28', 7000000),
-(600, 'Smash Championships 2021', 'Activision Blizzard', '2021-08-19', '2021-08-22', 2500000),
-(700, 'Rainbow Six Siege Invitational 2022', 'Ubisoft', '2022-02-09', '2022-02-20', 3000000),
-(800, 'Smash World Cup 2022', 'Epic Games', '2022-07-22', '2022-07-24', 50000000),
-(900, 'The International 2023', 'Valve Corporation', '2023-08-18', '2023-08-28', 30000000),
-(1000, 'ESL Amsterdam', 'Valve Corporation', '2024-01-19', '2024-01-29', 2000000);
+(101, 'ESL One Hamburg 2015', 'ESL Gaming', '2015-11-16', '2015-11-17', 155000),
+(102, "Get On My Line 2016", "Even Matchup Gaming", "2016-06-25", "2016-06-26", 10000),
+(103, "Low Tier City 8", "Tourney Locator", "2017-07-29", "2017-07-31", 10000),
+(104, "Smash Ultimate World Tour 2018", "Nintendo", "2018-03-02", "2018-12-08", 250000),
+(105, 'Smash Worlds 2019', 'Riot Games', '2019-10-02', '2019-11-10', 2500000),
+(106, 'ESL One LA 2020', 'ESL Gaming', '2020-03-28', '2020-04-19', 400000),
+(107, "EVO 2020 Online", "EVO", "2020-07-04", "2020-08-02", 39000),
+(108, 'Asia Championships 2021', 'Perfect World', '2021-04-01', '2021-04-04', 500000),
+(109, 'PUBG Global Invitational 2021', 'PUBG Corporation', '2021-02-05', '2021-03-28', 7000000),
+(110, "Smash Ultimate Summit 3", "Beyond The Summit", "2021-05-06", "2021-05-09", 150000),
+(111, 'Smash Championships 2021', 'Activision Blizzard', '2021-08-19', '2021-08-22', 2500000),
+(112, 'Rainbow Six Siege Invitational 2022', 'Ubisoft', '2022-02-09', '2022-02-20', 3000000),
+(113, 'Smash World Cup 2022', 'Epic Games', '2022-07-22', '2022-07-24', 50000000),
+(114, 'The International 2023', 'Valve Corporation', '2023-08-18', '2023-08-28', 30000000),
+(115, 'ESL Amsterdam 2023', 'Valve Corporation', '2024-01-19', '2024-01-29', 2000000);
 
 
 /* 9) game_id, tournament_id */
 INSERT INTO Game_Tournament
-VALUES (1, 100),
-(2, 100),
-(3, 200),
-(4, 300),
-(5, 300),
-(6, 300),
-(7, 300),
-(8, 400),
-(9, 500),
-(10, 500),
-(11, 500),
-(12, 600),
-(13, 600),
-(14, 700),
-(15, 800),
-(16, 800),
-(17, 900),
-(18, 900),
-(19, 900),
-(20, 1000);
+VALUES (1, 101),
+(2, 101),
+(3, 102),
+(4, 103),
+(5, 103),
+(6, 103),
+(7, 103),
+(8, 104),
+(9, 105),
+(10, 105),
+(11, 105),
+(12, 106),
+(13, 106),
+(14, 107),
+(15, 108),
+(16, 108),
+(17, 109),
+(18, 109),
+(19, 109),
+(20, 110),
+(21, 111),
+(22, 112),
+(23, 112),
+(24, 112),
+(25, 112);
 
         
 /* 10) character_name CHAR(20), ultimate_attack CHAR(20), cup_attack CHAR(20), neutral_attack CHAR(20), down_attack CHAR(20) */
@@ -331,8 +368,12 @@ VALUES ("Bowser", "Final Cutter", "Stone", "Inhale", "Flame"),
 ("Pikachu", "Throw", "Fire Spit", "Jump", "Thunderbolt"),
 ("Kirby", "Quick Attack", "Thunder", "Jolt", "Jump"),
 ("Boo", "Quick Shift", "Ghost Mode", "Sting", "Teleport"),
-("Donkey Kong", "Power", "Jump", "Spin", "Crouch");
-
+("Donkey Kong", "Power", "Jump", "Spin", "Crouch"),
+("Luigi", "Poltergust", "Jump Punch", "Fireball", "Missile"),
+("Jigglypuff", "Puff Up", "Sing", "Rollout", "Rest"),
+("Falco", "Landmaster", "Fire Bird", "Blaster", "Reflector"),
+("Ice Climbers", "Iceberg", "Hammer", "Ice Shot", "Blizzard"),
+("Mewtwo", "Psystrike", "Teleport", "Shadow Ball", "Disable");
 
 
 /* 11) game_id, competitor_type, console, game_mode, stage_name, ruleset_type, spirits_name*/
@@ -347,8 +388,10 @@ VALUES (1, "CPU", "Nintendo Wii",  "Classic", "Battlefield", "Stock", "Mario"),
 (13, "CPU", "Nintendo Switch", "Training", "Spring Stadium", "Target Blast", "Vivian"),
 (15, "Player", "Playstation 4", "Event", "Final Destination", "Coin", "Fawful"),
 (17, "CPU", "Playstation 4", "Event", "Final Destination", "Coin", "Huey"),
-(19, "Player", "Playstation 4", "Stadium", "Final Destination", "Coin", "Vivian");
-
+(19, "Player", "Playstation 4", "Stadium", "Final Destination", "Coin", "Vivian"),
+(21, "Player", 'Nintendo Switch', 'Classic', 'Final Destination', 'Target Blast', 'Fawful'),
+(23, "CPU", 'Wii U', 'All-Star', 'Yoshi Island', 'Coin', 'Captain Toad'),
+(25, "CPU", 'Playstation 4', 'Event', 'Spring Stadium', 'Stock', 'Waluigi');
 
 
 /* 12) game_id, number_of_players, console, game_mode, stage_name, ruleset_type, spirits_name*/
@@ -362,8 +405,9 @@ VALUES (2, 3, "Nintendo Switch", "Training", "Big Blue", "Time limit", "Waluigi"
 (14, 6, "Xbox One", "Mario Galaxy", "Windy Hill Zone", "Stock", "Mario"),
 (16, 2, "Xbox One", "Training", "Yoshi Island", "Target Blast", "Huey"),
 (18, 3, "Xbox One", "Classic", "Lylat Cruise", "Stock", "Huey"),
-(20, 2, "Playstation 4", "All-Star", "Battlefield", "Coin", "Dry Bowser");
-
+(20, 2, "Playstation 4", "All-Star", "Battlefield", "Coin", "Dry Bowser"),
+(22, 4, 'Wii U', 'Stadium', 'Spring Stadium', 'Time limit', 'Diddy'),
+(24, 5, 'Xbox One', 'Training', 'Mushroom Kingdom I', 'Target Blast', 'Mario');
 
 
 

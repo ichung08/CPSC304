@@ -26,6 +26,7 @@ import GamesPlayed from './pages/GamesPlayed';
 import Wins from './pages/Wins';
 import Teams from './pages/Teams';
 import AvgAge from './pages/AvgAge';
+import EveryGame from './pages/EveryGame';
 
 const Spacer = styled.div`
   height: 70px; /* adjust the height as needed */
@@ -141,6 +142,14 @@ function App() {
       </Title>
       <Section>
         <AvgAge />
+      </Section>
+      <Title>
+        <img src={yoshiImage} alt="Yoshi icon" />
+        Players who played every game in a tournament
+      </Title>
+      <Spacer2 />
+      <Section>
+        <EveryGame />
       </Section>
     </>
   );

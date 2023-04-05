@@ -57,6 +57,7 @@ const Ability = () => {
                 // console.log('Data:', data);
                 // console.log('Query:', data.query)
                 setAbilities(data.data);
+                setRefresh(false)
             } catch (error) {
                 console.error('Error:', error);
             }

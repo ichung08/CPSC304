@@ -7,7 +7,7 @@ The insert operation should affect more than one table
 The chosen query and table(s) should make sense given the context of the application.*/
 
 /* 1. Zelda already exists in the table */
-INSERT INTO Ability 
+INSERT INTO Ability
 VALUES ("Zelda", "Arrow", "Wind", "Transform", "Fire");
 
 /* 2. Insert character first in Smash_Character, then insert their abilities in Ability */
@@ -93,8 +93,7 @@ JOIN Game_Player ON Player.username = Game_Player.username
 WHERE Player.username = ?
 GROUP BY Player.username
 
-
-/* 7) Query: Aggregation with GROUP BY
+/* 7) Query: Aggregation with GROUP BY - DONE
 Create one query that requires the use of aggregation 
 (min, max, average, or count are all fine), 
 and provide an interface (e.g., HTML button/dropdown, etc.) for the user to execute this query. 
@@ -118,7 +117,7 @@ Use case: We want to see which countries can create teams to send to tournaments
 SELECT country, COUNT(username) AS num_players
 FROM Player
 GROUP BY country
-HAVING num_players > 1
+HAVING num_players > 3
 ORDER BY num_players DESC;
 
 

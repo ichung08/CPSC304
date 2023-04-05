@@ -176,6 +176,49 @@ router.get('/games-played/:username', async function(req, res, next) {
       });
 });
 
+/* 7) Query: Aggregation with GROUP BY
+Create one query that requires the use of aggregation 
+(min, max, average, or count are all fine), 
+and provide an interface (e.g., HTML button/dropdown, etc.) for the user to execute this query. 
+The group can choose which table to run this query on. 
+The query and chosen table(s) should make sense given the context of the application.*/
 
+/* Find total number of wins for each country
+Use Case: Find the statistics for country wins */
+router.get('/country-wins', async function(req, res, next) {
+    sql.query(`SELECT country, SUM(wins) as total_wins
+        FROM Player
+        GROUP BY country`, (error, results) => {
+        if (error) {
+            console.error(`Error`, error.message)
+            next(error)
+        }
+
+        res.json(results)
+      });
+});
+
+/* 8) Query: Aggregation with HAVING
+Create one meaningful query that requires the use of a HAVING clause, 
+and provide an interface (e.g., HTML button/dropdown, etc.) for the user to execute this query.
+The query and chosen table(s) should make sense given the context of the application. */
+
+/* This query calculates the number of players in each country that has more than 2 players and orders the results by the number of players in descending order. 
+The HAVING clause filters the groups with less than 3 players.
+Use case: We want to see which countries can create teams to send to tournaments (teams = countries with more than 1 player) */
+router.get('/country-teams', async function(req, res, next) {
+    sql.query(`SELECT country, COUNT(username) AS num_players
+        FROM Player
+        GROUP BY country
+        HAVING num_players > 3
+        ORDER BY num_players DESC`, (error, results) => {
+        if (error) {
+            console.error(`Error`, error.message)
+            next(error)
+        }
+
+        res.json(results)
+      });
+});
 
 module.exports = router;

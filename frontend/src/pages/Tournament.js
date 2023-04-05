@@ -1,81 +1,33 @@
+
 import React, { useState, useEffect } from 'react';
-import Button from "@material-ui/core/Button";
-import Container from '@material-ui/core/Container';
-import { makeStyles } from '@material-ui/core/styles';
+import TournamentTable from '../components/TournamentTable';
 
-import SmashTable from '../components/SmashTable';
-
-const Tournaments = () => {
-    const [data, setData] = useState({ results: [], columns: [] });
-    const [organizers, setOrganizers] = useState({ results: [], columns: []});
-    const [showOrganizers, setShowOrganizers] = useState(false);
-
-    const onShowOrganizersClick = () => setShowOrganizers(!showOrganizers);
-
-    const useStyles = makeStyles({
-        table: {
-            minWidth: 650
-        },
-        title: {
-            "font-family": 'supersmash',
-            "text-align": "center"
-        },
-        container: {
-            "padding": '2rem'
-        }
-    });
-
-    const classes = useStyles();
-
-    const fetchTournaments = () => {
-        const sqlQuery = "SELECT * FROM Tournament";
-        console.log(sqlQuery);
-        fetch('/sql', {
-            method: "POST",
-            body: JSON.stringify({ sql: sqlQuery }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(res => res.json())
-            .then(tournaments => {
-                setData({
-                    results: tournaments['results'],
-                    columns: tournaments['columns'].map((c) => ({ key: c, displayName: c }))
-                })
-            });        
-    };
-
-    const fetchOrganizers = () => {
-        const sqlQuery = "SELECT organizer, SUM(prize_pool) AS 'Total prize pool ($)' , MIN(start_date) AS 'First tournament date' FROM Tournament GROUP BY organizer";
-        console.log(sqlQuery);
-        fetch('/sql', {
-            method: "POST",
-            body: JSON.stringify({ sql: sqlQuery }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(res => res.json())
-            .then(organizers => {
-                setOrganizers({
-                    results: organizers['results'],
-                    columns: organizers['columns'].map((c) => ({ key: c, displayName: c }))
-                })
-            });        
-    };
+const Tournament = () => {
+    const [tournament, setTournament] = useState([]);
 
     useEffect(() => {
-        fetchTournaments();
-        fetchOrganizers();
-    }, [])
+      const fetchData = async () => {
+        try {
+          const response = await fetch('http://localhost:3001/api/tournament');
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          const data = await response.json();
+          console.log('Data:', data);
+          setTournament(data);
+        } catch (error) {
+          console.error('Error:', error);
+        }
+      };
+      
+      fetchData();
+    }, []);
+    
 
-    return (
-        <Container className={classes.container} maxWidth="lg">
-            <SmashTable tableName="Tournaments" results={data.results} columns={data.columns}></SmashTable>
-            <br></br>
-            <Button variant="contained" onClick={onShowOrganizersClick}>Show organizers</Button>
-            {showOrganizers && <br></br> && <SmashTable tableName="Organizers" results={organizers.results} columns={organizers.columns}></SmashTable>}
-        </Container>
-    );
-}
+  return (
+    // render your component with the retrieved data
+    <TournamentTable tournament={tournament} />
+  );
+};
 
-export default Tournaments;
+export default Tournament;

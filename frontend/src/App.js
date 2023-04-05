@@ -26,6 +26,7 @@ import Wins from './pages/Wins';
 import Teams from './pages/Teams';
 import AvgAge from './pages/AvgAge';
 import EveryGame from './pages/EveryGame';
+import GameTournament from './pages/GameTournament';
 
 const Spacer = styled.div`
   height: 50px; /* adjust the height as needed */
@@ -82,6 +83,7 @@ function App() {
   const [showCharacters, setShowCharacters] = useState(false);
   const [showAbilities, setShowAbilities] = useState(false);
   const [showGamePlayers, setShowGamePlayers] = useState(false);
+  const [showGameTournament, setShowGameTournament] = useState(false);
   const [showGamesPlayed, setShowGamesPlayed] = useState(false);
   const [showWins, setShowWins] = useState(false);
   const [showTeams, setShowTeams] = useState(false);
@@ -132,6 +134,14 @@ function App() {
       </Title>
       <Section>
         {showGamePlayers && <GamePlayer />}
+      </Section>
+      <Spacer />
+      <Title onClick={() => setShowGameTournament(!showGameTournament)}>
+        <img src={daisyImage} alt="Daisy icon" />
+        Game Tournament
+      </Title>
+      <Section>
+        {showGameTournament && <GameTournament />}
       </Section>
       <Spacer />
       <Title onClick={() => setShowGamesPlayed(!showGamesPlayed)}>

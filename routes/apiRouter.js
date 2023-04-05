@@ -74,6 +74,20 @@ router.get('/game_player', async function(req, res, next) {
     }
 })
 
+/* Get all Game_Tourament */
+router.get('/game_tournament', async function(req, res, next) {
+    const sqlQuery = `SELECT * FROM Game_Tournament`
+    try {
+        sql.query(sqlQuery, (error, results) => {
+            res.json({ data: results, query: sqlQuery });
+        });
+        
+    } catch (error){
+        console.error(`Error`, error.message)
+        next(error)
+    }
+})
+
 /* 1) Query: INSERT - DONE
 The user should be able to specify what values to insert. 
 The insert operation should affect more than one table 

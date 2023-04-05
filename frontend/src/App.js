@@ -86,11 +86,9 @@ function App() {
         <img src={yoshiImage} alt="Yoshi icon" />
         Abilities
       </Title>
-      <Spacer2 />
       <Section>
         <Ability />
       </Section>
-      <Spacer />
     </>
   );
 }

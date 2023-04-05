@@ -2,7 +2,8 @@
 CREATE TABLE Player ( 
 	username CHAR(20),
 	country CHAR(20), 
-    age INTEGER, 
+    ranking_level CHAR(20), 
+    age INTEGER,
     wins INTEGER, 
     losses INTEGER, 
     PRIMARY KEY (username)
@@ -117,30 +118,48 @@ CREATE TABLE Multiplayer_Game (
 );
 
 /* 1) username, country, age, wins, losses */
+
+
+CREATE TABLE Player ( 
+	username CHAR(20),
+	country CHAR(20), 
+    ranking_level CHAR(20), 
+    age INTEGER,
+    wins INTEGER, 
+    losses INTEGER, 
+    PRIMARY KEY (username)
+);
+
+under 20 beginner
+20-30 bronze
+30-40 silver
+40-50 gold
+50+ platinum
+
 INSERT INTO Player
-VALUES ("Overtaker", "Canada", 22, 59, 5),
-("Anywehe", "South Korea", 21, 64, 12),
-("Sally", "India", 17, 23, 6),
-("Adam", "China", 16, 49, 6),
-("Zahgrd", "Australia", 14, 5, 86),
-("Victory", "Australia", 30, 35, 9),
-("Christian", "Philippines", 26, 23, 5),
-("Hauntzer", "Philippines", 27, 45, 46),
-("GameOn92", "USA", 40, 15, 8),
-("NinjaGamer", "Canada", 29, 20, 5),
-("TheGamingGeek", "USA", 15, 18, 6),
-("PixelWarrior", "UK", 13, 14, 10),
-("VirtualAssassin", "Canada", 16, 22, 3),
-("RetroGamerX", "Australia", 35, 12, 12),
-("EliteGamingPro", "UK", 22, 16, 9),
-("ThunderBolt", "USA", 31, 21, 4),
-("CyberKnight", "Canada", 28, 19, 7),
-("EpicGamer88", "Australia", 12, 17, 11),
-("Ninja", "USA", 50, 15, 5),
-("Shroud", "Canada", 33, 12, 8),
-("Faker", "South Korea", 14, 20, 2),
-("PewDiePie", "Sweden", 35, 8, 12),
-("Summit1g", "USA", 13, 18, 3);
+VALUES ("Overtaker", "Canada", "platinum", 22, 59, 5),
+("Anywehe", "South Korea", "platinum", 21, 64, 12),
+("Sally", "India", "bronze", 17, 23, 6),
+("Adam", "China", "gold", 16, 49, 6),
+("Zahgrd", "Australia", "beginner", 14, 5, 86),
+("Victory", "Australia", "silver", 30, 35, 9),
+("Christian", "Philippines", "bronze", 26, 23, 5),
+("Hauntzer", "Philippines", "gold", 27, 45, 46),
+("GameOn92", "USA", "beginner", 40, 15, 8),
+("NinjaGamer", "Canada", "bronze", 29, 20, 5),
+("TheGamingGeek", "USA", "beginner", 15, 18, 6),
+("PixelWarrior", "UK", "beginner", 13, 14, 10),
+("VirtualAssassin", "Canada", "bronze", 16, 22, 3),
+("RetroGamerX", "Australia", "silver", 35, 33, 12),
+("EliteGamingPro", "UK", "gold", 22, 45, 9),
+("ThunderBolt", "USA", "silver", 31, 34, 4),
+("CyberKnight", "Canada", "bronze", 28, 29, 7),
+("EpicGamer88", "Australia", "beginner", 12, 17, 11),
+("Ninja", "USA", "platinum", 50, 53, 5),
+("Shroud", "Canada", "silver", 33, 33, 8),
+("Faker", "South Korea", "platinum", 20, 54, 2),
+("PewDiePie", "Sweden", "platinum", 35, 60, 12),
+("Summit1g", "USA", "gold", 18, 43, 3);
 
 /* 2) stage_name, form*/
 INSERT INTO Stage

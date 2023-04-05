@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback }  from 'react';
 import PlayerTable from '../components/PlayerTable';
 import styled from 'styled-components';
+import Toast from '../components/Toast';
 
 
 const StyledH1 = styled.h1`
@@ -62,6 +63,9 @@ const Player = () => {
     });
     const [attributes, setAttributes] = useState([]);
     const [players, setPlayers] = useState([]);
+    const [showToast, setShowToast] = useState(false);
+    const [toastType, setToastType] = useState("");
+    const [toastMessage, setToastMessage] = useState("");
 
     useEffect(() => {
         const fetchData = async () => {
@@ -152,15 +156,28 @@ const Player = () => {
             const data = await response.json();
             setPlayers(data.data);
             console.log("Query:", data.query)
+            setShowToast(true);
+            setToastType("success");
+            setToastMessage("Update successful!");
         } catch (error) {
             console.error('Error:', error);
+            setShowToast(true);
+            setToastType("failure");
+            setToastMessage("Update failed!");
         }
     }
+
+    const handleCloseToast = () => {
+      setShowToast(false);
+    };
 
 
     return (
       <>
         <StyledH1>Player Selection</StyledH1>
+        {showToast && (
+          <Toast type={toastType} message={toastMessage} onClose={handleCloseToast} />
+        )}
         <StyledForm>
           <StyledLabel>
             Username:

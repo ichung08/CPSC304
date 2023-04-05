@@ -8,4 +8,13 @@ const pool = mysql.createPool({
   database: 'smash'
 });
 
+pool.on('error', (err) => {
+  console.error('Database connection error:', err);
+  if (err.code === 'PROTOCOL_CONNECTION_LOST') {
+    console.error('Database connection was closed.');
+  } else {
+    throw err;
+  }
+});
+
 module.exports = pool;

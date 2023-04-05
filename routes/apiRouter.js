@@ -170,8 +170,14 @@ router.post('/ability', async function(req, res, next) {
 
         res.json({ data: result, query: sqlQuery });
     } catch (error){
-        console.error(`Error`, error.message)
-        next(error)
+        // If a foreign key error occurred, return a custom error message to the client
+        if (error.code === 'ER_NO_REFERENCED_ROW_2') {
+            res.status(400).json({ message: 'Invalid foreign key' });
+        } else {
+            // If an unknown error occurred, return a generic error message to the client
+            console.error(error);
+            res.status(500).json({ message: 'Internal server error' });
+        }
     }
 });
 

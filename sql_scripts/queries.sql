@@ -6,10 +6,12 @@ The insert operation should affect more than one table
 (i.e., an insert should occur on a table with a foreign key). 
 The chosen query and table(s) should make sense given the context of the application.*/
 
-/* 2) Query: DELETE
+/* 2) Query: DELETE - DONE
 Implement a cascade-on-delete situation (or an alternative that was agreed to by the TA if the DB system doesn’t provide this). 
 The user should be able to choose what values to delete. The tables that the delete operation will run on can be chosen by the group. 
 The chosen query and table(s) should make sense given the context of the application. */
+
+DELETE FROM Tournament WHERE tournament_id = 900;
 
 /* 3) Query: UPDATE - DONE
 The user should be able to specify whichever value(s) to update (i.e., any number of values in one or more columns). 
@@ -26,12 +28,12 @@ That is, the user is able to determine what shows up in the WHERE clause.
 The group can choose which table to run this query on. 
 The query and chosen table(s) should make sense given the context of the application.*/
 
-/* Returns all players from Canada*/
+/* Find all players with 1 win */
 SELECT *
 FROM Player
-WHERE country = "Canada";
+WHERE wins = 1;
 
-/* 5) Query: Projection
+/* 5) Query: Projection - DONE
 The user is able to choose any number of attributes to view from any relation in the database. 
 Non-selected attributes must not appear in the result. 
 One or more tables in the relation must contain at least four attributes.*/
@@ -40,7 +42,7 @@ One or more tables in the relation must contain at least four attributes.*/
 SELECT username, country
 FROM Player;
 
-/* 6) Query: Join
+/* 6) Query: Join - DONE
 Create one query in this category, which joins at least 2 tables and performs a meaningful query, 
 and provide an interface for the user to execute this query. 
 The user must provide at least one value to qualify in the WHERE clause 
@@ -48,14 +50,15 @@ The user must provide at least one value to qualify in the WHERE clause
 The group can choose which tables will be affected by the query. 
 The query and chosen table(s) should make sense given the context of the application.*/
 
-/*Return the number of games played by the player with username 'Overtaker'. 
+/*Return the number of games played by a Player. 
 The result will have two columns:
 1) Player's username
 2) Number of games they played.*/
 SELECT Player.username, COUNT(Game_Player.game_id) AS num_games_played
 FROM Player
 JOIN Game_Player ON Player.username = Game_Player.username
-WHERE Player.username = 'Overtaker';
+WHERE Player.username = ?
+GROUP BY Player.username
 
 
 /* 7) Query: Aggregation with GROUP BY

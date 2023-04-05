@@ -60,7 +60,7 @@ router.get('/smash_character', async function(req, res, next) {
     }
 })
 
-/* 4) Query: Selection 
+/* 4) Query: Selection - DONE
 The user is able to specify the filtering conditions for a given table. 
 That is, the user is able to determine what shows up in the WHERE clause.
 The group can choose which table to run this query on. 
@@ -106,7 +106,7 @@ router.get('/player-selection', async function(req, res, next) {
     }
 });
 
-/* 5) Query: Projection 
+/* 5) Query: Projection - DONE
 The user is able to choose any number of attributes to view from any relation in the database. 
 Non-selected attributes must not appear in the result. 
 One or more tables in the relation must contain at least four attributes.*/
@@ -140,7 +140,7 @@ router.get('/player-projection', async function(req, res, next) {
       });
 });
 
-/* 1) Query: INSERT
+/* 1) Query: INSERT - DONE
 The user should be able to specify what values to insert. 
 The insert operation should affect more than one table 
 (i.e., an insert should occur on a table with a foreign key). 
@@ -161,7 +161,7 @@ router.post('/ability', async function(req, res, next) {
     }
 });
 
-/* 3) Query: UPDATE 
+/* 3) Query: UPDATE - DONE
 The user should be able to specify whichever value(s) to update (i.e., any number of values in one or more columns). 
 The group can choose which table to run this query on. The chosen query and table(s) should make sense given the context of the application. */
 
@@ -190,7 +190,7 @@ router.put('/player/:username', async function(req, res, next) {
     })
 });
 
-/* 2) Query: DELETE
+/* 2) Query: DELETE 
 Implement a cascade-on-delete situation (or an alternative that was agreed to by the TA if the DB system doesn’t provide this). 
 The user should be able to choose what values to delete. The tables that the delete operation will run on can be chosen by the group. 
 The chosen query and table(s) should make sense given the context of the application. */

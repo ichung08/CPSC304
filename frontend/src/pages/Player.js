@@ -17,13 +17,13 @@ const Player = () => {
         const fetchData = async () => {
             try {
                 const response = await fetch('http://localhost:3001/api/players', {
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                }
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    }
                 });
                 if (!response.ok) {
-                throw new Error('Network response was not ok');
+                    throw new Error('Network response was not ok');
                 }
                 const data = await response.json();
                 // console.log('Data:', data);
@@ -38,7 +38,7 @@ const Player = () => {
     }, []);
 
     // Selection
-    const handleChange = (event) => {
+    const handleChangeSelect = (event) => {
         const { name, value } = event.target;
         setFormData({ ...formData, [name]: value });
     };
@@ -81,41 +81,67 @@ const Player = () => {
         }
     };
 
+    // Update
+    const handleChange = (event) => {
+        setFormData({
+          ...formData,
+          [event.target.name]: event.target.value
+        });
+      }
+    
+    const handleSubmitEdit = async (event) => {
+        try {
+            const response = await fetch(`http://localhost:3001/api/player/${formData.username}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            setPlayers(data.data);
+            console.log("Query:", data.query)
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+
     return (
         <>
-            <h1>Player Selection</h1>
-            <form onSubmit={handleSubmitSelect}>
+            <form>
                 <label>
                     Username:
-                    <input type="text" name="username" value={formData.username} onChange={handleChange} />
+                    <input type="text" name="username" value={formData.username} onChange={handleChangeSelect} />
                 </label>
                 <br />
                 <label>
                     Country:
-                    <input type="text" name="country" value={formData.country} onChange={handleChange} />
+                    <input type="text" name="country" value={formData.country} onChange={handleChangeSelect} />
                 </label>
                 <br />
                 <label>
                     Ranking Level:
-                    <input type="text" name="ranking_level" value={formData.ranking_level} onChange={handleChange} />
+                    <input type="text" name="ranking_level" value={formData.ranking_level} onChange={handleChangeSelect} />
                 </label>
                 <br />
                 <label>
                     Age:
-                    <input type="number" name="age" value={formData.age} onChange={handleChange} />
+                    <input type="number" name="age" value={formData.age} onChange={handleChangeSelect} />
                 </label>
                 <br />
                 <label>
                     Wins:
-                    <input type="number" name="wins" value={formData.wins} onChange={handleChange} />
+                    <input type="number" name="wins" value={formData.wins} onChange={handleChangeSelect} />
                 </label>
                 <br />
                 <label>
                     Losses:
-                    <input type="number" name="losses" value={formData.losses} onChange={handleChange} />
+                    <input type="number" name="losses" value={formData.losses} onChange={handleChangeSelect} />
                 </label>
                 <br />
-                <button type="submit">Search</button>
+                <button type="submit" onClick={handleSubmitSelect}>Search</button>
+                <button type="submit" onClick={handleSubmitEdit}>Update</button>
             </form>
             <form onSubmit={handleSubmitProject}>
                 <label>

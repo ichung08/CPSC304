@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
-import SmashTable from '../components/SmashTable';
+import TournamentTable from '../components/TournamentTable';
 
 const SmashCharacters = () => {
     const [data, setData] = useState({ results: [], columns: [] });
@@ -43,7 +43,7 @@ const SmashCharacters = () => {
 
     return (
         <Container className={classes.container} maxWidth="lg">
-            <SmashTable tableName="Agents" results={data.results} columns={data.columns}></SmashTable>
+            <TournamentTable tableName="Agents" results={data.results} columns={data.columns}></TournamentTable>
         </Container>);
 }
 

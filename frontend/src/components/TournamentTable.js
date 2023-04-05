@@ -8,7 +8,7 @@ const Table = styled.table`
 `;
 
 const Th = styled.th`
-  background-color: #FFD6E8;
+  background-color: #C8E3E5;
   font-weight: bold;
   font-size: 1.5rem;
 `;
@@ -27,28 +27,26 @@ const Td = styled.td`
   border: 1px solid #ccc;
 `;
 
-const PlayerTable = ({ players }) => {
+const TournamentTable = ({ tournament }) => {
   return (
     <Table>
       <thead>
         <Tr>
-          <Th>Username</Th>
-          <Th>Country</Th>
-          <Th>Ranking Level</Th>
-          <Th>Age</Th>
-          <Th>Wins</Th>
-          <Th>Losses</Th>
+          <Th>Tournament Name</Th>
+          <Th>Organizer</Th>
+          <Th>Start Date</Th>
+          <Th>End Date</Th>
+          <Th>Prize Pool</Th>
         </Tr>
       </thead>
       <tbody>
-        {players.map(player => (
-          <Tr key={player.username}>
-            <Td>{player.username}</Td>
-            <Td>{player.country}</Td>
-            <Td>{player.ranking_level}</Td>
-            <Td>{player.age}</Td>
-            <Td>{player.wins}</Td>
-            <Td>{player.losses}</Td>
+        {tournament.map((tournament, index) => (
+          <Tr key={index}>
+            <Td>{tournament.tournament_name}</Td>
+            <Td>{tournament.organizer}</Td>
+            <Td>{tournament.startdate.substring(0, 10)}</Td>
+            <Td>{tournament.enddate.substring(0, 10)}</Td>
+            <Td>{tournament.prize_pool}</Td>
           </Tr>
         ))}
       </tbody>
@@ -56,4 +54,4 @@ const PlayerTable = ({ players }) => {
   );
 };
 
-export default PlayerTable;
+export default TournamentTable;

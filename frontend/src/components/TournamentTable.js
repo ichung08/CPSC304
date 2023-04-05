@@ -11,6 +11,7 @@ const Th = styled.th`
   background-color: #C8E3E5;
   font-weight: bold;
   font-size: 1.5rem;
+  padding: 0.7rem;
 `;
 
 const Tr = styled.tr`

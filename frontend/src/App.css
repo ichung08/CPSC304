@@ -43,11 +43,32 @@
   src: url("./font/supersmash.ttf");
 }
 
+@font-face {
+  font-family: "mario";
+  src: url("./font/mario.ttf");
+}
+
 * {
-  font-family: "supersmash";
+  font-family: "mario";
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+table {
+  font-family: "mario";
+  color: #000000;
+}
+
+
+td {
+  font-family: "mario";
+  color: #000000;
+}
+
+th {
+  font-family: "supersmash";
+  color: #000000;
 }
 
 body {
@@ -59,10 +80,13 @@ body {
 
 
 h1, h2, h3, h4, h5, h6 {
-  color: #000000;
-}
+    font-family: "supersmash";
+    color: #000000;
+  }
+  
 
 p {
   color: #000000;
 }
+
 

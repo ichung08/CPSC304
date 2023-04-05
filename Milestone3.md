@@ -24,7 +24,7 @@ The domain of our application is in the world of online video games, particularl
 SQL DDL & Queries: Vanessa
 | Task          | Deadline      |  Team Member  |
 | ------------- | ------------- | ------------- |
-| SQL Script - Create tables and data | Sunday, Mar 19 | All |
+| Fix SQL Script - Create tables and data | Sunday, Mar 19 | Vanessa |
 | Queries - INSERT  | April 1 | Vanessa |
 | Queries - DELETE | April 1 | Vanessa  |
 | Queries - UPDATE | April 1 | Vanessa  |
@@ -39,35 +39,36 @@ SQL DDL & Queries: Vanessa
 Backend: Isaac
 | Task          | Deadline      |  Team Member  |
 | ------------- | ------------- | ------------- |
-| Queries - INSERT  | April 1 | Isaac |
-| Queries - DELETE | April 1 | Isaac  |
-| Queries - UPDATE | April 1 | Isaac  |
-| Queries - Selection | April 2 | Isaac |
-| Queries - Projection | April 2 | Isaac  |
-| Queries - Join | April 2 | Isaac  |
-| Queries - Aggregation with Group By | April 3 | Isaac  |
-| Queries - Aggregation with Having | April 3 | Isaac   |
-| Queries - Nested Aggregation with Group By | April 3 | Isaac  |
-| Queries - Division | April 3 | Vanessa |
+| Implement INSERT  | April 1 | Isaac |
+| Implement DELETE | April 1 | Isaac  |
+| Implement UPDATE | April 1 | Isaac  |
+| Implement Selection | April 2 | Isaac |
+| Implement Projection | April 2 | Isaac  |
+| Implement Join | April 2 | Isaac  |
+| Implement Aggregation with Group By | April 3 | Isaac  |
+| Implement Aggregation with Having | April 3 | Isaac   |
+| Implement Nested Aggregation with Group By | April 3 | Isaac  |
+| Implement Division | April 3 | Isaac |
 
 Frontend: Kitty
 | Task          | Deadline      |  Team Member  |
 | ------------- | ------------- | ------------- |
-| Main Page| April 2 | Kitty |
+| Main Page | April 2 | Kitty |
 | Table: Player | April 2 | Kitty|
 | Table: Tournament | April 2 | Kitty |
 | Table: Smash_Character | April 2  | Kitty  |
 | Table: Ability | April 2 | Kitty  |
-| Styling: Fonts, Icons, etc. | April 3 | Kitty|
-| Screenshots of query result (using GUI) | April 3 | Kitty  |
+| Buttons / Drop downs | April 2 | Kitty  |
+| Styling: Fonts, Icons, etc. | April 4 | Kitty |
+| Screenshots of query result (using GUI) | April 4 | Kitty  |
 
 General
 | Task          | Deadline      |  Team Member  |
 | ------------- | ------------- | ------------- |
 | Project Description - General  | April 4 | Vanessa  |
 | Project Description - Changes to Schema | April 4 | Kitty  |
-| Project Description - Screenshots of data  | April 4 | Isaac |
-| Meet before Project Implementation | April 1-4 | All  |
+| Project Description - Screenshots of data  | April 4 | Kitty |
+| Meet before Project Implementation | April 1 to 4 | All  |
 
 
 **Milestone 5:** Group Demo (Tuesday, Apr 11 - 9 AM)
@@ -91,16 +92,16 @@ shows a list of the available characters in the game
 shows a list of all the players in the database
 includes player and player statistics in database
 
-* Matches
+* Games
 shows a list of the matches that have happened within a tournament
 can create a match (insert)
 
 * Tournament
 shows a list of previous and upcoming tournaments with their respective attributes
 
-* Spirits and maps
+* Spirits 
 shows a list of spirits available to be used in games
-shows a list of maps that players can play on in games
+
 
 ### Challenges:
 

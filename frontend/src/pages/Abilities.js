@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback }  from 'react';
 import AbilityTable from '../components/AbilityTable';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 const StyledH1 = styled.h1`
   text-align: center;
@@ -9,12 +9,29 @@ const StyledH1 = styled.h1`
   font-weight: bold;
 `;
 
+const StyledButton = styled.button`
+  font-size: 1em;
+  margin: 0.5em;
+  background-color: #bef0bd;
+  padding: 0.3rem;
+  
+  &:hover {
+    box-shadow: 5px 5px 5px #000000;
+  }
+
+  &:active {
+    background-color: #89c997;
+  }
+`;
+
+
 const StyledForm = styled.form`
   text-align: center;
   font-size: 1.3em;
   margin: 0.5em 0;
   font-weight: bold;
 `;
+
 
 const StyledLabel = styled.label`
   margin-left: 1em;
@@ -27,13 +44,6 @@ const StyledInput = styled.input`
   margin: 1em;
   width: 10em;
   height: 2em;
-`;
-
-const StyledButton = styled.button`
-  font-size: 1em;
-  margin: 0.5em;
-  background-color: #bef0bd;
-  padding: 0.3rem;
 `;
 
 const StyledCheckbox = styled.input`

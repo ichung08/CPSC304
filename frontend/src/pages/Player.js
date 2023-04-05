@@ -34,7 +34,14 @@ const StyledButton = styled.button`
   margin: 0.5em;
   background-color: #FFD6E8;
   padding: 0.3rem;
+  &:hover {
+    box-shadow: 5px 5px 5px #000000;
+  }
+  &:active {
+    background-color: #dea6d5;
+  }
 `;
+
 
 const StyledCheckbox = styled.input`
   margin-right: 15px;

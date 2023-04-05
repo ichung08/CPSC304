@@ -50,7 +50,12 @@ const Button = styled.button`
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
+
+  &:hover {
+    box-shadow: 2px 2px 4px #000000;
+  }
 `;
+
 
 const TournamentTable = ({ tournament, handleDelete }) => {
   return (

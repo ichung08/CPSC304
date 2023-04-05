@@ -1,5 +1,5 @@
 import './App.css';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Home from './pages/Home'
 import Logo from './pages/LogoDisplay'
@@ -47,6 +47,7 @@ const LogoWrapper = styled.div`
 `;
 
 function App() {
+
   return (
     <>
       <LogoWrapper>

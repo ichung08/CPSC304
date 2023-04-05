@@ -8,7 +8,7 @@ const Table = styled.table`
 `;
 
 const Th = styled.th`
-  background-color: #8ABD91;
+  background-color: #96C4A6;
   font-weight: bold;
   font-size: 1.5rem;
 `;

@@ -21,8 +21,9 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: white; /* change to white */
 }
+
 
 .App-link {
   color: #92daee;
@@ -50,5 +51,27 @@
 }
 
 body {
-  background-color: #ECECE9;
+  background-color: #ffffff;
+  color: #000000;
 }
+
+h1, h2, h3, h4, h5, h6 {
+  color: #000000;
+}
+
+p {
+  color: #000000;
+}
+
+/* Light mode styles */
+.light {
+  background-color: #fff;
+  color: #333;
+}
+
+/* Dark mode styles */
+.dark {
+  background-color: #333;
+  color: #fff;
+}
+

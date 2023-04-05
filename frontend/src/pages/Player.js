@@ -2,22 +2,47 @@ import React, { useState, useEffect, useCallback }  from 'react';
 import PlayerTable from '../components/PlayerTable';
 import styled from 'styled-components';
 
+
+const StyledH1 = styled.h1`
+  text-align: center;
+  font-size: 1em;
+  margin: 0.5em 0;
+  font-weight: bold;
+`;
+
 const StyledForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center;
+  font-size: 1.3em;
+  margin: 0.5em 0;
+  font-weight: bold;
 `;
 
 const StyledLabel = styled.label`
-  display: flex;
-  align-items: center;
+  margin-left: 1em;
+  font-weight: bold;
+`;
+
+
+const StyledInput = styled.input`
+  margin: 1em;
+  width: 10em;
+  height: 2em;
+`;
+
+const StyledButton = styled.button`
+  font-size: 1em;
+  margin: 0.5em;
+  background-color: #FFD6E8;
+  padding: 0.3rem;
 `;
 
 const StyledCheckbox = styled.input`
-  margin-right: 5px;
+  margin-right: 15px;
   position: relative;
   top: 2px;
+  transform: scale(2);
 `;
+
 
 const Player = () => {
     const [formData, setFormData] = useState({
@@ -35,13 +60,13 @@ const Player = () => {
         const fetchData = async () => {
             try {
                 const response = await fetch('http://localhost:3001/api/players', {
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                }
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    }
                 });
                 if (!response.ok) {
-                throw new Error('Network response was not ok');
+                    throw new Error('Network response was not ok');
                 }
                 const data = await response.json();
                 // console.log('Data:', data);
@@ -56,7 +81,7 @@ const Player = () => {
     }, []);
 
     // Selection
-    const handleChange = (event) => {
+    const handleChangeSelect = (event) => {
         const { name, value } = event.target;
         setFormData({ ...formData, [name]: value });
     };
@@ -99,67 +124,95 @@ const Player = () => {
         }
     };
 
+    // Update
+    const handleChange = (event) => {
+        setFormData({
+          ...formData,
+          [event.target.name]: event.target.value
+        });
+      }
+    
+    const handleSubmitEdit = async (event) => {
+        try {
+            const response = await fetch(`http://localhost:3001/api/player/${formData.username}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            setPlayers(data.data);
+            console.log("Query:", data.query)
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+
+
     return (
-        <>
-          <h1 style={{ textAlign: 'center', fontSize: '1em', margin: '1em 0' }}>Player Selection</h1>
-          <form onSubmit={handleSubmitSelect} style={{ textAlign: 'center', fontSize: '1em', margin: '1em 0' }}>
-            <label>
-              Username:
-              <input type="text" name="username" value={formData.username} onChange={handleChange} style={{ margin: '1em', width: '10em', height: '2em' }} />
-            </label>
-            <label style={{ marginLeft: '1em' }}>
-              Country:
-              <input type="text" name="country" value={formData.country} onChange={handleChange} style={{ margin: '1em', width: '10em', height: '2em' }} />
-            </label>
-            <label style={{ marginLeft: '1em' }}>
-              Ranking Level:
-              <input type="text" name="ranking_level" value={formData.ranking_level} onChange={handleChange} style={{ margin: '1em', width: '10em', height: '2em' }} />
-            </label>
-            <br />
-            <label style={{ marginLeft: '1em' }}>
-              Age:
-              <input type="number" name="age" value={formData.age} onChange={handleChange} style={{ margin: '1em', width: '10em', height: '2em' }} />
-            </label>
-            <label style={{ marginLeft: '1em' }}>
-              Wins:
-              <input type="number" name="wins" value={formData.wins} onChange={handleChange} style={{ margin: '1em', width: '10em', height: '2em' }} />
-            </label>
-            <label style={{ marginLeft: '1em' }}>
-              Losses:
-              <input type="number" name="losses" value={formData.losses} onChange={handleChange} style={{ margin: '1em', width: '10em', height: '2em' }} />
-            </label>
-            <button type="submit" style={{ fontSize: '1em', margin: '1em' }}>Search</button>
-          </form>
-          <form onSubmit={handleSubmitProject} style={{ textAlign: 'center', fontSize: '1em' }}>
-            <label style={{ margin: '1em' }}>
-              <StyledCheckbox type="checkbox" value="username" checked={attributes.includes('username')} onChange={handleCheckboxChange} />
-              Username
-            </label>
-            <label style={{ margin: '1em' }}>
-              <StyledCheckbox type="checkbox" value="country" checked={attributes.includes('country')} onChange={handleCheckboxChange} />
-              Country
-            </label>
-            <label style={{ margin: '1em' }}>
-              <StyledCheckbox type="checkbox" value="ranking_level" checked={attributes.includes('ranking_level')} onChange={handleCheckboxChange} />
-              Ranking Level
-            </label>
-            <label style={{ margin: '1em' }}>
-              <StyledCheckbox type="checkbox" value="age" checked={attributes.includes('age')} onChange={handleCheckboxChange} />
-              Age
-            </label>
-            <label style={{ margin: '1em' }}>
-              <StyledCheckbox type="checkbox" value="wins" checked={attributes.includes('wins')} onChange={handleCheckboxChange} />
-              Wins
-            </label>
-            <label style={{ margin: '1em' }}>
-              <StyledCheckbox type="checkbox" value="losses" checked={attributes.includes('losses')} onChange={handleCheckboxChange} />
-              Losses
-            </label>
-            <button type="submit" style={{ fontSize: '1em', margin: '1em' }}>Submit</button>
-          </form>
-          <PlayerTable players={players} style={{ margin: '1em 0' }} />
-        </>
-      );
+      <>
+        <StyledH1>Player Selection</StyledH1>
+        <StyledForm>
+          <StyledLabel>
+            Username:
+            <StyledInput type="text" name="username" value={formData.username} onChange={handleChange} />
+          </StyledLabel>
+          <StyledLabel>
+            Country:
+            <StyledInput type="text" name="country" value={formData.country} onChange={handleChange} />
+          </StyledLabel>
+          <StyledLabel>
+            Ranking Level:
+            <StyledInput type="text" name="ranking_level" value={formData.ranking_level} onChange={handleChange} />
+          </StyledLabel>
+          <br />
+          <StyledLabel>
+            Age:
+            <StyledInput type="number" name="age" value={formData.age} onChange={handleChange} />
+          </StyledLabel>
+          <StyledLabel>
+            Wins:
+            <StyledInput type="number" name="wins" value={formData.wins} onChange={handleChange} />
+          </StyledLabel>
+          <StyledLabel>
+            Losses:
+            <StyledInput type="number" name="losses" value={formData.losses} onChange={handleChange} />
+          </StyledLabel>
+          <StyledButton type="submit" onClick={handleSubmitSelect}>Search</StyledButton>
+          <StyledButton type="submit" onClick={handleSubmitEdit}>Update</StyledButton>
+        </StyledForm>
+        <StyledForm onSubmit={handleSubmitProject}>
+          <StyledLabel>
+            <StyledCheckbox type="checkbox" value="username" checked={attributes.includes('username')} onChange={handleCheckboxChange} />
+            Username
+          </StyledLabel>
+          <StyledLabel>
+            <StyledCheckbox type="checkbox" value="country" checked={attributes.includes('country')} onChange={handleCheckboxChange} />
+            Country
+          </StyledLabel>
+          <StyledLabel>
+            <StyledCheckbox type="checkbox" value="ranking_level" checked={attributes.includes('ranking_level')} onChange={handleCheckboxChange} />
+            Ranking Level
+          </StyledLabel>
+          <StyledLabel>
+            <StyledCheckbox type="checkbox" value="age" checked={attributes.includes('age')} onChange={handleCheckboxChange} />
+            Age
+          </StyledLabel>
+          <StyledLabel>
+            <StyledCheckbox type="checkbox" value="wins" checked={attributes.includes('wins')} onChange={handleCheckboxChange} />
+            Wins
+          </StyledLabel>
+          <StyledLabel>
+            <StyledCheckbox type="checkbox" value="losses" checked={attributes.includes('losses')} onChange={handleCheckboxChange} />
+            Losses
+          </StyledLabel>
+          <StyledButton type="submit">Submit</StyledButton>
+        </StyledForm>
+        <PlayerTable players={players} style={{ margin: '1em 0' }} />
+      </>
+    );
       
       
 }

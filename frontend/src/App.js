@@ -47,7 +47,7 @@ const Title = styled.h2`
 
 
 const Section = styled.section`
-  margin: 0 5rem;
+  margin: 0 10rem;
 `;
 
 const LogoWrapper = styled.div`

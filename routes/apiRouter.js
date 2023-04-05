@@ -218,12 +218,14 @@ and provide an interface (e.g., HTML button/dropdown, etc.) for the user to exec
 The group can choose which table to run this query on. 
 The query and chosen table(s) should make sense given the context of the application.*/
 
-/* Find total number of wins for each country
+/* Find total number of wins for an attribute
 Use Case: Find the statistics for country wins */
-router.get('/country-wins', async function(req, res, next) {
-    sql.query(`SELECT country, SUM(wins) as total_wins
+router.get('/wins/:attribute', async function(req, res, next) {
+    const attribute = req.params.attribute
+
+    sql.query(`SELECT ${attribute}, SUM(wins) as total_wins
         FROM Player
-        GROUP BY country`, (error, results) => {
+        GROUP BY ${attribute}`, (error, results) => {
         if (error) {
             console.error(`Error`, error.message)
             next(error)
@@ -238,14 +240,16 @@ Create one meaningful query that requires the use of a HAVING clause,
 and provide an interface (e.g., HTML button/dropdown, etc.) for the user to execute this query.
 The query and chosen table(s) should make sense given the context of the application. */
 
-/* This query calculates the number of players in each country that has more than 2 players and orders the results by the number of players in descending order. 
+/* This query calculates the number of players in each attribute that has more than 2 players and orders the results by the number of players in descending order. 
 The HAVING clause filters the groups with less than 3 players.
 Use case: We want to see which countries can create teams to send to tournaments (teams = countries with more than 1 player) */
-router.get('/country-teams', async function(req, res, next) {
-    sql.query(`SELECT country, COUNT(username) AS num_players
+router.get('/teams/:attribute', async function(req, res, next) {
+    const attribute = req.params.attribute
+
+    sql.query(`SELECT ${attribute}, COUNT(username) AS num_players
         FROM Player
-        GROUP BY country
-        HAVING num_players > 3
+        GROUP BY ${attribute}
+        HAVING num_players > 2
         ORDER BY num_players DESC`, (error, results) => {
         if (error) {
             console.error(`Error`, error.message)
@@ -265,30 +269,22 @@ You must use separate distinct queries for this criterion and the Aggregation Qu
 It is fine to use a view to get the desired behaviour.
 The query and chosen table(s) should make sense given the context of the application.*/
 
-/* Retrieves the average age of players for each ranking level, 
+/* Retrieves the average age of players for an attribute, 
 but only for ranking levels that have more than one player.
-The results are sorted in ascending order of ranking levels, from beginner to diamond.
 
 Use Case: Collect data on age averages of ranking levels,
 but only for ranking levels that have more than one player. This will prevent bias:
 (ie, if a ranking level only has one player, the average age may not useful for data collection) */
 
-router.get('/avg-age-per-rank', async function(req, res, next) {
-    sql.query(`SELECT p1.ranking_level, AVG(p1.age) as avg_age
+router.get('/avg-age/:attribute', async function(req, res, next) {
+    const attribute = req.params.attribute
+
+    sql.query(`SELECT p1.${attribute}, AVG(p1.age) as avg_age
         FROM Player p1
-        GROUP BY p1.ranking_level
+        GROUP BY p1.${attribute}
         HAVING 1 < (SELECT COUNT(*)
                     FROM Player p2
-                    WHERE p1.ranking_level = p2.ranking_level)
-        ORDER BY
-        CASE ranking_level 
-            WHEN 'beginner' THEN 1 
-            WHEN 'bronze' THEN 2
-            WHEN 'silver' THEN 3
-            WHEN 'gold' THEN 4
-            WHEN 'platinum' THEN 5
-            WHEN 'diamond' THEN 6
-        END ASC;`, (error, results) => {
+                    WHERE p1.${attribute} = p2.${attribute})`, (error, results) => {
         if (error) {
             console.error(`Error`, error.message)
             next(error)
@@ -315,13 +311,15 @@ which helps determine if a player has played in all the games or not.
 Use case: tournament organizers can give out the most participation award
 */
 
-router.get('/played-every-game', async function(req, res, next) {
+router.get('/played-every-game/:id', async function(req, res, next) {
+    const tournament_id = req.params.id
+
     sql.query(`SELECT username
         FROM Player 
         WHERE NOT EXISTS (
             SELECT game_id
             FROM Game_Tournament 
-            WHERE tournament_id = 800
+            WHERE tournament_id = ${tournament_id}
             EXCEPT
             SELECT game_id
             FROM Game_Player 

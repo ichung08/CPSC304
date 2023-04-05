@@ -190,7 +190,7 @@ router.put('/player/:username', async function(req, res, next) {
     })
 });
 
-/* 2) Query: DELETE 
+/* 2) Query: DELETE - DONE
 Implement a cascade-on-delete situation (or an alternative that was agreed to by the TA if the DB system doesn’t provide this). 
 The user should be able to choose what values to delete. The tables that the delete operation will run on can be chosen by the group. 
 The chosen query and table(s) should make sense given the context of the application. */

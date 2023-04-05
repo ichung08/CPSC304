@@ -7,14 +7,16 @@ import Logo from './pages/LogoDisplay'
 import Player from './pages/Player';
 import Tournament from './pages/Tournament';
 import SmashCharacter from './pages/Character';
+import Ability from './pages/Abilities';
 import styled from 'styled-components';
 
 import kirbyImage from './assets/kirby.png';
 import marioImage from './assets/mario.png'
 import donkeykongImage from './assets/donkeykong.png'
+import yoshiImage from './assets/yoshi.png'
 
 const Spacer = styled.div`
-  height: 100px; /* adjust the height as needed */
+  height: 70px; /* adjust the height as needed */
 `;
 
 const Spacer2 = styled.div`
@@ -35,7 +37,7 @@ const Title = styled.h2`
 `;
 
 const Section = styled.section`
-  margin: 0 4rem;
+  margin: 0 7rem;
 `;
 
 const LogoWrapper = styled.div`
@@ -76,6 +78,15 @@ function App() {
       <Spacer2 />
       <Section>
         <SmashCharacter />
+      </Section>
+      <Spacer />
+      <Title>
+        <img src={yoshiImage} alt="Yoshi icon" />
+        Abilities
+      </Title>
+      <Spacer2 />
+      <Section>
+        <Ability />
       </Section>
       <Spacer />
     </>

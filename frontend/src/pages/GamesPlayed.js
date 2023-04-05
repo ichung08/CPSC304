@@ -2,9 +2,35 @@ import React, { useState, useEffect } from 'react';
 import GamesPlayedTable from '../components/GamesPlayedTable';
 import styled from 'styled-components';
 
+const StyledLabel = styled.label`
+  font-size: 1.3em;
+  text-align: center;
+  display: block;
+  margin-bottom: 0.5em;
+`;
+
+const SelectContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5em;
+`;
+
+
 const Select = styled.select`
-  font-size: 1rem;
-  padding: 0.5rem;
+  font-size: 1em;
+  padding: 0.5em;
+  margin: 0.5em;
+  border-radius: 3px;
+  border: none;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+`;
+
+const StyledH1 = styled.h1`
+  text-align: center;
+  font-size: 1em;
+  margin: 0.5em 0;
+  font-weight: bold;
 `;
 
 const GamesPlayed = ( ) => {
@@ -55,20 +81,23 @@ const GamesPlayed = ( ) => {
         setUsername(event.target.value);
     };
 
-  return (
-    <>
-        <label htmlFor="user">Select a user:</label>
-        <Select id="user" value={username} onChange={handleChange}>
-            <option value="">-- Select a user --</option>
+    return (
+      <>
+        <StyledH1 htmlFor="user">Select a user:</StyledH1>
+        <SelectContainer>
+          <Select id="user" value={username} onChange={handleChange}>
+            <option value=""> -- Select a user --</option>
             {players.map(player => (
-                <option key={player.username} value={player.username}>
-                    {player.username}
-                </option>
+              <option key={player.username} value={player.username}>
+                {player.username}
+              </option>
             ))}
-        </Select>
+          </Select>
+        </SelectContainer>
         <GamesPlayedTable games_played={gamesPlayed} />
-    </>
-  );
+      </>
+    );
+    
 };
 
 export default GamesPlayed;

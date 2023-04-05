@@ -14,6 +14,8 @@ import kirbyImage from './assets/kirby.png';
 import marioImage from './assets/mario.png'
 import donkeykongImage from './assets/donkeykong.png'
 import yoshiImage from './assets/yoshi.png'
+import GamePlayer from './pages/GamePlayer';
+import GamesPlayed from './pages/GamesPlayed';
 
 const Spacer = styled.div`
   height: 70px; /* adjust the height as needed */
@@ -89,6 +91,22 @@ function App() {
         <Ability />
       </Section>
       <Spacer />
+      <Title>
+        <img src={yoshiImage} alt="Yoshi icon" />
+        Game Player
+      </Title>
+      <Spacer2 />
+      <Section>
+        <GamePlayer />
+      </Section>
+      <Title>
+        <img src={yoshiImage} alt="Yoshi icon" />
+        Games Played
+      </Title>
+      <Spacer2 />
+      <Section>
+        <GamesPlayed />
+      </Section>
     </>
   );
 }

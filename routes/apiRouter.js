@@ -66,7 +66,7 @@ That is, the user is able to determine what shows up in the WHERE clause.
 The group can choose which table to run this query on. 
 The query and chosen table(s) should make sense given the context of the application.*/
 
-// http://localhost:3001/api/player-selection?country=Canada
+// http://localhost:3001/api/player-selection?country=Canada&wins=29
 
 router.get('/player-selection', async function(req, res, next) {
     const {username, country, ranking_level, age, wins, losses} = req.query;

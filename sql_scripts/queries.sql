@@ -1,6 +1,6 @@
 /* RUBRIC */
 
-/* 1) Query: INSERT
+/* 1) Query: INSERT - DONE
 The user should be able to specify what values to insert. 
 The insert operation should affect more than one table 
 (i.e., an insert should occur on a table with a foreign key). 
@@ -30,7 +30,7 @@ Depending on the context of the situation for insert, you may end up in one of t
 Scenarios 1 + 2 or 1 + 3 are reasonable combinations to have your application handle. */
 
 ----------------
-/* 2) Query: DELETE - done
+/* 2) Query: DELETE - DONE
 Implement a cascade-on-delete situation (or an alternative that was agreed to by the TA if the DB system doesn’t provide this). 
 The user should be able to choose what values to delete. The tables that the delete operation will run on can be chosen by the group. 
 The chosen query and table(s) should make sense given the context of the application. */
@@ -106,7 +106,7 @@ SELECT country, SUM(wins) as total_wins
 FROM Player
 GROUP BY country;
 
-/* 8) Query: Aggregation with HAVING
+/* 8) Query: Aggregation with HAVING - DONE
 Create one meaningful query that requires the use of a HAVING clause, 
 and provide an interface (e.g., HTML button/dropdown, etc.) for the user to execute this query.
 The query and chosen table(s) should make sense given the context of the application. */
@@ -121,7 +121,7 @@ HAVING num_players > 3
 ORDER BY num_players DESC;
 
 
-/* 9) Query: Nested Aggregation with GROUP BY
+/* 9) Query: Nested Aggregation with GROUP BY - DONE
 Create one query that finds some aggregated value for each group 
 (e.g., use a nested subquery, such as finding the average number of items purchased per customer, subject to some constraint). 
 Some examples for the Sailors table are given in the project specs. 
@@ -130,21 +130,29 @@ You must use separate distinct queries for this criterion and the Aggregation Qu
 It is fine to use a view to get the desired behaviour.
 The query and chosen table(s) should make sense given the context of the application.*/
 
+/* Retrieves the average age of players for each ranking level, 
+but only for ranking levels that have more than one player.
+The results are sorted in ascending order of ranking levels, from beginner to diamond.
+
+Use Case: Collect data on age averages of ranking levels,
+but only for ranking levels that have more than one player. This will prevent bias:
+(ie, if a ranking level only has one player, the average age may not useful for data collection) */
+
 SELECT p1.ranking_level, AVG(p1.age) as avg_age
 FROM Player p1
 GROUP BY p1.ranking_level
 HAVING 1 < ( SELECT COUNT(*)
-FROM Player p2
-WHERE p1.ranking_level = p2.ranking_level)
- ORDER BY
-  CASE ranking_level 
+                FROM Player p2
+                WHERE p1.ranking_level = p2.ranking_level)
+ORDER BY
+CASE ranking_level 
     WHEN 'beginner' THEN 1 
     WHEN 'bronze' THEN 2
     WHEN 'silver' THEN 3
     WHEN 'gold' THEN 4
     WHEN 'platinum' THEN 5
     WHEN 'diamond' THEN 6
-  END ASC;
+END ASC;
 
 /* 10) Query: Division
 Create one query of this category and provide an interface 

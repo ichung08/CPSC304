@@ -1,9 +1,9 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 import Home from './pages/Home';
 import Logo from './pages/LogoDisplay';
-
 import Player from './pages/Player';
 import Tournament from './pages/Tournament';
 import SmashCharacter from './pages/Character';
@@ -20,7 +20,6 @@ import samusImage from './assets/samus.png';
 import zeldaImage from './assets/zelda.png';
 import dededeImage from './assets/dedede.png';
 import littlemacImage from './assets/littlemac.png';
-
 
 import GamePlayer from './pages/GamePlayer';
 import GamesPlayed from './pages/GamesPlayed';
@@ -49,6 +48,20 @@ const Title = styled.h2`
     width: 1.5rem;
   }
   text-shadow: 3px 3px #ccc;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+    text-shadow: 3px 3px #fff;
+  }
+
+  ${({ active }) =>
+    active &&
+    `
+      background-color: #eee;
+      transform: scale(1.05);
+    `}
 `;
 
 
@@ -62,7 +75,18 @@ const LogoWrapper = styled.div`
   margin-top: 2rem;
 `;
 
+
 function App() {
+  const [showPlayers, setShowPlayers] = useState(false);
+  const [showTournaments, setShowTournaments] = useState(false);
+  const [showCharacters, setShowCharacters] = useState(false);
+  const [showAbilities, setShowAbilities] = useState(false);
+  const [showGamePlayers, setShowGamePlayers] = useState(false);
+  const [showGamesPlayed, setShowGamesPlayed] = useState(false);
+  const [showWins, setShowWins] = useState(false);
+  const [showTeams, setShowTeams] = useState(false);
+  const [showAvgAge, setShowAvgAge] = useState(false);
+  const [showEveryGame, setShowEveryGame] = useState(false);
 
   return (
     <>
@@ -70,88 +94,86 @@ function App() {
         <Logo />
       </LogoWrapper>
       <Home />
-      <Title>
+      <Title onClick={() => setShowPlayers(!showPlayers)}>
         <img src={kirbyImage} alt="Kirby icon" />
         Players
       </Title>
       <Section>
-        <Player />
+        {showPlayers && <Player />}
       </Section>
       <Spacer />
-      <Title>
+      <Title onClick={() => setShowTournaments(!showTournaments)}>
         <img src={marioImage} alt="Mario icon" />
         Tournaments
       </Title>
-      <Spacer2 />
       <Section>
-        <Tournament />
+        {showTournaments && <Tournament />}
       </Section>
       <Spacer />
-      <Title>
+      <Title onClick={() => setShowCharacters(!showCharacters)}>
         <img src={donkeykongImage} alt="Donkey Kong icon" />
         Characters
       </Title>
-      <Spacer2 />
       <Section>
-        <SmashCharacter />
+        {showCharacters && <SmashCharacter />}
       </Section>
       <Spacer />
-      <Title>
+      <Title onClick={() => setShowAbilities(!showAbilities)}>
         <img src={yoshiImage} alt="Yoshi icon" />
         Abilities
       </Title>
       <Section>
-        <Ability />
+        {showAbilities && <Ability />}
       </Section>
       <Spacer />
-      <Title>
+      <Title onClick={() => setShowGamePlayers(!showGamePlayers)}>
         <img src={daisyImage} alt="Daisy icon" />
         Game Player
       </Title>
-      <Spacer2 />
       <Section>
-        <GamePlayer />
+        {showGamePlayers && <GamePlayer />}
       </Section>
       <Spacer />
-      <Title>
+      <Title onClick={() => setShowGamesPlayed(!showGamesPlayed)}>
         <img src={bowserImage} alt="Bowser icon" />
         Games Played
       </Title>
       <Section>
-        <GamesPlayed />
+        {showGamesPlayed && <GamesPlayed />}
       </Section>
       <Spacer />
-      <Title>
+      <Title onClick={() => setShowWins(!showWins)}>
         <img src={samusImage} alt="Samus icon" />
         Wins by Attribute
       </Title>
       <Section>
-        <Wins />
+        {showWins && <Wins />}
       </Section>
       <Spacer />
-      <Title>
+      <Title onClick={() => setShowTeams(!showTeams)}>
         <img src={zeldaImage} alt="Zelda icon" />
         Teams by Attribute
       </Title>
       <Section>
-        <Teams />
+        {showTeams && <Teams />}
       </Section>
       <Spacer />
-      <Title>
+      <Title onClick={() => setShowAvgAge(!showAvgAge)}>
         <img src={dededeImage} alt="Dedede icon" />
         Average Age by Attribute
       </Title>
       <Section>
-        <AvgAge />
+        {showAvgAge && <AvgAge />}
       </Section>
       <Spacer />
-      <Title>
+      <Title onClick={() => setShowEveryGame(!showEveryGame)}>
         <img src={littlemacImage} alt="Little Mac icon" />
         Players who played every game in a tournament
       </Title>
       <Section>
-        <EveryGame />
-      </Section>
+        {showEveryGame && <EveryGame />}
+        </Section>
+        <Spacer />
     </>
   );
 }

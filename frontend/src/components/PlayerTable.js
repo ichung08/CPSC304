@@ -8,13 +8,13 @@ const Table = styled.table`
 `;
 
 const Th = styled.th`
-  background-color: #f2f2f2;
+  background-color: #ADD8E6;
   font-weight: bold;
 `;
 
 const Tr = styled.tr`
   &:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #ADD8E6;
   }
 `;
 

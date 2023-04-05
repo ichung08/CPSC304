@@ -25,7 +25,7 @@ const Spacer2 = styled.div`
 
 const Title = styled.h2`
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,7 +37,7 @@ const Title = styled.h2`
 `;
 
 const Section = styled.section`
-  margin: 0 7rem;
+  margin: 0 5rem;
 `;
 
 const LogoWrapper = styled.div`
@@ -58,7 +58,6 @@ function App() {
         <img src={kirbyImage} alt="Kirby icon" />
         Players
       </Title>
-      <Spacer2 />
       <Section>
         <Player />
       </Section>

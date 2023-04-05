@@ -13,8 +13,8 @@ const Tournament = () => {
             throw new Error('Network response was not ok');
           }
           const data = await response.json();
-          console.log('Data:', data);
-          console.log('Query:', data.query)
+          // console.log('Data:', data);
+          // console.log('Query:', data.query)
           setTournament(data.data);
         } catch (error) {
           console.error('Error:', error);

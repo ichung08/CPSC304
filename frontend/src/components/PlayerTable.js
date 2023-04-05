@@ -8,14 +8,17 @@ const Table = styled.table`
 `;
 
 const Th = styled.th`
-  background-color: #ADD8E6;
+  background-color: #FFD6E8;
   font-weight: bold;
+  font-size: 1.5rem;
 `;
 
 const Tr = styled.tr`
   &:nth-child(even) {
-    background-color: #ADD8E6;
+    background-color: #FDF9ED;
   }
+  font-weight: 300;
+  font-size: 0.9rem;
 `;
 
 const Td = styled.td`
@@ -31,6 +34,8 @@ const PlayerTable = ({ players }) => {
         <Tr>
           <Th>Username</Th>
           <Th>Country</Th>
+          <Th>Ranking Level</Th>
+          <Th>Age</Th>
           <Th>Wins</Th>
           <Th>Losses</Th>
         </Tr>
@@ -40,6 +45,8 @@ const PlayerTable = ({ players }) => {
           <Tr key={player.username}>
             <Td>{player.username}</Td>
             <Td>{player.country}</Td>
+            <Td>{player.ranking_level}</Td>
+            <Td>{player.age}</Td>
             <Td>{player.wins}</Td>
             <Td>{player.losses}</Td>
           </Tr>

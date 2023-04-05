@@ -1,5 +1,5 @@
 import './App.css';
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 
 import Home from './pages/Home'
 import Logo from './pages/LogoDisplay'
@@ -8,8 +8,11 @@ import Player from './pages/Player';
 import Tournament from './pages/Tournament';
 import styled from 'styled-components';
 
+import kirbyImage from './font/kirby.png';
+import marioImage from './font/mario.png'
+
 const Spacer = styled.div`
-  height: 200px; /* adjust the height as needed */
+  height: 100px; /* adjust the height as needed */
 `;
 
 const Spacer2 = styled.div`
@@ -19,6 +22,14 @@ const Spacer2 = styled.div`
 const Title = styled.h2`
   text-align: center;
   margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  img {
+    height: 1.5rem;
+    width: 1.5rem;
+  }
 `;
 
 function App() {
@@ -26,11 +37,17 @@ function App() {
     <>
       <Logo />
       <Home />
-      <Title>Players</Title>
+      <Title>
+        <img src={kirbyImage} alt="Kirby icon" />
+        Players
+      </Title>
       <Spacer2 />
       <Player />
       <Spacer />
-      <Title>Tournaments</Title>
+      <Title>
+        <img src={marioImage} alt="Mario icon" />
+        Tournaments
+      </Title>
       <Spacer2 />
       <Tournament />
       <Spacer />

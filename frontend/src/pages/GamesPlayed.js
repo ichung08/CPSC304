@@ -21,6 +21,7 @@ const GamesPlayed = ( ) => {
         }
         const data = await response.json();
         setGamesPlayed(data.data);
+        console.log(data.query)
       } catch (error) {
         console.error('Error:', error);
       }

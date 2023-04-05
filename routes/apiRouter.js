@@ -252,7 +252,7 @@ router.get('/games-played/:username', async function(req, res, next) {
     });
 });
 
-/* 7) Query: Aggregation with GROUP BY
+/* 7) Query: Aggregation with GROUP BY - DONE
 Create one query that requires the use of aggregation 
 (min, max, average, or count are all fine), 
 and provide an interface (e.g., HTML button/dropdown, etc.) for the user to execute this query. 

@@ -16,6 +16,7 @@ import donkeykongImage from './assets/donkeykong.png'
 import yoshiImage from './assets/yoshi.png'
 import GamePlayer from './pages/GamePlayer';
 import GamesPlayed from './pages/GamesPlayed';
+import Wins from './pages/Wins';
 
 const Spacer = styled.div`
   height: 70px; /* adjust the height as needed */
@@ -106,6 +107,14 @@ function App() {
       <Spacer2 />
       <Section>
         <GamesPlayed />
+      </Section>
+      <Title>
+        <img src={yoshiImage} alt="Yoshi icon" />
+        Wins by Attribute
+      </Title>
+      <Spacer2 />
+      <Section>
+        <Wins />
       </Section>
     </>
   );

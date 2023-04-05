@@ -19,6 +19,7 @@ import bowserImage from './assets/bowser.png';
 import samusImage from './assets/samus.png';
 import zeldaImage from './assets/zelda.png';
 import dededeImage from './assets/dedede.png';
+import littlemacImage from './assets/littlemac.png';
 
 
 import GamePlayer from './pages/GamePlayer';
@@ -143,11 +144,11 @@ function App() {
       <Section>
         <AvgAge />
       </Section>
+      <Spacer />
       <Title>
-        <img src={yoshiImage} alt="Yoshi icon" />
+        <img src={littlemacImage} alt="Little Mac icon" />
         Players who played every game in a tournament
       </Title>
-      <Spacer2 />
       <Section>
         <EveryGame />
       </Section>

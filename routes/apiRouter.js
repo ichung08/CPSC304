@@ -74,6 +74,95 @@ router.get('/game_player', async function(req, res, next) {
     }
 })
 
+/* Get all Game_Tourament */
+router.get('/game_tournament', async function(req, res, next) {
+    const sqlQuery = `SELECT * FROM Game_Tournament`
+    try {
+        sql.query(sqlQuery, (error, results) => {
+            res.json({ data: results, query: sqlQuery });
+        });
+        
+    } catch (error){
+        console.error(`Error`, error.message)
+        next(error)
+    }
+})
+
+/* 1) Query: INSERT - DONE
+The user should be able to specify what values to insert. 
+The insert operation should affect more than one table 
+(i.e., an insert should occur on a table with a foreign key). 
+The chosen query and table(s) should make sense given the context of the application.*/
+
+router.post('/ability', async function(req, res, next) {
+    const body = req.body
+
+    const sqlQuery = `INSERT INTO ABILITY VALUES ("${body.character_name}", "${body.ultimate_attack}", "${body.up_attack}", "${body.neutral_attack}", "${body.down_attack}")`
+
+    try {
+        const result =  sql.query(sqlQuery);
+
+        res.json({ data: result, query: sqlQuery });
+    } catch (error){
+        // If a foreign key error occurred, return a custom error message to the client
+        if (error.code === 'ER_NO_REFERENCED_ROW_2') {
+            res.status(400).json({ message: 'Invalid foreign key' });
+        } else {
+            // If an unknown error occurred, return a generic error message to the client
+            console.error(error);
+            res.status(500).json({ message: 'Internal server error' });
+        }
+    }
+});
+
+/* 2) Query: DELETE - DONE
+Implement a cascade-on-delete situation (or an alternative that was agreed to by the TA if the DB system doesn’t provide this). 
+The user should be able to choose what values to delete. The tables that the delete operation will run on can be chosen by the group. 
+The chosen query and table(s) should make sense given the context of the application. */
+
+// http://localhost:3001/api/tournament/900
+
+router.delete('/tournament/:id', async function(req, res, next) {
+    const sqlQuery = `DELETE FROM Tournament WHERE tournament_id="${req.params.id}"`
+    sql.query(sqlQuery, (error, results) => {
+        if (error) {
+            console.error(`Error`, error.message)
+            next(error)
+        }
+
+        res.json({ data: results, query: sqlQuery });
+    })
+});
+
+/* 3) Query: UPDATE - DONE
+The user should be able to specify whichever value(s) to update (i.e., any number of values in one or more columns). 
+The group can choose which table to run this query on. The chosen query and table(s) should make sense given the context of the application. */
+
+// http://localhost:3001/api/player/Adam
+
+router.put('/player/:username', async function(req, res, next) {
+    const body = req.body;
+    const columnsToUpdate = Object.keys(body);
+    const valuesToUpdate = Object.values(body);
+    
+    let sqlQuery = "UPDATE Player SET ";
+    for (let i = 0; i < columnsToUpdate.length; i++) {
+        sqlQuery += `${columnsToUpdate[i]}="${valuesToUpdate[i]}"`;
+        if (i < columnsToUpdate.length - 1) {
+            sqlQuery += ", ";
+        }
+    }
+    sqlQuery += ` WHERE username="${req.params.username}"`;
+
+    sql.query(sqlQuery, (error, results) => {
+        if (error) {
+            console.error(`Error`, error.message)
+            next(error)
+        } 
+        res.json({ data: results, query: sqlQuery });
+    })
+});
+
 /* 4) Query: Selection - DONE
 The user is able to specify the filtering conditions for a given table. 
 That is, the user is able to determine what shows up in the WHERE clause.
@@ -152,81 +241,6 @@ router.get('/player-projection', async function(req, res, next) {
 
         res.json({ data: results, query: sqlQuery });
       });
-});
-
-/* 1) Query: INSERT - DONE
-The user should be able to specify what values to insert. 
-The insert operation should affect more than one table 
-(i.e., an insert should occur on a table with a foreign key). 
-The chosen query and table(s) should make sense given the context of the application.*/
-
-router.post('/ability', async function(req, res, next) {
-    const body = req.body
-
-    const sqlQuery = `INSERT INTO ABILITY VALUES ("${body.character_name}", "${body.ultimate_attack}", "${body.up_attack}", "${body.neutral_attack}", "${body.down_attack}")`
-
-    try {
-        const result =  sql.query(sqlQuery);
-
-        res.json({ data: result, query: sqlQuery });
-    } catch (error){
-        // If a foreign key error occurred, return a custom error message to the client
-        if (error.code === 'ER_NO_REFERENCED_ROW_2') {
-            res.status(400).json({ message: 'Invalid foreign key' });
-        } else {
-            // If an unknown error occurred, return a generic error message to the client
-            console.error(error);
-            res.status(500).json({ message: 'Internal server error' });
-        }
-    }
-});
-
-/* 3) Query: UPDATE - DONE
-The user should be able to specify whichever value(s) to update (i.e., any number of values in one or more columns). 
-The group can choose which table to run this query on. The chosen query and table(s) should make sense given the context of the application. */
-
-// http://localhost:3001/api/player/Adam
-
-router.put('/player/:username', async function(req, res, next) {
-    const body = req.body;
-    const columnsToUpdate = Object.keys(body);
-    const valuesToUpdate = Object.values(body);
-    
-    let sqlQuery = "UPDATE Player SET ";
-    for (let i = 0; i < columnsToUpdate.length; i++) {
-        sqlQuery += `${columnsToUpdate[i]}="${valuesToUpdate[i]}"`;
-        if (i < columnsToUpdate.length - 1) {
-            sqlQuery += ", ";
-        }
-    }
-    sqlQuery += ` WHERE username="${req.params.username}"`;
-
-    sql.query(sqlQuery, (error, results) => {
-        if (error) {
-            console.error(`Error`, error.message)
-            next(error)
-        } 
-        res.json({ data: results, query: sqlQuery });
-    })
-});
-
-/* 2) Query: DELETE - DONE
-Implement a cascade-on-delete situation (or an alternative that was agreed to by the TA if the DB system doesn’t provide this). 
-The user should be able to choose what values to delete. The tables that the delete operation will run on can be chosen by the group. 
-The chosen query and table(s) should make sense given the context of the application. */
-
-// http://localhost:3001/api/tournament/900
-
-router.delete('/tournament/:id', async function(req, res, next) {
-    const sqlQuery = `DELETE FROM Tournament WHERE tournament_id="${req.params.id}"`
-    sql.query(sqlQuery, (error, results) => {
-        if (error) {
-            console.error(`Error`, error.message)
-            next(error)
-        }
-
-        res.json({ data: results, query: sqlQuery });
-    })
 });
 
 /* 6) Query: Join - DONE

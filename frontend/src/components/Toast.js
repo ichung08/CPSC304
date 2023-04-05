@@ -42,7 +42,7 @@ const PopUpToast = ({ message, type }) => {
 
     const timer = setTimeout(() => {
       setShow(false);
-    }, 3000);
+    }, 5000);
 
     return () => {
       clearTimeout(timer);

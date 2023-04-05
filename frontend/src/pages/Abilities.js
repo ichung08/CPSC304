@@ -88,13 +88,6 @@ const Ability = () => {
             down_attack: downAttack,
         };
 
-        // if (characterNames.includes(characterName)) {
-        //   setShowToast(true);
-        //   setToastType("failure");
-        //   setToastMessage("Insert failed!");
-        //   return;
-        // }
-
         try {
             const response = await fetch('http://localhost:3001/api/ability', {
                 method: 'POST',
@@ -119,9 +112,6 @@ const Ability = () => {
             setToastType("failure");
             setToastMessage("Insert failed!");
         }
-        setShowToast(true);
-        setToastType("failure");
-        setToastMessage("Insert failed!");
     };
 
     const handleCloseToast = () => {
@@ -153,31 +143,6 @@ const Ability = () => {
         
         fetchAbilities();
     }, [refresh]);
-
-
-function Ability() {
-    const [showTable, setShowTable] = useState(false);
-  
-    const toggleTable = () => {
-      setShowTable(!showTable);
-    }
-  
-    return (
-      <>
-        <StyledForm onSubmit={handleSubmit}>
-          {/* your form inputs */}
-        </StyledForm>
-  
-        <div>
-          <button onClick={toggleTable}>
-            {showTable ? 'Hide Table' : 'Show Table'}
-          </button>
-  
-          {showTable && abilities && <AbilityTable ability={abilities} />}
-        </div>
-      </>
-    );
-  }  
   
 
     return (

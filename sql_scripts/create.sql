@@ -130,11 +130,6 @@ CREATE TABLE Player (
     PRIMARY KEY (username)
 );
 
-under 20 beginner
-20-30 bronze
-30-40 silver
-40-50 gold
-50+ platinum
 
 INSERT INTO Player
 VALUES ("Overtaker", "Canada", "platinum", 22, 59, 5),

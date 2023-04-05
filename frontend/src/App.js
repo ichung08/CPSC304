@@ -29,7 +29,7 @@ import AvgAge from './pages/AvgAge';
 import EveryGame from './pages/EveryGame';
 
 const Spacer = styled.div`
-  height: 70px; /* adjust the height as needed */
+  height: 50px; /* adjust the height as needed */
 `;
 
 const Spacer2 = styled.div`
@@ -53,14 +53,15 @@ const Title = styled.h2`
 
   &:hover {
     transform: scale(1.1);
-    text-shadow: 3px 3px #fff;
+    color: #1B1B9E;
+    text-shadow: 2px 2px #FED324;
   }
 
   ${({ active }) =>
     active &&
     `
       background-color: #eee;
-      transform: scale(1.05);
+      transform: scale(1.1);
     `}
 `;
 

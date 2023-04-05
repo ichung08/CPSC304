@@ -33,7 +33,7 @@ const Td = styled.td`
   border: 1px solid #ccc;
 `;
 
-const WinsTable = ({ wins, attribute }) => {
+const TeamsTable = ({ teams, attribute }) => {
   
   return (
     <Container>
@@ -41,17 +41,17 @@ const WinsTable = ({ wins, attribute }) => {
           <thead>
             <Tr>
               <Th>{attribute}</Th>
-              <Th>Total Wins</Th>
+              <Th>Number of Players</Th>
             </Tr>
           </thead>
           <tbody>
-            {wins.map(wins => (
+            {teams.map(team => (
               <Tr>
                 {attribute == "country" ? 
-                  <Td>{wins.country}</Td> : 
+                  <Td>{team.country}</Td> : 
                   attribute == "age" ? 
-                  <Td>{wins.age}</Td> : <Td>{wins.ranking_level}</Td>}
-                <Td>{wins.total_wins}</Td>
+                  <Td>{team.age}</Td> : <Td>{team.ranking_level}</Td>}
+                <Td>{team.num_players}</Td>
               </Tr>
             ))}
           </tbody>
@@ -60,4 +60,4 @@ const WinsTable = ({ wins, attribute }) => {
   );
 };
 
-export default WinsTable;
+export default TeamsTable;

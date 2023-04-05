@@ -279,7 +279,7 @@ router.get('/wins/:attribute', async function(req, res, next) {
     });
 });
 
-/* 8) Query: Aggregation with HAVING
+/* 8) Query: Aggregation with HAVING - DONE
 Create one meaningful query that requires the use of a HAVING clause, 
 and provide an interface (e.g., HTML button/dropdown, etc.) for the user to execute this query.
 The query and chosen table(s) should make sense given the context of the application. */

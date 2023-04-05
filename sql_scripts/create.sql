@@ -131,7 +131,7 @@ CREATE TABLE Multiplayer_Game (
     FOREIGN KEY (spirits_name) REFERENCES Spirits(spirits_name) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
-/* 1) username, country, age, wins, losses */
+/* 1) username, country, ranking_level, age, wins, losses */
 INSERT INTO Player
 VALUES ("Overtaker", "Canada", "platinum", 22, 59, 5),
 ("Anywehe", "South Korea", "platinum", 21, 64, 12),
@@ -153,9 +153,12 @@ VALUES ("Overtaker", "Canada", "platinum", 22, 59, 5),
 ("EpicGamer88", "Australia", "beginner", 12, 17, 11),
 ("Ninja", "USA", "platinum", 50, 53, 5),
 ("Shroud", "Canada", "silver", 33, 33, 8),
-("Faker", "South Korea", "platinum", 20, 54, 2),
+("Faker", "South Korea", "diamond", 20, 54, 2),
 ("PewDiePie", "Sweden", "platinum", 35, 60, 12),
 ("Summit1g", "USA", "diamond", 18, 101, 3);
+("Chungus", "USA", "diamond", 20, 69, 40);
+("Hungry", "Brazil", "silver", 20, 5, 13);
+("XQC", "Canada", "diamond", 20, 100, 0);
 
 /* 2) stage_name, form*/
 INSERT INTO Stage

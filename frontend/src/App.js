@@ -6,6 +6,7 @@ import Logo from './pages/LogoDisplay'
 import SmashCharacters from './pages/SmashCharacters';
 import Tournaments from './pages/Tournament';
 import GameTournament from './pages/GameTournament';
+import PlayerTable from './components/PlayerTable';
 
 function App() {
   const [players, setPlayers] = useState([]);
@@ -13,7 +14,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:3001/players', {
+        const response = await fetch('http://localhost:3001/api/players', {
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -37,14 +38,7 @@ function App() {
     <>
       <Logo />
       <Home />
-      <div>{players.map(player => (
-        <div key={player.username}>
-          <p>Username: {player.username}</p>
-          <p>Ranking: {player.ranking}</p>
-          <p>Wins: {player.wins}</p>
-          <p>Losses: {player.losses}</p>
-        </div>
-      ))}</div>
+      <PlayerTable players={players} />
     </>
   );
 

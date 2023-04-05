@@ -7,7 +7,7 @@ const Home = () => {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                height: '90vh'
+                height: '20vh'
             }}>
           <h1>CPSC 304 Group 39</h1>  
         </div>

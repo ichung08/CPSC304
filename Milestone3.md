@@ -21,39 +21,53 @@ The domain of our application is in the world of online video games, particularl
 
 **Milestone 4:** Project Implementation (Wednesday, April 5, 2023 - 10 PM)
 
-Backend
+SQL DDL & Queries: Vanessa
 | Task          | Deadline      |  Team Member  |
 | ------------- | ------------- | ------------- |
 | SQL Script - Create tables and data | Sunday, Mar 19 | All |
-| Queries - INSERT  | Tuesday, Mar 21  | Kitty |
-| Queries - DELETE | Tuesday, Mar 21 | Kitty  |
-| Queries - UPDATE | Tuesday, Mar 21 | Kitty  |
-| Queries - Selection | Wednesday, Mar 22 | Isaac  |
-| Queries - Projection | Wednesday, Mar 22 | Isaac  |
-| Queries - Join | Wednesday, Mar 22 | Isaac  |
-| Queries - Aggregation with Group By | Friday, Mar 24 | Vanessa  |
-| Queries - Aggregation with Having | Friday, Mar 24 | Vanessa  |
-| Queries - Nested Aggregation with Group By | Friday, Mar 24 |Vanessa |
-| Queries - Division | Friday, Mar 24 | Isaac  |
+| Queries - INSERT  | April 1 | Vanessa |
+| Queries - DELETE | April 1 | Vanessa  |
+| Queries - UPDATE | April 1 | Vanessa  |
+| Queries - Selection | April 2 | Vanessa |
+| Queries - Projection | April 2 | Vanessa |
+| Queries - Join | April 2 | Vanessa  |
+| Queries - Aggregation with Group By | April 3 | Vanessa |
+| Queries - Aggregation with Having | April 3 | Vanessa  |
+| Queries - Nested Aggregation with Group By | April 3 |Vanessa |
+| Queries - Division | April 3| Vanessa |
 
-Frontend
+Backend: Isaac
 | Task          | Deadline      |  Team Member  |
 | ------------- | ------------- | ------------- |
-| Home Page | Monday, Mar 27 | Vanessa |
-| Page: Character | Friday, Mar 31  | Vanessa  |
-| Page: Player | Friday, Mar 31 | Kitty |
-| Page: Matches | Friday, Mar 31 | Kitty  |
-| Page: Tournament | Friday, Mar 31  | Isaac |
-| Page: Spirits & Maps  | Friday, Mar 31 | Isaac  |
-| Screenshots of query result (using GUI) | Saturday, Apr 1 | Kitty  |
+| Queries - INSERT  | April 1 | Isaac |
+| Queries - DELETE | April 1 | Isaac  |
+| Queries - UPDATE | April 1 | Isaac  |
+| Queries - Selection | April 2 | Isaac |
+| Queries - Projection | April 2 | Isaac  |
+| Queries - Join | April 2 | Isaac  |
+| Queries - Aggregation with Group By | April 3 | Isaac  |
+| Queries - Aggregation with Having | April 3 | Isaac   |
+| Queries - Nested Aggregation with Group By | April 3 | Isaac  |
+| Queries - Division | April 3 | Vanessa |
+
+Frontend: Kitty
+| Task          | Deadline      |  Team Member  |
+| ------------- | ------------- | ------------- |
+| Main Page| April 2 | Kitty |
+| Table: Player | April 2 | Kitty|
+| Table: Tournament | April 2 | Kitty |
+| Table: Smash_Character | April 2  | Kitty  |
+| Table: Ability | April 2 | Kitty  |
+| Styling: Fonts, Icons, etc. | April 3 | Kitty|
+| Screenshots of query result (using GUI) | April 3 | Kitty  |
 
 General
 | Task          | Deadline      |  Team Member  |
 | ------------- | ------------- | ------------- |
-| Project Description - General  | Sunday, Apr 2 | Vanessa  |
-| Project Description - Changes to Schema | Sunday, Apr 2 | Kitty  |
-| Project Description - Screenshots of data  | Sunday, Apr 2 | Isaac |
-| Meet before Project Implementation | Sunday, April 2 | All  |
+| Project Description - General  | April 4 | Vanessa  |
+| Project Description - Changes to Schema | April 4 | Kitty  |
+| Project Description - Screenshots of data  | April 4 | Isaac |
+| Meet before Project Implementation | April 1-4 | All  |
 
 
 **Milestone 5:** Group Demo (Tuesday, Apr 11 - 9 AM)

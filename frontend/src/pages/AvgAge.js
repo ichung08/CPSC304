@@ -2,10 +2,27 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import AvgAgeTable from '../components/AvgAgeTable';
 
-const Select = styled.select`
-  font-size: 1rem;
-  padding: 0.5rem;
+const StyledH1 = styled.h1`
+  font-size: 1em;
+  text-align: center;
+  margin-top: 1em;
 `;
+
+const SelectContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Select = styled.select`
+  font-size: 1em;
+  padding: 0.5em;
+  margin: 0.5em;
+  border-radius: 3px;
+  border: none;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+`;
+
 
 const AvgAge = ( ) => {
   const [avgAge, setAvgAge] = useState([]);
@@ -32,19 +49,22 @@ const AvgAge = ( ) => {
         setAttribute(event.target.value);
     };
 
-  return (
-    <>
-        <label htmlFor="attribute">Select an attribute:</label>
-        <Select id="attribute" value={attribute} onChange={handleChange}>
-            <option value="">-- Select a user --</option>
-            <option value="country">Country</option>
-            <option value="ranking_level">Ranking Level</option>
-            <option value="wins">Wins</option>
-            <option value="losses">Losses</option>
-        </Select>
-        <AvgAgeTable avgAge={avgAge} attribute={attribute} />
-    </>
+    return (
+      <>
+          <StyledH1 htmlFor="attribute">Select an attribute:</StyledH1>
+          <SelectContainer>
+              <Select id="attribute" value={attribute} onChange={handleChange}>
+                  <option value="">-- Select an attribute --</option>
+                  <option value="country">Country</option>
+                  <option value="ranking_level">Ranking Level</option>
+                  <option value="wins">Wins</option>
+                  <option value="losses">Losses</option>
+              </Select>
+          </SelectContainer>
+          <AvgAgeTable avgAge={avgAge} attribute={attribute} />
+      </>
   );
+  
 };
 
 export default AvgAge;

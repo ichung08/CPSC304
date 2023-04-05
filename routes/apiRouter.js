@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const sql = require('../db')
 
-/* Get All Player */
+/* Get All Players */
 router.get('/players', async function(req, res, next) {
     sql.query('SELECT * FROM Player', (error, results) => {
         if (error) {
@@ -13,6 +13,42 @@ router.get('/players', async function(req, res, next) {
         res.json(results)
       });
 });
+
+/* Get all Tournaments */
+router.get('/tournament', async function(req, res, next) {
+    sql.query(`SELECT * FROM Tournament`, (error, results) => {
+        if (error) {
+            console.error(`Error`, error.message)
+            next(error)
+        } 
+
+        res.json(results)
+    })
+})
+
+/* Get all Abilities */
+router.get('/ability', async function(req, res, next) {
+    sql.query(`SELECT * FROM Ability`, (error, results) => {
+        if (error) {
+            console.error(`Error`, error.message)
+            next(error)
+        } 
+
+        res.json(results)
+    })
+})
+
+/* Get all Smash_Character */
+router.get('/smash_character', async function(req, res, next) {
+    sql.query(`SELECT * FROM Smash_Character`, (error, results) => {
+        if (error) {
+            console.error(`Error`, error.message)
+            next(error)
+        } 
+
+        res.json(results)
+    })
+})
 
 /* 4) Query: Selection 
 The user is able to specify the filtering conditions for a given table. 
@@ -87,18 +123,6 @@ router.get('/player-projection', async function(req, res, next) {
       });
 });
 
-/* Get all abilities */
-router.get('/ability', async function(req, res, next) {
-    sql.query(`SELECT * FROM Ability`, (error, results) => {
-        if (error) {
-            console.error(`Error`, error.message)
-            next(error)
-        } 
-
-        res.json(results)
-    })
-})
-
 /* 1) Query: INSERT
 The user should be able to specify what values to insert. 
 The insert operation should affect more than one table 
@@ -144,18 +168,6 @@ router.put('/player/:username', async function(req, res, next) {
         res.json(results)
     })
 });
-
-/* Get all tournaments */
-router.get('/tournament', async function(req, res, next) {
-    sql.query(`SELECT * FROM Tournament`, (error, results) => {
-        if (error) {
-            console.error(`Error`, error.message)
-            next(error)
-        } 
-
-        res.json(results)
-    })
-})
 
 /* 2) Query: DELETE
 Implement a cascade-on-delete situation (or an alternative that was agreed to by the TA if the DB system doesn’t provide this). 

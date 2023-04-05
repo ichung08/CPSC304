@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback }  from 'react';
 import AbilityTable from '../components/AbilityTable';
 import styled, { keyframes } from 'styled-components';
+import Toast from '../components/Toast';
 
 const StyledH1 = styled.h1`
   text-align: center;
@@ -53,6 +54,16 @@ const StyledCheckbox = styled.input`
   transform: scale(2);
 `;
 
+const Button = styled.button`
+  background-color: #4caf50;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+`;
+
 const Ability = () => {
     const [abilities, setAbilities] = useState([]);
     const [characterName, setCharacterName] = useState('');
@@ -60,7 +71,11 @@ const Ability = () => {
     const [upAttack, setUpAttack] = useState('');
     const [neutralAttack, setNeutralAttack] = useState('');
     const [downAttack, setDownAttack] = useState('');
+    const [characterNames, setCharacterNames] = useState([])
     const [refresh, setRefresh] = useState(false)
+    const [showToast, setShowToast] = useState(false);
+    const [toastType, setToastType] = useState("");
+    const [toastMessage, setToastMessage] = useState("");
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -72,6 +87,13 @@ const Ability = () => {
             neutral_attack: neutralAttack,
             down_attack: downAttack,
         };
+
+        // if (characterNames.includes(characterName)) {
+        //   setShowToast(true);
+        //   setToastType("failure");
+        //   setToastMessage("Insert failed!");
+        //   return;
+        // }
 
         try {
             const response = await fetch('http://localhost:3001/api/ability', {
@@ -88,9 +110,22 @@ const Ability = () => {
             // console.log('Data:', data);
             setRefresh(true)
             console.log("Query:", data.query)
+            setShowToast(true);
+            setToastType("success");
+            setToastMessage("Insert successful!");
         } catch (error) {
             console.error('Error:', error);
+            setShowToast(true);
+            setToastType("failure");
+            setToastMessage("Insert failed!");
         }
+        setShowToast(true);
+        setToastType("failure");
+        setToastMessage("Insert failed!");
+    };
+
+    const handleCloseToast = () => {
+      setShowToast(false);
     };
 
     useEffect(() => {
@@ -109,6 +144,7 @@ const Ability = () => {
                 // console.log('Data:', data);
                 // console.log('Query:', data.query)
                 setAbilities(data.data);
+                setCharacterNames(abilities.map((ability) => ability.character_name))
                 setRefresh(false)
             } catch (error) {
                 console.error('Error:', error);
@@ -128,7 +164,6 @@ const Ability = () => {
                 value={characterName}
                 onChange={(event) => setCharacterName(event.target.value)}
               />
-
 
               <StyledLabel htmlFor="ultimateAttack">Ultimate Attack:</StyledLabel>
               <StyledInput
@@ -164,6 +199,9 @@ const Ability = () => {
             <StyledButton type="submit">Submit</StyledButton>
           </StyledForm>
           {abilities && <AbilityTable ability={abilities} />}
+          {showToast && (
+            <Toast type={toastType} message={toastMessage} onClose={handleCloseToast} />
+          )}
         </>
       );
       

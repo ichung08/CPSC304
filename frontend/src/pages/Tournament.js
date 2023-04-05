@@ -1,10 +1,14 @@
 
 import React, { useState, useEffect } from 'react';
 import TournamentTable from '../components/TournamentTable';
+import Toast from '../components/Toast';
 
 const Tournament = () => {
     const [tournament, setTournament] = useState([]);
     const [refresh, setRefresh] = useState(false);
+    const [showToast, setShowToast] = useState(false);
+    const [toastType, setToastType] = useState("");
+    const [toastMessage, setToastMessage] = useState("");
 
     useEffect(() => {
       const fetchData = async () => {
@@ -38,14 +42,31 @@ const Tournament = () => {
         const data = await response.json()
         console.log(data.query)
         setRefresh(true)
+        setShowToast(true);
+        setToastType("success");
+        setToastMessage("Delete successful!");
+        setTimeout(() => setShowToast(false), 3000);
       } catch (error) {
         console.error('Error:', error);
+        setShowToast(true);
+        setToastType("failure");
+        setToastMessage("Delete failed!");
+        setTimeout(() => setShowToast(false), 3000);
       }
     };
     
+    const handleCloseToast = () => {
+      setShowToast(false);
+    };
+
   return (
-    // render your component with the retrieved data
-    <TournamentTable tournament={tournament} handleDelete={handleDelete} />
+    <>
+      {showToast && (
+        <Toast type={toastType} message={toastMessage} onClose={handleCloseToast} />
+      )}
+      <TournamentTable tournament={tournament} handleDelete={handleDelete} />
+    </>
+
   );
 };
 

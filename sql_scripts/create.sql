@@ -155,9 +155,9 @@ VALUES ("Overtaker", "Canada", "platinum", 22, 59, 5),
 ("Shroud", "Canada", "silver", 33, 33, 8),
 ("Faker", "South Korea", "diamond", 20, 54, 2),
 ("PewDiePie", "Sweden", "platinum", 35, 60, 12),
-("Summit1g", "USA", "diamond", 18, 101, 3);
-("Chungus", "USA", "diamond", 20, 69, 40);
-("Hungry", "Brazil", "silver", 20, 5, 13);
+("Summit1g", "USA", "diamond", 18, 101, 3),
+("Chungus", "USA", "diamond", 20, 69, 40),
+("Hungry", "Brazil", "silver", 20, 5, 13),
 ("XQC", "Canada", "diamond", 20, 100, 0);
 
 /* 2) stage_name, form*/

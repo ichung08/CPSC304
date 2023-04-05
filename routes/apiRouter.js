@@ -307,7 +307,7 @@ router.get('/teams/:attribute', async function(req, res, next) {
     });
 });
 
-/* 9) Query: Nested Aggregation with GROUP BY
+/* 9) Query: Nested Aggregation with GROUP BY - DONE
 Create one query that finds some aggregated value for each group 
 (e.g., use a nested subquery, such as finding the average number of items purchased per customer, subject to some constraint). 
 Some examples for the Sailors table are given in the project specs. 
@@ -323,7 +323,7 @@ Use Case: Collect data on age averages of ranking levels,
 but only for ranking levels that have more than one player. This will prevent bias:
 (ie, if a ranking level only has one player, the average age may not useful for data collection) */
 
-// http://localhost:3001/api/avg-age/ranking_level
+// http://localhost:3001/api/avg-age/ranking_level 
 router.get('/avg-age/:attribute', async function(req, res, next) {
     const attribute = req.params.attribute
     const sqlQuery = `SELECT p1.${attribute}, AVG(p1.age) as avg_age

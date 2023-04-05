@@ -15,10 +15,7 @@ Implement a cascade-on-delete situation (or an alternative that was agreed to by
 The user should be able to choose what values to delete. The tables that the delete operation will run on can be chosen by the group. 
 The chosen query and table(s) should make sense given the context of the application. */
 
-
-
-
-/* 3) Query: UPDATE
+/* 3) Query: UPDATE - DONE
 The user should be able to specify whichever value(s) to update (i.e., any number of values in one or more columns). 
 The group can choose which table to run this query on. The chosen query and table(s) should make sense given the context of the application. */
 
@@ -28,7 +25,7 @@ UPDATE Player
 SET wins = wins + 1
 WHERE country = "Canada"
 
-/* 4) Query: Selection
+/* 4) Query: Selection - DONE
 The user is able to specify the filtering conditions for a given table. 
 That is, the user is able to determine what shows up in the WHERE clause.
 The group can choose which table to run this query on. 
@@ -43,8 +40,8 @@ WHERE country = "Canada";
 /* Returns all games and their respective information that were played on a Nintendo Switch
 Use case: Identifying the popularity of consoles */
 SELECT *
-FROM Game
-WHERE console = "Nintendo Switch";
+FROM Player
+WHERE country = "Canada";
 
 /* 5) Query: Projection
 The user is able to choose any number of attributes to view from any relation in the database. 

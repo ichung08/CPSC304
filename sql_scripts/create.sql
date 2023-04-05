@@ -1,3 +1,15 @@
+DROP TABLE Game_Tournament;
+DROP TABLE Tournament;
+DROP TABLE Multiplayer_Game;
+DROP TABLE Single_Player_Game;
+DROP TABLE Ability;
+DROP TABLE Game_Player;
+DROP TABLE Game;
+DROP TABLE Spirits;
+DROP TABLE Ruleset;
+DROP TABLE Smash_Character;
+DROP TABLE Stage;
+DROP TABLE Player;
 
 CREATE TABLE Player ( 
 	username CHAR(20),
@@ -97,6 +109,7 @@ CREATE TABLE Single_Player_Game (
     ruleset_type CHAR(20) NOT NULL,
     spirits_name CHAR(20) NOT NULL,
     PRIMARY KEY(game_id),
+    FOREIGN KEY (game_id) REFERENCES Game(game_id) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (stage_name) REFERENCES Stage(stage_name) ON DELETE NO ACTION ON UPDATE NO ACTION,
     FOREIGN KEY (ruleset_type) REFERENCES Ruleset (ruleset_type) ON DELETE NO ACTION ON UPDATE NO ACTION,
     FOREIGN KEY (spirits_name) REFERENCES Spirits(spirits_name) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -112,25 +125,13 @@ CREATE TABLE Multiplayer_Game (
     ruleset_type CHAR(20) NOT NULL,
     spirits_name CHAR(20) NOT NULL,
     PRIMARY KEY(game_id),
+    FOREIGN KEY (game_id) REFERENCES Game(game_id) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (stage_name) REFERENCES Stage(stage_name) ON DELETE NO ACTION ON UPDATE NO ACTION,
     FOREIGN KEY (ruleset_type) REFERENCES Ruleset (ruleset_type) ON DELETE NO ACTION ON UPDATE NO ACTION,
     FOREIGN KEY (spirits_name) REFERENCES Spirits(spirits_name) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
 /* 1) username, country, age, wins, losses */
-
-
-CREATE TABLE Player ( 
-	username CHAR(20),
-	country CHAR(20), 
-    ranking_level CHAR(20), 
-    age INTEGER,
-    wins INTEGER, 
-    losses INTEGER, 
-    PRIMARY KEY (username)
-);
-
-
 INSERT INTO Player
 VALUES ("Overtaker", "Canada", "platinum", 22, 59, 5),
 ("Anywehe", "South Korea", "platinum", 21, 64, 12),

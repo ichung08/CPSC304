@@ -343,7 +343,7 @@ router.get('/avg-age/:attribute', async function(req, res, next) {
     });
 });
 
-/* 10) Query: Division
+/* 10) Query: Division - DONE
 Create one query of this category and provide an interface 
 (i.e., HTML button, etc.) for the user to execute this query 
 (e.g., find all the customers who bought all the items).

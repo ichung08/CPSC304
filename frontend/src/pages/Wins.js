@@ -70,7 +70,7 @@ const Wins = ( ) => {
         <StyledH1 htmlFor="attribute">Select an attribute:</StyledH1>
         <SelectContainer>
         <Select id="attribute" value={attribute} onChange={handleChange}>
-          <option value="">-- Select a user --</option>
+          <option value="">-- Select an attribute --</option>
           <option value="country">Country</option>
           <option value="ranking_level">Ranking Level</option>
           <option value="age">Age</option>

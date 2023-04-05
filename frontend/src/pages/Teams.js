@@ -36,7 +36,7 @@ const Teams = ( ) => {
     <>
         <label htmlFor="attribute">Select an attribute:</label>
         <Select id="attribute" value={attribute} onChange={handleChange}>
-            <option value="">-- Select a user --</option>
+            <option value="">-- Select an attribute --</option>
             <option value="country">Country</option>
             <option value="ranking_level">Ranking Level</option>
             <option value="age">Age</option>

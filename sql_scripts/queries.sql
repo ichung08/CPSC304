@@ -131,9 +131,47 @@ You must use separate distinct queries for this criterion and the Aggregation Qu
 It is fine to use a view to get the desired behaviour.
 The query and chosen table(s) should make sense given the context of the application.*/
 
+SELECT p1.ranking_level, AVG(p1.age) as avg_age
+FROM Player p1
+GROUP BY p1.ranking_level
+HAVING 1 < ( SELECT COUNT(*)
+FROM Player p2
+WHERE p1.ranking_level = p2.ranking_level)
+ ORDER BY
+  CASE ranking_level 
+    WHEN 'beginner' THEN 1 
+    WHEN 'bronze' THEN 2
+    WHEN 'silver' THEN 3
+    WHEN 'gold' THEN 4
+    WHEN 'platinum' THEN 5
+    WHEN 'diamond' THEN 6
+  END ASC;
 
 /* 10) Query: Division
 Create one query of this category and provide an interface 
 (i.e., HTML button, etc.) for the user to execute this query 
 (e.g., find all the customers who bought all the items).
 The query and chosen table(s) should make sense given the context of the application. */
+
+
+/* Selects the usernames of players that have played in every game of the specified X tournament.
+1) the query uses a subquery that finds all the game IDs in the Game_Tournament table for tournament X
+2) compares it with the game IDs in the Game_Player table for each individual player
+3) If a player has played in all games for the tournament, their username will be returned by the outer SELECT statement. 
+The EXCEPT keyword is used to find the game IDs in the first subquery that are not present in the second subquery, 
+which helps determine if a player has played in all the games or not.
+
+Use case: tournament organizers can give out the most participation award
+*/
+
+SELECT username
+FROM Player 
+WHERE NOT EXISTS (
+    SELECT game_id
+    FROM Game_Tournament 
+    WHERE tournament_id = 800
+    EXCEPT
+    SELECT game_id
+    FROM Game_Player 
+    WHERE Game_Player.username = Player.username
+);

@@ -14,7 +14,8 @@ const Tournament = () => {
           }
           const data = await response.json();
           console.log('Data:', data);
-          setTournament(data);
+          console.log('Query:', data.query)
+          setTournament(data.data);
         } catch (error) {
           console.error('Error:', error);
         }

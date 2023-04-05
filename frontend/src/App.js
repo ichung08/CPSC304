@@ -1,8 +1,8 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
 
-import Home from './pages/Home'
-import Logo from './pages/LogoDisplay'
+import Home from './pages/Home';
+import Logo from './pages/LogoDisplay';
 
 import Player from './pages/Player';
 import Tournament from './pages/Tournament';
@@ -11,9 +11,14 @@ import Ability from './pages/Abilities';
 import styled from 'styled-components';
 
 import kirbyImage from './assets/kirby.png';
-import marioImage from './assets/mario.png'
-import donkeykongImage from './assets/donkeykong.png'
-import yoshiImage from './assets/yoshi.png'
+import marioImage from './assets/mario.png';
+import donkeykongImage from './assets/donkeykong.png';
+import yoshiImage from './assets/yoshi.png';
+import daisyImage from './assets/daisy.png';
+import bowserImage from './assets/bowser.png';
+import samusImage from './assets/samus.png';
+
+
 import GamePlayer from './pages/GamePlayer';
 import GamesPlayed from './pages/GamesPlayed';
 import Wins from './pages/Wins';
@@ -94,7 +99,7 @@ function App() {
       </Section>
       <Spacer />
       <Title>
-        <img src={yoshiImage} alt="Yoshi icon" />
+        <img src={daisyImage} alt="Daisy icon" />
         Game Player
       </Title>
       <Spacer2 />
@@ -102,18 +107,16 @@ function App() {
         <GamePlayer />
       </Section>
       <Title>
-        <img src={yoshiImage} alt="Yoshi icon" />
+        <img src={bowserImage} alt="Bowser icon" />
         Games Played
       </Title>
-      <Spacer2 />
       <Section>
         <GamesPlayed />
       </Section>
       <Title>
-        <img src={yoshiImage} alt="Yoshi icon" />
+        <img src={samusImage} alt="Samus icon" />
         Wins by Attribute
       </Title>
-      <Spacer2 />
       <Section>
         <Wins />
       </Section>

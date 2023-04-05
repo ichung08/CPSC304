@@ -14,6 +14,50 @@ router.get('/', async function(req, res, next) {
       });
 });
 
+/* Filter Player */
+router.get('/filter', async function(req, res, next) {
+    const {username, country, wins, losses} = req.query;
+    let query = "SELECT * FROM Player WHERE";
+    let conditions = [];
+    if (username) {
+        conditions.push(`username = '${username}'`);
+    }
+    if (country) {
+        conditions.push(`country = '${country}'`);
+    }
+    if (wins) {
+        conditions.push(`wins = ${wins}`);
+    }
+    if (losses) {
+        conditions.push(`losses = ${losses}`);
+    }
+    if (conditions.length > 0) {
+        query += " " + conditions.join(" AND ");
+    } else {
+        query = "SELECT * FROM Player";
+    }
+    sql.query(query, (error, results) => {
+        if (error) {
+            console.error(`Error`, error.message);
+            next(error);
+        }
+
+        res.json(results);
+    });
+});
+
+/* Select Player by  */
+router.get('/wins=:wins', async function(req, res, next) {
+    sql.query(`SELECT * FROM Player WHERE wins=${req.params.wins}`, (error, results) => {
+        if (error) {
+            console.error(`Error`, error.message)
+            next(error)
+        } 
+
+        res.json(results)
+      });
+});
+
 /* Insert Player */
 router.post('/', async function(req, res, next) {
     const body = req.body

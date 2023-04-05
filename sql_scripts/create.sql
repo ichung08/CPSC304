@@ -2,6 +2,7 @@
 CREATE TABLE Player ( 
 	username CHAR(20),
 	country CHAR(20), 
+    age INTEGER, 
     wins INTEGER, 
     losses INTEGER, 
     PRIMARY KEY (username)
@@ -115,31 +116,31 @@ CREATE TABLE Multiplayer_Game (
     FOREIGN KEY (spirits_name) REFERENCES Spirits(spirits_name) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
-/* 1) username, country, wins, losses */
+/* 1) username, country, age, wins, losses */
 INSERT INTO Player
-VALUES ("Overtaker", "Canada", 59, 5),
-("Anywehe", "South Korea", 64, 12),
-("Sally", "India", 23, 6),
-("Adam", "China", 49, 6),
-("Zahgrd", "Australia", 5, 86),
-("Victory", "Australia", 35, 9),
-("Christian", "Philippines", 23, 5),
-("Hauntzer", "Philippines", 45, 46),
-("GameOn92", "USA", 15, 8),
-("NinjaGamer", "Canada", 20, 5),
-("TheGamingGeek", "USA", 18, 6),
-("PixelWarrior", "UK", 14, 10),
-("VirtualAssassin", "Canada", 22, 3),
-("RetroGamerX", "Australia", 12, 12),
-("EliteGamingPro", "UK", 16, 9),
-("ThunderBolt", "USA", 21, 4),
-("CyberKnight", "Canada", 19, 7),
-("EpicGamer88", "Australia", 17, 11),
-("Ninja", "USA", 15, 5),
-("Shroud", "Canada", 12, 8),
-("Faker", "South Korea", 20, 2),
-("PewDiePie", "Sweden", 8, 12),
-("Summit1g", "USA", 18, 3);
+VALUES ("Overtaker", "Canada", 22, 59, 5),
+("Anywehe", "South Korea", 21, 64, 12),
+("Sally", "India", 17, 23, 6),
+("Adam", "China", 16, 49, 6),
+("Zahgrd", "Australia", 14, 5, 86),
+("Victory", "Australia", 30, 35, 9),
+("Christian", "Philippines", 26, 23, 5),
+("Hauntzer", "Philippines", 27, 45, 46),
+("GameOn92", "USA", 40, 15, 8),
+("NinjaGamer", "Canada", 29, 20, 5),
+("TheGamingGeek", "USA", 15, 18, 6),
+("PixelWarrior", "UK", 13, 14, 10),
+("VirtualAssassin", "Canada", 16, 22, 3),
+("RetroGamerX", "Australia", 35, 12, 12),
+("EliteGamingPro", "UK", 22, 16, 9),
+("ThunderBolt", "USA", 31, 21, 4),
+("CyberKnight", "Canada", 28, 19, 7),
+("EpicGamer88", "Australia", 12, 17, 11),
+("Ninja", "USA", 50, 15, 5),
+("Shroud", "Canada", 33, 12, 8),
+("Faker", "South Korea", 14, 20, 2),
+("PewDiePie", "Sweden", 35, 8, 12),
+("Summit1g", "USA", 13, 18, 3);
 
 /* 2) stage_name, form*/
 INSERT INTO Stage
@@ -165,7 +166,8 @@ VALUES ("Bowser", "orange"),
 ("Pikachu", "green"),
 ("Kirby", "pink"),
 ("Boo", "Red"),
-("Donkey Kong", "Blue");
+("Donkey Kong", "Blue"),
+("Zelda", "Green");
 
 /* 4) ruleset_type, win_criteria*/
 INSERT INTO Ruleset 
@@ -275,8 +277,8 @@ INSERT INTO Tournament VALUES
 (600, 'Smash Championships 2021', 'Activision Blizzard', '2021-08-19', '2021-08-22', 2500000),
 (700, 'Rainbow Six Siege Invitational 2022', 'Ubisoft', '2022-02-09', '2022-02-20', 3000000),
 (800, 'Smash World Cup 2022', 'Epic Games', '2022-07-22', '2022-07-24', 50000000),
-(900, 'The International 2022', 'Valve Corporation', '2022-08-18', '2022-08-28', 30000000),
-(1000, 'ESL Amsterdam', 'Valve Corporation', '2023-01-19', '2023-01-29', 2000000);
+(900, 'The International 2023', 'Valve Corporation', '2023-08-18', '2023-08-28', 30000000),
+(1000, 'ESL Amsterdam', 'Valve Corporation', '2024-01-19', '2024-01-29', 2000000);
 
 
 /* 9) game_id, tournament_id */
@@ -314,7 +316,8 @@ VALUES ("Bowser", "Final Cutter", "Stone", "Inhale", "Flame"),
 ("Pikachu", "Throw", "Fire Spit", "Jump", "Thunderbolt"),
 ("Kirby", "Quick Attack", "Thunder", "Jolt", "Jump"),
 ("Boo", "Quick Shift", "Ghost Mode", "Sting", "Teleport"),
-("Donkey Kong", "Extra Strength", "Power Jump", "Sumo", "Crouch");
+("Donkey Kong", "Power", "Jump", "Spin", "Crouch");
+
 
 
 /* 11) game_id, competitor_type, console, game_mode, stage_name, ruleset_type, spirits_name*/

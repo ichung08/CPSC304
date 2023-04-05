@@ -6,14 +6,41 @@ The insert operation should affect more than one table
 (i.e., an insert should occur on a table with a foreign key). 
 The chosen query and table(s) should make sense given the context of the application.*/
 
+/* 1. Zelda already exists in the table */
+INSERT INTO Ability 
+VALUES ("Zelda", "Arrow", "Wind", "Transform", "Fire");
 
+/* 2. Insert character first in Smash_Character, then insert their abilities in Ability */
+INSERT INTO Smash_Character
+VALUES ("Mii Fighters", "Yellow");
 
+INSERT INTO Ability
+VALUES ("Mii Fighters", "Yoga", "Breathe", "Stretch", "Kick"); 
 
+/* 3. Error: Ability cannot be added, since this character does not exist in our Super Smash Bros records.*/
+INSERT INTO Ability
+VALUES ("Mickey Mouse", "Wave", "Hug", "Hello", "Sing");
 
-/* 2) Query: DELETE
+/* Jessica on Piazza for 1) INSERT
+Depending on the context of the situation for insert, you may end up in one of three situations:
+
+1. Foreign key value already exists in the table so you can insert the tuple with no problems.
+2. Foreign key value does not exist yet so you need to first run an insert into the table before inserting the value the user has chosen. This option may not make sense given the context you are using insert for.
+3. Return an error to the user saying this insert cannot go through because <some reasonable and understandable-to-the-average-non-computer-scientist reason here>.
+Scenarios 1 + 2 or 1 + 3 are reasonable combinations to have your application handle. */
+
+----------------
+/* 2) Query: DELETE - done
 Implement a cascade-on-delete situation (or an alternative that was agreed to by the TA if the DB system doesn’t provide this). 
 The user should be able to choose what values to delete. The tables that the delete operation will run on can be chosen by the group. 
 The chosen query and table(s) should make sense given the context of the application. */
+
+/* Deletes a tournament and all tables with that tournament
+Use Case: A tournament later this year gets canceled, so we want to remove all traces of this tournament:
+- the tournament itself (Tournament) 
+- games scheduled that were supposed to be scheduled then (Game_Tournament) */
+
+DELETE FROM Tournament WHERE tournament_id = 900;
 
 /* 3) Query: UPDATE - DONE
 The user should be able to specify whichever value(s) to update (i.e., any number of values in one or more columns). 
@@ -23,7 +50,7 @@ The group can choose which table to run this query on. The chosen query and tabl
 Use case: Team Canada wins a game at a Smash World Championships */
 UPDATE Player
 SET wins = wins + 1
-WHERE country = "Canada"
+WHERE country = "Canada";
 
 /* 4) Query: Selection - DONE
 The user is able to specify the filtering conditions for a given table. 
@@ -33,12 +60,6 @@ The query and chosen table(s) should make sense given the context of the applica
 
 /* Returns player usernames, wins, and losses who are from Canada 
 Use case: Seeing the competition from Canada and their stats*/
-SELECT *
-FROM Player
-WHERE country = "Canada";
-
-/* Returns all games and their respective information that were played on a Nintendo Switch
-Use case: Identifying the popularity of consoles */
 SELECT *
 FROM Player
 WHERE country = "Canada";
@@ -81,7 +102,7 @@ The group can choose which table to run this query on.
 The query and chosen table(s) should make sense given the context of the application.*/
 
 /* Find total number of wins for each country
-Use Case: See who is the best country at Smash Bros */
+Use Case: Find the statistics for country wins */
 SELECT country, SUM(wins) as total_wins
 FROM Player
 GROUP BY country;
@@ -91,12 +112,15 @@ Create one meaningful query that requires the use of a HAVING clause,
 and provide an interface (e.g., HTML button/dropdown, etc.) for the user to execute this query.
 The query and chosen table(s) should make sense given the context of the application. */
 
-/* View players who won at least 50% of their games ordered from the highest to lowest win ratio
-Use case: Searching for players who have at least a 50% win rate*/
-SELECT username, ((wins) / (wins + losses)) AS win_ratio
+/* This query calculates the number of players in each country that has more than 2 players and orders the results by the number of players in descending order. 
+The HAVING clause filters the groups with less than 3 players.
+Use case: We want to see which countries can create teams to send to tournaments (teams = countries with more than 1 player) */
+SELECT country, COUNT(username) AS num_players
 FROM Player
-HAVING win_ratio > 0.5
-ORDER BY win_ratio DESC
+GROUP BY country
+HAVING num_players > 1
+ORDER BY num_players DESC;
+
 
 /* 9) Query: Nested Aggregation with GROUP BY
 Create one query that finds some aggregated value for each group 

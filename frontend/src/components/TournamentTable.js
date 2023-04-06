@@ -64,6 +64,7 @@ const TournamentTable = ({ tournament, handleDelete }) => {
     <Table>
       <thead>
         <Tr>
+          <Th>Tournament ID</Th>
           <Th>Tournament Name</Th>
           <Th>Organizer</Th>
           <Th>Start Date</Th>
@@ -75,6 +76,7 @@ const TournamentTable = ({ tournament, handleDelete }) => {
       <tbody>
         {tournament.map((tournament, index) => (
           <Tr key={index}>
+            <Td>{tournament.tournament_id}</Td>
             <Td>{tournament.tournament_name}</Td>
             <Td>{tournament.organizer}</Td>
             <Td>{tournament.startdate.substring(0, 10)}</Td>

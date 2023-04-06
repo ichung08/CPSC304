@@ -24,3 +24,7 @@ How to use.
 - Everything is in /frontend folder and we are using React
 - Pages are in /frontend/pages folder
 - Components are in /frontend/components folder
+
+## Additional Information
+- Milestone 4 pdf: Cover page for Milestone 4, project description, project changes, schema, sql queries, screenshots, etc. 
+- create.sql: Single script for all data and tables are in create.sql

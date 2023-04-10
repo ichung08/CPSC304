@@ -1,9 +1,4 @@
-# CPSC 304 Project - Team 39 (project_b5n2b_f9d9y_y8j3b)
-
-## Group Members
-- Isaac Chung
-- Kitty Liu
-- Vanessa Lee
+# CPSC 304 Project - Super Smash Bros. Tracker
 
 ## Prerequisites:
 - node v19
@@ -24,7 +19,3 @@ How to use.
 - Everything is in /frontend folder and we are using React
 - Pages are in /frontend/pages folder
 - Components are in /frontend/components folder
-
-## Additional Information
-- Milestone 4 pdf: Cover page for Milestone 4, project description, project changes, schema, sql queries, screenshots, etc. 
-- create.sql: Single script for all data and tables are in create.sql
